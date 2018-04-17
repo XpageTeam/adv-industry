@@ -1,0 +1,365 @@
+$output-bourbon-deprecation-warnings: false;
+@import "bourbon"
+@import "vars"
+@import "functions"
+// @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=cyrillic')
+
+*::-webkit-input-placeholder
+	color: #000
+	opacity: .55
+
+*:-moz-placeholder
+	color: #000
+	opacity: .55
+
+*::-moz-placeholder
+	color: #000
+	opacity: .55
+
+*:-ms-input-placeholder
+	color: #000
+	opacity: .55
+
+html
+	font-size: 100%
+
+input, a, button, textarea, select
+	outline: none
+
+#{$all-text-inputs}, select, input[type="submit"], button
+	appearance: none
+
+*, *:after, *:before
+	box-sizing: border-box
+
+*[v-cloak]
+	display: none
+
+
+%clear-text
+	overflow: hidden
+	text-indent: -9999px
+
+%clearfix
+	
+	&:after
+		display: table
+		clear: both
+		content: ""
+
+address
+	font-weight: inherit
+
+body
+	min-width: 320px
+	line-height: 1.2
+	font-family: $default-font
+	font-weight: 300
+	font-size: rem(16)
+	background: #fff
+	color: #000
+	position: relative
+
+#content, .content
+	flex: 1 0 auto
+	display: flex
+	flex-direction: column
+
+.head
+	flex: none
+
+#page-wr
+	margin: 0 auto
+	min-height: 100vh
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+
+	select
+		-webkit-appearance: none;
+		/* for FF */
+		-moz-appearance: none;
+		text-indent: 0.01px; 
+		text-overflow: '';
+		/* for IE */
+		-ms-appearance: none;
+		appearance: none!important;
+
+		&::-ms-expand 
+			display: none;
+
+a
+	color: $main-color
+	text-decoration: underline
+	font-weight: inherit
+
+	&[href^="tel"], &[href^="mail"]
+		white-space: nowrap
+
+	&:not([class])
+		border-bottom: 1px solid transparent
+
+		&:hover, &:focus
+			color: $main-color
+			border-color: $main-color
+
+.wrapper
+	max-width: $base-width + px
+	padding: 0 2rem
+	margin: 0 auto
+	box-sizing: content-box
+
+input[type="submit"], button
+	cursor: pointer
+
+img
+	max-width: 100%
+
+li
+	list-style: none
+
+.soc
+	
+	&__link
+		display: inline-block
+		border-radius: 50%
+		+size(42px)
+		background: 
+			position: center
+			repeat: no-repeat
+			color: #4b4b4b
+
+		&:not(:last-child)
+			margin-right: 9px
+
+.table-wrap
+	overflow: auto
+
+%text-page, .text-page
+
+	> *:not(:first-child)
+		margin-top: 20px
+
+	strong
+		font-weight: bold
+
+	h2, h3, h4, h5, h6
+		font-weight: 400
+
+	h2
+		font-size: rem(22)
+		line-height: rem(28)
+
+	h3
+		font-size: rem(19)
+		line-height: rem(26)
+
+	h4, h5
+		line-height: rem(24)
+		font-size: rem(16)
+
+	img[align="right"]
+		float: right
+		margin-left: 20px
+
+	img[align="left"]
+		float: left
+		margin-right: 20px
+
+	blockquote
+		border-left: 2px solid $main-color
+		padding-left: 21px
+
+		&.bg
+			border: none
+			padding: 22px 30px
+			background: #f5f6f8
+
+		&.border
+			font-weight: 400
+			font-size: rem(22)
+			line-height: lh(26, 22)
+			padding: 25px 0
+			border:
+				top: 1px solid $border-color
+				bottom: 1px solid $border-color
+				left: none
+
+	table
+		// width: 100%
+		// table-layout: fixed
+		color: #000
+
+		td, th
+			padding: 15px 23px
+			font-weight: 300
+			vertical-align: middle
+
+	table[border="1"]
+
+		td, th
+			border: 1px solid $border-color
+
+	ul, ol
+		max-width: 650px
+		// margin-top: 0 !important
+
+		&[column]
+			column-count: 2
+			column-gap: rem(85)
+			max-width: none
+
+	li
+		//padding-left: 20px
+		position: relative
+		line-height: 1.3
+
+		&:before
+			display: inline-block
+
+		&:not(:first-child)
+			margin-top: 14px
+
+		ul, ol
+			margin-bottom: 20px
+
+		li
+			padding-left: 20px
+
+			&:not(:first-child)
+				margin-top: 0
+
+	ul
+
+		li
+			padding-left: 8px
+
+			&:before
+				content: "-"
+				margin: 0 4px 0 -8px
+	
+	ol
+		counter-reset: i
+
+		li
+			counter-increment: i
+
+			&:before
+				content: counter(i) "."
+				margin-right: 4px
+
+.radio
+	position: relative
+
+	&:hover, .radio__input:focus +
+
+		.radio
+
+			&__label
+				color: $main-color
+
+				&:before
+					border-color: $main-color
+	
+	&__input
+		position: absolute
+		top: 0
+		left: 0
+		opacity: 0
+		+size(0)
+
+		&:checked
+
+			+ label
+
+				&:after
+					opacity: 1
+
+	&__label
+		position: relative
+		min-height: 26px
+		display: flex
+		align-items: center
+		cursor: pointer
+		padding-left: 40px
+		user-select: none
+		transition: color .3s ease
+
+		&:before, &:after
+			content: ""
+			position: absolute
+			border-radius: 50%
+
+		&:before
+			top: 0
+			left: 0
+			background: $second-color
+			+size(26px)
+			transition: border-color .3s ease
+		
+		&:after
+			top: 9px
+			left: 9px
+			+size(8px)
+			transition: opacity .3s ease
+			opacity: 0
+			z-index: 1
+			background: $main-color
+
+.checkbox
+	position: relative
+
+	&:hover, .checkbox__input:focus +
+
+		.checkbox
+
+			&__label
+				color: $main-color
+
+				&:before
+					border-color: $main-color
+	
+	&__input
+		position: absolute
+		top: 0
+		left: 0
+		opacity: 0
+		+size(0)
+
+		&:checked
+
+			+ label
+				
+				&:after
+					opacity: 1
+
+	&__label
+		position: relative
+		padding-left: 32px
+		cursor: pointer
+		min-height: 18px
+		display: flex
+		align-items: center
+		transition: color .3s ease
+
+		&:before, &:after
+			position: absolute
+			content: ""
+
+		&:before
+			background: #fff
+			+size(18px)
+			left: 0
+			top: 2px
+			top: 0
+			border: 1px solid $border-color
+			transition: border-color .3s ease
+
+		&:after
+			transition: opacity .3s ease
+			+size(11px 6px)
+			left: 4px
+			top: 8px
+			top: 6px
+			background: url("../img/ico-check.png") no-repeat
+			opacity: 0

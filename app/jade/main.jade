@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Главная
+		include inc/head.jade
+		include inc/css.jade
+	body.main.loading
+		#page-wr
+			#content
+				
+				.content
+					.main-screen
+						.main-screen__header
+							img(src="img/photos/header.png", alt="")
+						.main-screen__slider
+							figure.img.img--1
+								img(src="img/photos/img-1.jpg", alt="")
+								figcaption.img__text
+									.wrapper
+										.text
+											.text__text
+												div Спасибо, что доверяете нам
+												div <span>свои проекты.</span> Они вдохновляют
+												div нас работать еще лучше.
+											.text__btn
+												.play-btn
+													canvas.play-btn__btn(width="80" height="80")
+													span.play-btn__text Смотреть видео
+							figure.img.img--2
+								img(src="img/photos/img-2.jpg", alt="")
+								figcaption.img__text2
+									.text2
+										figure.text2__svg
+											include inc/svg.html
+										.text2__text
+											.text2__text-title Вывески
+											.text2__text-text
+												div Правильный выбор вывески – это ключ к успеху вашего бизнеса!
+												div Вывеска – уникальное «лицо» вашего магазина, офиса, ресторана, салона красоты или 
+												div кафе на улицах большого города. Уделяя должное внимание вывеске, вы инвестируете 
+												div в развитие и процветание вашего бизнеса.
+											.text2__text-link
+												img(src="img/photos/lol.png")
+						.main-screen__footer
+							img(src="img/photos/footer.png", alt="")
+					figure.img.img--3
+						img(src="img/photos/img-3.jpg", alt="")
+			include inc/footer.jade
+		include inc/scripts.jade

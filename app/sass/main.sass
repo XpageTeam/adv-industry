@@ -1,0 +1,273 @@
+
+$output-bourbon-deprecation-warnings: false;
+@import "bourbon"
+@import "vars"
+@import "base"
+@import "functions"
+
+*[v-cloak]
+	display: none
+
+.loader
+	display: none
+
+button, input, select
+	font-family: inherit
+
+.rub
+	font-style: normal
+	font-size: inherit
+	font-weight: inherit
+	font-family: "Roboto"
+
+body
+	overflow: hidden
+
+img
+	// width: 100vw
+	// width: 100%
+
+.slick-slide
+	height: auto
+
+.img
+	position: relative
+	max-height: 100vh
+
+	&--3
+		overflow-y: auto
+
+	img
+		display: block
+		// width: 100vw
+
+	&__text, &__text2
+		position: absolute
+		top: 0
+		left: 0
+		+size(100%)
+		display: flex
+		flex-direction: column
+		// align-items: center
+		justify-content: center
+
+		.wrapper
+			width: 1395px
+			max-width: 100%
+
+	&__text2
+
+.text2
+	width: 1100px
+	max-width: 100%
+	margin: 0 auto
+	display: flex
+	font-weight: 400
+
+	&__svg
+		flex: none
+		margin-right: 155px
+
+	&__text
+
+		&-title
+			font-size: rem(28)
+			line-height: lh(32, 28)
+			margin-bottom: 2rem
+			transition: transform .7s ease, opacity .5s ease
+			opacity: 0
+			transform: translate3d(0, 60%, 0)
+
+		&-text
+			font-size: rem(14)
+			line-height: lh(24, 14)
+			transition: transform .7s ease
+			transform: translate3d(0, 60%, 0)
+			transition-delay: .1s
+
+			div
+				transition: transform .7s ease, opacity .7s ease
+				opacity: 0
+
+				&:first-child
+					transform: translate3d(0, 20%, 0)
+				
+				&:nth-child(2)
+					transform: translate3d(0, 40%, 0)
+					transition-delay: .2s
+
+				&:nth-child(3)
+					transform: translate3d(0, 60%, 0)
+					transition-delay: .4s
+
+				&:nth-child(4)
+					transform: translate3d(0, 50%, 0)
+					transition-delay: .6s
+
+		&-link
+			margin: 43px 0 0
+			transition: transform .7s ease, opacity .5s ease
+			opacity: 0
+			transform: translate3d(0, 60%, 0)
+			transition-delay: .7s
+
+			img
+				width: auto
+
+.main-screen
+	position: relative
+	height: 100vh
+
+	&__header, &__footer
+		position: absolute
+		left: 0
+		width: 100%
+		z-index: 5
+
+		img
+			display: block
+
+	&__header
+		top: 0
+
+	&__footer
+		bottom: 0
+
+.text
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+	&__text
+		font-size: rem(48)
+		line-height: lh(59, 48)
+		transition: transform .7s ease
+		transform: translate3d(0, 60%, 0)
+
+		span
+			color: $main-color
+
+		div
+			transition: transform .7s ease, opacity .7s ease
+			opacity: 0
+
+			&:first-child
+				transform: translate3d(0, 20%, 0)
+			
+			&:nth-child(2)
+				transform: translate3d(0, 40%, 0)
+				transition-delay: .2s
+
+			&:nth-child(3)
+				transform: translate3d(0, 60%, 0)
+				transition-delay: .4s
+
+			&:nth-child(4)
+				transform: translate3d(0, 50%, 0)
+				transition-delay: .6s
+
+.js__active-slide
+
+	.text__text, .text__text div
+		transform: translate3d(0,0,0)
+		opacity: 1
+
+	.play-btn
+		transition:
+			delay: .7s
+		opacity: 1
+
+	.text2
+
+		&__text
+
+			&-title, &-text, &-text div, &-link
+				transform: translate3d(0, 0, 0)
+				opacity: 1
+
+			// &-text
+
+			// 	div
+			// 		transform: translate3d(0, 0, 0)
+			// 		opacity: 1
+
+.play-btn
+	position: relative
+	display: flex
+	align-items: center
+	transition: opacity .3s ease
+	width: 204px
+	margin-right: 58px
+	opacity: 0
+	cursor: pointer
+
+	&__btn
+		background: url("../img/play-btn.jpg") center no-repeat, #f7f7f7
+		position: relative
+		z-index: 1
+		border-radius: 50%
+
+	&__text
+		background: $main-color
+		transition: width .7s ease, padding .7s ease
+		color: #fff
+		font-weight: 400
+		font-size: 14px
+		position: absolute
+		left: 35px
+		top: 0
+		height: 100%
+		width: 0
+		overflow: hidden
+		line-height: lh(20, 14)
+		border-radius: 0 48px 48px 0
+		padding: 0
+		display: flex
+		align-items: center
+
+	&.js__animated
+		
+		.play-btn
+
+			&__text
+				width: 165px
+				padding: 0 37px 0 60px
+
+.fil0 
+	stroke-dasharray: 4800;
+	stroke-dashoffset: 4800;
+	/*animation: fil0 2s linear forwards 1s;*/
+	transition: stroke-dashoffset 1.4s ease
+
+
+.fil1 
+	stroke-dasharray: 5210;
+	stroke-dashoffset: 5210;
+	stroke: black;
+	fill: transparent;
+	/*animation: fil1 .8s linear forwards 1s;*/
+	
+
+.js__active-slide .fil0 
+	stroke-dashoffset: 0;
+
+.el-9 
+	stroke-dasharray: 4800;
+	stroke-dashoffset: 4800;
+	/*animation: el-9 1s linear forwards 1s;*/
+
+
+
+.simvol 
+	opacity: 0;
+	fill: black;
+	transition: opacity .4s ease
+	
+
+.js__active-slide .simvol 
+	/*animation: simvol 1s linear forwards 2s;*/
+	opacity: 1;
+
+
+@import "_grid"
+@import "media"
