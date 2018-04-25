@@ -30,6 +30,91 @@ img
 .slick-slide
 	height: auto
 
+.string
+	white-space: nowrap
+
+.head
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 5
+	padding: 76px rem(116) 0
+
+	&__wrap
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+.contact
+	display: flex
+	align-items: center
+
+	&__phone
+		margin-right: 31px
+
+		a
+			font-size: rem(18)
+			color: #000
+			text-decoration: none
+
+.default-btn
+	display: inline-block
+	border: none
+	background: $main-color
+	border-radius: 27px
+	color: #fff
+	text-decoration: none
+	font-weight: 400
+	font-size: 14px
+	text-align: center
+	transition: background-color .3s ease, transform .2s ease
+	padding: 12px 29px 13px
+
+	&:hover, &:focus
+		background-color: lighten($main-color, 6%)
+
+	&:active
+		transform: scale(.9)
+
+	&--arrow
+		padding-right: 57px
+		white-space: nowrap
+		background: url("../img/ico-white-arrow.png") center right 27px no-repeat, $main-color
+
+.head-menu
+	display: flex
+
+	&__link
+		color: #000
+		text-decoration: none
+		font-weight: 400
+		font-size: rem(14)
+		position: relative
+
+		&:after
+			content: ""
+			position: absolute
+			left: 0
+			top: calc(100% + 3px)
+			background: $main-color
+			+size(100% 1px)
+			transition: opacity .3s ease, transform .3s ease
+			opacity: 0
+			transform: translate3d(0, 5px, 0)
+
+		&:hover, &:focus, &.active
+
+			&:after
+				opacity: 1
+				transform: translate3d(0, 0, 0)
+
+
+	li
+
+		&:not(:last-child)
+			margin-right: vw(46)
+
 .img
 	position: relative
 	max-height: 100vh
@@ -40,6 +125,11 @@ img
 	img
 		display: block
 		// width: 100vw
+
+	> img
+		+size(100vw 100vh)
+		object-fit: cover
+		object-position: center
 
 	&__text, &__text2
 		position: absolute
@@ -61,7 +151,7 @@ img
 	width: 1100px
 	max-width: 100%
 	margin: 0 auto
-	display: flex
+	display: flex !important
 	font-weight: 400
 
 	&__svg
@@ -69,6 +159,7 @@ img
 		margin-right: 155px
 
 	&__text
+		flex: 1 1 auto
 
 		&-title
 			font-size: rem(28)
@@ -89,21 +180,6 @@ img
 				transition: transform .7s ease, opacity .7s ease
 				opacity: 0
 
-				&:first-child
-					transform: translate3d(0, 20%, 0)
-				
-				&:nth-child(2)
-					transform: translate3d(0, 40%, 0)
-					transition-delay: .2s
-
-				&:nth-child(3)
-					transform: translate3d(0, 60%, 0)
-					transition-delay: .4s
-
-				&:nth-child(4)
-					transform: translate3d(0, 50%, 0)
-					transition-delay: .6s
-
 		&-link
 			margin: 43px 0 0
 			transition: transform .7s ease, opacity .5s ease
@@ -113,6 +189,17 @@ img
 
 			img
 				width: auto
+
+.link-more
+	display: inline-flex
+	align-items: center
+	flex-wrap: wrap
+	
+	&:before
+		display: inline-block
+		content: ""
+		border-radius: 50%
+
 
 .main-screen
 	position: relative
@@ -132,6 +219,10 @@ img
 
 	&__footer
 		bottom: 0
+		padding: 0 rem(116) 75px
+		display: flex
+		align-items: center
+		justify-content: space-between
 
 .text
 	display: flex
@@ -143,33 +234,26 @@ img
 		line-height: lh(59, 48)
 		transition: transform .7s ease
 		transform: translate3d(0, 60%, 0)
+		max-width: 800px
 
 		span
-			color: $main-color
+
+			span
+				color: $main-color
 
 		div
 			transition: transform .7s ease, opacity .7s ease
 			opacity: 0
+			white-space: nowrap
 
-			&:first-child
-				transform: translate3d(0, 20%, 0)
-			
-			&:nth-child(2)
-				transform: translate3d(0, 40%, 0)
-				transition-delay: .2s
-
-			&:nth-child(3)
-				transform: translate3d(0, 60%, 0)
-				transition-delay: .4s
-
-			&:nth-child(4)
-				transform: translate3d(0, 50%, 0)
-				transition-delay: .6s
+.main-wrapper
+	display: flex
+	max-width: 100%
 
 .js__active-slide
 
 	.text__text, .text__text div
-		transform: translate3d(0,0,0)
+		transform: translate3d(0,0,0) !important
 		opacity: 1
 
 	.play-btn
@@ -182,14 +266,14 @@ img
 		&__text
 
 			&-title, &-text, &-text div, &-link
-				transform: translate3d(0, 0, 0)
+				transform: translate3d(0, 0, 0) !important
 				opacity: 1
 
-			// &-text
+		// &-text
 
-			// 	div
-			// 		transform: translate3d(0, 0, 0)
-			// 		opacity: 1
+		// 	div
+		// 		transform: translate3d(0, 0, 0)
+		// 		opacity: 1
 
 .play-btn
 	position: relative
@@ -233,11 +317,20 @@ img
 				width: 165px
 				padding: 0 37px 0 60px
 
+.column 
+	display: flex;
+	flex-direction: column;
+
+	
 .fil0 
 	stroke-dasharray: 4800;
 	stroke-dashoffset: 4800;
-	/*animation: fil0 2s linear forwards 1s;*/
-	transition: stroke-dashoffset 1.4s ease
+	transition: stroke-dashoffset 1s ease
+
+.cls-4 
+	stroke-dasharray: 4800;
+	stroke-dashoffset: 4800;
+	transition: stroke-dashoffset 3s ease
 
 
 .fil1 
@@ -245,29 +338,28 @@ img
 	stroke-dashoffset: 5210;
 	stroke: black;
 	fill: transparent;
-	/*animation: fil1 .8s linear forwards 1s;*/
-	
 
 .js__active-slide .fil0 
 	stroke-dashoffset: 0;
 
-.el-9 
-	stroke-dasharray: 4800;
-	stroke-dashoffset: 4800;
-	/*animation: el-9 1s linear forwards 1s;*/
-
-
-
 .simvol 
 	opacity: 0;
 	fill: black;
-	transition: opacity .4s ease
-	
+	transition: opacity .2s ease
 
 .js__active-slide .simvol 
-	/*animation: simvol 1s linear forwards 2s;*/
 	opacity: 1;
 
+.cls-1 
+	stroke-dasharray: 3800;
+	stroke-dashoffset: 3800;
+	transition: stroke-dashoffset 3s ease
+
+.js__active-slide .cls-1 
+	stroke-dashoffset: 0;
+
+.js__active-slide .cls-4 
+	stroke-dashoffset: 0;
 
 @import "_grid"
 @import "media"

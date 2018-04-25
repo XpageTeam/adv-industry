@@ -2,7 +2,7 @@ $(window).on("load", e => {
 	$("body").removeClass("loading").addClass("loaded");
 });
 
-let main_slider, bloking = false;
+let main_slider, bloking = false, slidesCount = 0, currentSlide;
 
 $(e => {
 	let play = new playBtn({
@@ -10,15 +10,25 @@ $(e => {
 		delay: 1100,
 	});
 
+	$(".text__text p, .text2__text-text p").each((i, el) => {
+		let $this = $(el);
+
+		new stringEffect($this);
+	});
+
+	slidesCount = $(".main-screen__slider .img").length;
+
 	main_slider = $(".main-screen__slider").slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		slide: ".img",
 		arrows: false,
 		fade: true,
+		swipe: false,
 		infinite: false,
 	}).on("beforeChange", (e, slick, curSlide, nextSlide) => {
 		bloking = true,
+
 
 		$(".main-screen__slider .img:eq("+curSlide+")").removeClass("js__active-slide");
 
@@ -27,6 +37,9 @@ $(e => {
 		}
 	}).on("afterChange", (e, slick, curSlide) => {
 		$(".main-screen__slider .img:eq("+curSlide+")").addClass("js__active-slide");
+
+		currentSlide = (curSlide + 1 == slidesCount ? "last" : curSlide);
+
 		if (curSlide == 0)
 			play.startAnimate()
 
@@ -66,7 +79,6 @@ class playBtn{
 	}
 
 	startAnimate(){
-		console.log(123);
 		this.interval = setInterval(e => {
 			this.animate()
 		}, 5);
@@ -150,20 +162,21 @@ function MouseWheelHandler(e) {
 			(e.wheelDelta || -e.deltaY || -e.detail)));
 
 	if (delta < 0){
-		if (main_slider.slick("slickCurrentSlide") == 1 && curScreen == 1){
+		if (main_slider.slick("slickCurrentSlide") == slidesCount-1 &&  curScreen == 1 && currentSlide == "last"){
 			// removeMouseWheelHandler();
 			curScreen = 2;
 
 			$("html, body").animate({
 				scrollTop: $(".img--3").offset().top
 			}, 300);
-		}else if (curScreen == 1){
+		}else{
 			e.preventDefault();
 			main_slider.slick("slickNext");
 		}
 	}
 	else{
-		if ($(window).scrollTop() - $(window).height() <= 0 && curScreen == 2 && $(".img--3")[0].scrollTop == 0){
+		if ($(window).scrollTop() - $(window).height() <= 0 && 
+			curScreen == 2 && $(".img--3")[0].scrollTop == 0){
 			curScreen = 1;
 			$("html, body").animate({
 				scrollTop: 0
@@ -172,5 +185,106 @@ function MouseWheelHandler(e) {
 			e.preventDefault();
 			main_slider.slick("slickPrev")
 		}
+	}
+}
+
+class stringEffect{
+	set $el(selector){
+		this._el = selector
+	}
+	get $el(){
+		return $(this._el)
+	}
+
+
+	constructor(selector){
+		this.$el = selector;
+
+		this.init()
+	}
+
+	init(){
+		this.wrapWords();
+		this.createStrings();
+
+		this.whatch();
+	}
+
+	rebuild(){
+		this.destroyStrings();
+		this.createStrings();
+	}
+
+	wrapWords(){
+		let textArr = this.$el.html().split(" ");
+
+		this.$el.html("");
+
+		for (let i in textArr){
+			this.$el.append("<span>"+textArr[i]+"</span> ")
+		}
+	}
+
+	destroyStrings(){
+		this.$el.children("div").children("span").unwrap();
+	}
+
+	createStrings(){
+		let $text = this.$el.children("span"),
+			stringsDesc = [];
+
+		$text.each((i, el) => {
+			let $this = $(el);
+
+			stringsDesc.push({
+				id: i,
+				text: $this.html(),
+				top: parseInt($this.position().top),
+			});
+		});
+
+		console.log(stringsDesc);
+
+		this.wrapStrings(stringsDesc);
+	}
+
+	wrapStrings(stringsDesc = []){
+		// console.log(stringsDesc)
+		this.stringCounter = 0;
+		for (let i in stringsDesc){
+			let word = stringsDesc[i];
+
+			if (!this.$el.find(".string--"+word.top).length){
+				this.$el.append("<div class='string string--"+word.top+"'>\
+					 <span>"
+						+this.$el.children("span:eq("+word.id+")").html()+
+					"</span>\
+				</div>");
+
+				this.stringCounter++;
+
+				this.$el.find(".string--"+word.top).css({
+					"transition-delay": (this.stringCounter*0.12)+"s",
+					transform: "translate3d(0, "+(this.stringCounter*2)+"0%, 0)"
+				});
+			}else
+				this.$el.find(".string--"+word.top)
+					.append(" <span>"
+						+this.$el.children("span:eq("+word.id+")").html()+
+					"</span>");
+		}
+
+		this.$el.children("span").remove();
+	}
+
+
+	whatch(){
+		$(window).on("resize", e => {
+			clearTimeout(this.updateTimeout);
+
+			this.updateTimeout = setTimeout(e => {
+				this.rebuild();
+			}, 100)
+		});
 	}
 }
