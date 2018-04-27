@@ -122,14 +122,22 @@ img
 	&--3
 		overflow-y: auto
 
+		> img
+			width: 100%
+			height: 100% !important
+			position: absolute
+			top: 0
+			left: 0
+			z-index: -1
+
+
 	img
 		display: block
-		// width: 100vw
 
 	> img
 		+size(100vw 100vh)
 		object-fit: cover
-		object-position: center
+		object-position: top center
 
 	&__text, &__text2
 		position: absolute
@@ -147,10 +155,13 @@ img
 
 	&__text2
 
+		.main-wrapper
+			display: flex
+
 .text2
-	width: 1100px
+	// width: 1100px
 	max-width: 100%
-	margin: 0 auto
+	// margin: 0 auto
 	display: flex !important
 	font-weight: 400
 
@@ -160,6 +171,7 @@ img
 
 	&__text
 		flex: 1 1 auto
+		max-width: 660px
 
 		&-title
 			font-size: rem(28)
@@ -187,19 +199,125 @@ img
 			transform: translate3d(0, 60%, 0)
 			transition-delay: .7s
 
-			img
-				width: auto
-
 .link-more
 	display: inline-flex
-	align-items: center
 	flex-wrap: wrap
-	
+	align-items: center
+	color: #000
+	text-decoration: none
+
 	&:before
-		display: inline-block
 		content: ""
+		background: url("../img/ico-arrow-bot.png") center no-repeat
+		transform: rotate(-90deg)
+		border: 1px solid $border-color
+		+size(44px)
+		flex: none
+		margin-right: 20px
 		border-radius: 50%
 
+.img-slider
+
+	&__dots
+		display: flex
+		text-align: right
+		flex-direction: column
+		position: absolute
+		right: 0
+		padding-right: 7.25rem
+		top: rem(125)
+		justify-content: center
+		bottom: rem(115)
+		font-weight: 400
+		font-size: 14px
+		line-height: lh(20, 14)
+		transition: opacity .3s ease
+		opacity: 0
+		pointer-events: none
+
+		&.js__visible
+			opacity: 1
+			pointer-events: all
+
+			button, .all-services
+				transform: translate3d(0, 0, 0) !important
+				opacity: 1 !important
+
+		.slick-dots
+			order: -1
+
+			li
+				// text-align: right
+
+				&:first-child
+					display: none
+
+				&:not(:last-child)
+					margin-bottom: 25px
+
+			.slick-active
+
+				button
+					font-weight: bold
+
+					&:after
+						transform: scale3d(1.2, 1.2, 1.2)
+
+			button
+				display: inline-flex
+				align-items: center
+				background: none
+				border: none
+				justify-content: flex-end
+				padding: 0
+				transition: opacity .7s ease, transform .7s ease
+				opacity: 0
+
+				&:before, &:after
+					content: ""
+					display: inline-block
+
+				&:before
+					order: 1
+					+size(18px 1px)
+					margin: 0 19px
+					background: #cbcbcb
+
+				&:after
+					order: 2
+					border-radius: 50%
+					background: $main-color
+					+size(7px)
+					transition: transform .3s ease
+
+.all-services
+	display: inline-flex
+	align-items: center
+	background: none
+	border: none
+	justify-content: flex-end
+	margin: 25px 0 0
+	color: #000
+	text-decoration: none
+	transition: opacity .7s ease, transform .7s ease
+	opacity: 0
+
+	&:before, &:after
+		content: ""
+		display: inline-block
+
+	&:before
+		order: 1
+		+size(18px 1px)
+		margin: 0 17px 0 18px
+		background: #cbcbcb
+
+	&:after
+		order: 2
+		+size(10px 13px)
+		background: url("../img/ico-arrow-bot.png") no-repeat
+		position: relative
+		right: -1px
 
 .main-screen
 	position: relative
@@ -210,9 +328,6 @@ img
 		left: 0
 		width: 100%
 		z-index: 5
-
-		img
-			display: block
 
 	&__header
 		top: 0
@@ -247,8 +362,10 @@ img
 			white-space: nowrap
 
 .main-wrapper
-	display: flex
+	// display: flex
 	max-width: 100%
+	width: 1395px
+	margin: 0 auto
 
 .js__active-slide
 
@@ -360,6 +477,236 @@ img
 
 .js__active-slide .cls-4 
 	stroke-dashoffset: 0;
+
+.port-one
+	display: flex
+
+	&__img
+		flex: none
+		max-width: 100%
+		transition: opacity .8s ease, transform 1s ease
+		opacity: 0
+		// transform: translate3d()
+		transition-delay: .7s
+		transform: translate3d(0, 100px, 0)
+
+		img
+			width: 100%
+
+	&__desc
+		position: relative
+
+		&:before, &:after
+			content: ""
+			position: absolute
+			transition: transform 1s $ease-in-out-circ
+
+		&:after
+			background: $border-color
+			transition-delay: .7s
+
+		&:before
+			border-radius: 50%
+			background: $main-color
+			+size(19px)
+			top: 0
+			transform: scale3d(0, 0, 0)
+
+	&__subtitle, &__title
+		transition: opacity .4s ease, transform .6s $ease-in-out-circ
+		opacity: 0
+
+	&__title
+		font-size: rem(18)
+		line-height: lh(23, 18)
+
+		div
+			transition: transform 1s $ease-in-out-circ,  opacity 1s ease
+			opacity: 0
+
+	&__subtitle
+		font-size: 14px
+		line-height: lh(20, 14)
+		color: rgba(#000, .5)
+		margin: 5px 0 0
+
+.main-port
+
+	&.js__animated
+
+		.port-one
+
+			&__title, &__subtitle, &__title div, &__img
+				transform: translate3d(0, 0, 0) !important
+				opacity: 1
+
+			&__desc
+
+				&:before, &:after
+					transform: scale3d(1, 1, 1) !important
+
+	&__one
+		color: #000
+		text-decoration: none
+
+		&:first-child
+
+			.port-one
+				flex-direction: column
+
+				&__desc
+					padding: 0 0 rem(30) rem(50)
+					margin: 0 0 0 rem(30)
+
+					&:before
+						left: 0
+
+					&:after
+						width: 1px
+						height: calc(100% - 19px)
+						bottom: 0
+						left: 9px
+						transform-origin: top
+						transform: scale3d(1, 0, 1)
+
+		&:nth-child(2)
+
+			.port-one
+				flex-direction: row-reverse
+				align-items: flex-end
+
+				&__desc
+					flex: 1 1 auto
+					padding: 43px 0 0 
+					margin-left: rem(39)
+
+					&:before
+						left: 0
+
+					&:after
+						width: rem(39)
+						height: 1px
+						right: 100%
+						top: 9px
+						transform-origin: right
+						transform: scale3d(0, 1, 1)
+
+		&:nth-child(3)
+
+			.port-one
+				position: relative
+
+				&__desc
+					position: absolute
+					right: calc(100% + 36px)
+					top: rem(216)
+					width: persent(330, 441)
+					padding: 0 rem(50) 0 0
+					margin-right: rem(22)
+
+					&:before
+						right: 0
+						top: 0
+
+					&:after
+						left: 100%
+						width: calc(1.375rem + 36px)
+						height: 1px
+						top: 9px
+						transform-origin: left
+						transform: scale3d(0, 1, 1)
+
+		&:nth-child(4)
+
+			.port-one
+				flex-direction: column-reverse
+
+				&__desc
+					padding: 0 0 0 rem(43)
+					margin: 42px 0 0 rem(18)
+
+					&:before
+						left: 0
+						top: 0
+
+					&:after
+						+size(1px 42px)
+						bottom: 100%
+						left: 9px
+						transform-origin: bottom
+						transform: scale3d(1, 0, 1)
+
+.main-port
+
+	&__link
+		margin: rem(68) 0 0
+		text-align: center
+		font-weight: 400
+
+.main-about
+
+	&__cont
+		margin: rem(55) 0 0
+
+	&__text
+		text-align: center
+		max-width: 1080px
+		margin: 0 auto
+		font-size: 14px
+		line-height: lh(22, 14)
+
+		&:not(.js__opened)
+
+			p
+
+				&:not(:first-child)
+					display: none
+
+	&__more
+		text-align: center
+		margin: 25px 0 0
+
+		&-btn
+			display: inline-block
+			border-radius: 50%
+			background: url("../img/ico-big-bot-arrow.png") center no-repeat
+			+size(35px)
+			border: none
+
+.footer
+	font-size: 14px
+
+	&__top
+		background: #fff
+		padding: rem(75) 0 rem(90)
+
+	&__bot
+		padding: 1.9rem 0
+		text-align: center
+
+.copy
+	font-weight: 400
+	font-size: 14px
+	line-height: lh(24, 14)
+	color: rgba(#000, .5)
+
+.footer-top
+	display: flex
+	justify-content: space-between
+	margin-left: -5rem
+
+	&__column
+		width: calc((100% - 5rem * 4) / 4)
+		margin-left: 5rem
+
+		&--double
+			width: calc((100% - 5rem * 3) / 3)
+
+.footer-menu
+
+	&--double
+		column-count: 2
+		column-gap: 4rem
 
 @import "_grid"
 @import "media"

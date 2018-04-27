@@ -1,2 +1,41 @@
 footer.footer
-	
+	.footer__top
+		.main-wrapper
+			.footer-top
+				.footer-top__column.footer-top__column--double
+					.footer-top__column-title 
+						a(href="#") Услуги
+					nav.footer__menu
+						ul.footer-menu.footer-menu--double
+							each title in ["Вывески", "Изготовление табличек", "Крышные установки", "Рекламные постеры", "Рекламные стелы", "Интерьерная печать", "Реклама на автомобилях", "Дизайнерские услуги", "Оформление витрин", "Согласование вывесок", "Рекламное оформление интерьера", "Изготовление наружной рекламы", "Выставочные стенды", ]
+								li
+									a.footer-menu__link(href="#")=title
+				.footer-top__column
+					.footer-top__column-title.empty
+					nav.footer__menu
+						ul.footer-menu
+							each title in ["О компании", "Цены", "Портфолио", "Контакты", ]
+								li
+									a.footer-menu__link(href="#")=title
+					.footer__soc
+						.soc
+							each name in ["fb", "inst", "vk", ]
+								a.soc__link(href="#" style="background-image: url('img/photos/"+name+".png')")
+				.footer-top__column
+					.footer-top__column-title
+						a(href="#") Контакты
+					.footer__contacts
+						.f-contacts
+							.f-contacts__one
+								address.f-address
+									p г. Екатеринбург, БизнесМАНцентр Московская 195, офис 1033
+							.f-contacts__one
+								address.f-phones
+									p Отдел продаж: <br />+7 (343) 200-90-91, +7 (343) 200-30-31
+							.f-contacts__one
+								.f-time
+									p Мы работаем: <br />пн-пт - с 9:00 до 18:00, сб,вс - выходной
+	.footer__bot
+		.main-wrapper
+			.footer__copy
+				.copy © 2018 «Индустрия рекламы»
