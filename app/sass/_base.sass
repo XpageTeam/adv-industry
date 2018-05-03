@@ -56,9 +56,22 @@ body
 	font-family: $default-font
 	font-weight: 300
 	font-size: rem(16)
-	background: #fff
+	background: #f7f7f7
 	color: #000
 	position: relative
+
+	&.inner
+		overflow: auto
+
+		.head
+			position: static
+			padding: 76px 7.25rem
+
+		.wrapper
+			max-width: 1400px
+
+		.footer
+			margin: rem(80) 0 0
 
 #content, .content
 	flex: 1 0 auto
@@ -109,6 +122,9 @@ a
 	margin: 0 auto
 	box-sizing: content-box
 
+	// &--big
+		// max-width: 1671px
+
 input[type="submit"], button
 	cursor: pointer
 
@@ -123,40 +139,86 @@ li
 	&__link
 		display: inline-block
 		border-radius: 50%
-		+size(42px)
+		border: 1px solid #e0e0e0
+		+size(44px)
 		background: 
 			position: center
 			repeat: no-repeat
-			color: #4b4b4b
+			color: #fff
 
 		&:not(:last-child)
 			margin-right: 9px
 
+.soc-list
+	display: flex
+	
+	&__one
+
+		a
+			color: #000
+			text-decoration: none
+			font-weight: 400
+			font-size: 14px
+
+		&:not(:last-child)
+			margin-right: vw(48)
+
 .table-wrap
 	overflow: auto
+
+.standart-page
+
+	&__title
+		margin-bottom: rem(36)
+
+		h1
+			text-transform: uppercase
+			font-weight: bold
+			font-size: rem(24)
+			line-height: lh(28, 24)
+
+	&__img
+
+		img
+			display: block
+
+	&__text
+		margin: rem(55) 0 0
+		max-width: 1075px
+		font-size: 14px
+		line-height: lh(22, 14)
 
 %text-page, .text-page
 
 	> *:not(:first-child)
-		margin-top: 20px
+		// margin-top: 20px
+
+	p, table, img, blockquote, ul, ol
+		margin: rem(22) 0 0
 
 	strong
 		font-weight: bold
 
 	h2, h3, h4, h5, h6
-		font-weight: 400
+		font-weight: bold
+		text-transform: uppercase
+		margin: rem(40) 0 0
 
 	h2
 		font-size: rem(22)
 		line-height: rem(28)
 
 	h3
-		font-size: rem(19)
+		font-size: rem(20)
 		line-height: rem(26)
 
-	h4, h5
+	h4
+		font-size: rem(18)
 		line-height: rem(24)
+
+	h5, h6
 		font-size: rem(16)
+		line-height: rem(24)
 
 	img[align="right"]
 		float: right
@@ -201,13 +263,16 @@ li
 			border: 1px solid $border-color
 
 	ul, ol
-		max-width: 650px
-		// margin-top: 0 !important
+		// list-style: none
+		max-width: 990px
 
-		&[column]
-			column-count: 2
-			column-gap: rem(85)
-			max-width: none
+		ul
+
+			li
+				// padding-left: 20px
+
+				&:before
+					content: "-"
 
 	li
 		//padding-left: 20px
@@ -217,11 +282,9 @@ li
 		&:before
 			display: inline-block
 
-		&:not(:first-child)
-			margin-top: 14px
-
 		ul, ol
 			margin-bottom: 20px
+			margin-top: 0
 
 		li
 			padding-left: 20px
@@ -232,11 +295,15 @@ li
 	ul
 
 		li
-			padding-left: 8px
+			// padding-left: 8px
+
+			// &:not(:first-child)
+			// 	margin-top: 14px
 
 			&:before
-				content: "-"
-				margin: 0 4px 0 -8px
+				content: "—"
+				// margin: 0 4px 0 -8px
+				margin: 0 4px 0 0
 	
 	ol
 		counter-reset: i

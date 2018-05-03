@@ -30,6 +30,91 @@ img
 .slick-slide
 	height: auto
 
+.string
+	white-space: nowrap
+
+.head
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 5
+	padding: 76px rem(116) 0
+
+	&__wrap
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+.contact
+	display: flex
+	align-items: center
+
+	&__phone
+		margin-right: 31px
+
+		a
+			font-size: rem(18)
+			color: #000
+			text-decoration: none
+
+.default-btn
+	display: inline-block
+	border: none
+	background: $main-color
+	border-radius: 27px
+	color: #fff
+	text-decoration: none
+	font-weight: 400
+	font-size: 14px
+	text-align: center
+	transition: background-color .3s ease, transform .2s ease
+	padding: 12px 29px 13px
+
+	&:hover, &:focus
+		background-color: lighten($main-color, 6%)
+
+	&:active
+		transform: scale(.9)
+
+	&--arrow
+		padding-right: 57px
+		white-space: nowrap
+		background: url("../img/ico-white-arrow.png") center right 27px no-repeat, $main-color
+
+.head-menu
+	display: flex
+
+	&__link
+		color: #000
+		text-decoration: none
+		font-weight: 400
+		font-size: rem(14)
+		position: relative
+
+		&:after
+			content: ""
+			position: absolute
+			left: 0
+			top: calc(100% + 3px)
+			background: $main-color
+			+size(100% 1px)
+			transition: opacity .3s ease, transform .3s ease
+			opacity: 0
+			transform: translate3d(0, 5px, 0)
+
+		&:hover, &:focus, &.active
+
+			&:after
+				opacity: 1
+				transform: translate3d(0, 0, 0)
+
+
+	li
+
+		&:not(:last-child)
+			margin-right: vw(46)
+
 .img
 	position: relative
 	max-height: 100vh
@@ -37,9 +122,22 @@ img
 	&--3
 		overflow-y: auto
 
+		> img
+			width: 100%
+			height: 100% !important
+			position: absolute
+			top: 0
+			left: 0
+			z-index: -1
+
+
 	img
 		display: block
-		// width: 100vw
+
+	> img
+		+size(100vw 100vh)
+		object-fit: cover
+		object-position: top center
 
 	&__text, &__text2
 		position: absolute
@@ -57,11 +155,14 @@ img
 
 	&__text2
 
+		.main-wrapper
+			display: flex
+
 .text2
-	width: 1100px
+	// width: 1100px
 	max-width: 100%
-	margin: 0 auto
-	display: flex
+	// margin: 0 auto
+	display: flex !important
 	font-weight: 400
 
 	&__svg
@@ -69,6 +170,8 @@ img
 		margin-right: 155px
 
 	&__text
+		flex: 1 1 auto
+		max-width: 660px
 
 		&-title
 			font-size: rem(28)
@@ -89,21 +192,6 @@ img
 				transition: transform .7s ease, opacity .7s ease
 				opacity: 0
 
-				&:first-child
-					transform: translate3d(0, 20%, 0)
-				
-				&:nth-child(2)
-					transform: translate3d(0, 40%, 0)
-					transition-delay: .2s
-
-				&:nth-child(3)
-					transform: translate3d(0, 60%, 0)
-					transition-delay: .4s
-
-				&:nth-child(4)
-					transform: translate3d(0, 50%, 0)
-					transition-delay: .6s
-
 		&-link
 			margin: 43px 0 0
 			transition: transform .7s ease, opacity .5s ease
@@ -111,8 +199,125 @@ img
 			transform: translate3d(0, 60%, 0)
 			transition-delay: .7s
 
-			img
-				width: auto
+.link-more
+	display: inline-flex
+	flex-wrap: wrap
+	align-items: center
+	color: #000
+	text-decoration: none
+
+	&:before
+		content: ""
+		background: url("../img/ico-arrow-bot.png") center no-repeat
+		transform: rotate(-90deg)
+		border: 1px solid $border-color
+		+size(44px)
+		flex: none
+		margin-right: 20px
+		border-radius: 50%
+
+.img-slider
+
+	&__dots
+		display: flex
+		text-align: right
+		flex-direction: column
+		position: absolute
+		right: 0
+		padding-right: 7.25rem
+		top: rem(125)
+		justify-content: center
+		bottom: rem(115)
+		font-weight: 400
+		font-size: 14px
+		line-height: lh(20, 14)
+		transition: opacity .3s ease
+		opacity: 0
+		pointer-events: none
+
+		&.js__visible
+			opacity: 1
+			pointer-events: all
+
+			button, .all-services
+				transform: translate3d(0, 0, 0) !important
+				opacity: 1 !important
+
+		.slick-dots
+			order: -1
+
+			li
+				// text-align: right
+
+				&:first-child
+					display: none
+
+				&:not(:last-child)
+					margin-bottom: 25px
+
+			.slick-active
+
+				button
+					font-weight: bold
+
+					&:after
+						transform: scale3d(1.2, 1.2, 1.2)
+
+			button
+				display: inline-flex
+				align-items: center
+				background: none
+				border: none
+				justify-content: flex-end
+				padding: 0
+				transition: opacity .7s ease, transform .7s ease
+				opacity: 0
+
+				&:before, &:after
+					content: ""
+					display: inline-block
+
+				&:before
+					order: 1
+					+size(18px 1px)
+					margin: 0 19px
+					background: #cbcbcb
+
+				&:after
+					order: 2
+					border-radius: 50%
+					background: $main-color
+					+size(7px)
+					transition: transform .3s ease
+
+.all-services
+	display: inline-flex
+	align-items: center
+	background: none
+	border: none
+	justify-content: flex-end
+	margin: 25px 0 0
+	color: #000
+	text-decoration: none
+	transition: opacity .7s ease, transform .7s ease
+	opacity: 0
+
+	&:before, &:after
+		content: ""
+		display: inline-block
+
+	&:before
+		order: 1
+		+size(18px 1px)
+		margin: 0 17px 0 18px
+		background: #cbcbcb
+
+	&:after
+		order: 2
+		+size(10px 13px)
+		background: url("../img/ico-arrow-bot.png") no-repeat
+		position: relative
+		right: -1px
 
 .main-screen
 	position: relative
@@ -124,14 +329,15 @@ img
 		width: 100%
 		z-index: 5
 
-		img
-			display: block
-
 	&__header
 		top: 0
 
 	&__footer
 		bottom: 0
+		padding: 0 rem(116) 75px
+		display: flex
+		align-items: center
+		justify-content: space-between
 
 .text
 	display: flex
@@ -143,33 +349,28 @@ img
 		line-height: lh(59, 48)
 		transition: transform .7s ease
 		transform: translate3d(0, 60%, 0)
+		max-width: 800px
 
 		span
-			color: $main-color
+
+			span
+				color: $main-color
 
 		div
 			transition: transform .7s ease, opacity .7s ease
 			opacity: 0
+			white-space: nowrap
 
-			&:first-child
-				transform: translate3d(0, 20%, 0)
-			
-			&:nth-child(2)
-				transform: translate3d(0, 40%, 0)
-				transition-delay: .2s
-
-			&:nth-child(3)
-				transform: translate3d(0, 60%, 0)
-				transition-delay: .4s
-
-			&:nth-child(4)
-				transform: translate3d(0, 50%, 0)
-				transition-delay: .6s
+.main-wrapper
+	// display: flex
+	max-width: 100%
+	width: 1395px
+	margin: 0 auto
 
 .js__active-slide
 
 	.text__text, .text__text div
-		transform: translate3d(0,0,0)
+		transform: translate3d(0,0,0) !important
 		opacity: 1
 
 	.play-btn
@@ -182,14 +383,14 @@ img
 		&__text
 
 			&-title, &-text, &-text div, &-link
-				transform: translate3d(0, 0, 0)
+				transform: translate3d(0, 0, 0) !important
 				opacity: 1
 
-			// &-text
+		// &-text
 
-			// 	div
-			// 		transform: translate3d(0, 0, 0)
-			// 		opacity: 1
+		// 	div
+		// 		transform: translate3d(0, 0, 0)
+		// 		opacity: 1
 
 .play-btn
 	position: relative
@@ -233,11 +434,20 @@ img
 				width: 165px
 				padding: 0 37px 0 60px
 
+.column 
+	display: flex;
+	flex-direction: column;
+
+	
 .fil0 
 	stroke-dasharray: 4800;
 	stroke-dashoffset: 4800;
-	/*animation: fil0 2s linear forwards 1s;*/
-	transition: stroke-dashoffset 1.4s ease
+	transition: stroke-dashoffset 1s ease
+
+.cls-4 
+	stroke-dasharray: 4800;
+	stroke-dashoffset: 4800;
+	transition: stroke-dashoffset 3s ease
 
 
 .fil1 
@@ -245,29 +455,548 @@ img
 	stroke-dashoffset: 5210;
 	stroke: black;
 	fill: transparent;
-	/*animation: fil1 .8s linear forwards 1s;*/
-	
 
 .js__active-slide .fil0 
 	stroke-dashoffset: 0;
 
-.el-9 
-	stroke-dasharray: 4800;
-	stroke-dashoffset: 4800;
-	/*animation: el-9 1s linear forwards 1s;*/
-
-
-
 .simvol 
 	opacity: 0;
 	fill: black;
-	transition: opacity .4s ease
-	
+	transition: opacity .2s ease
 
 .js__active-slide .simvol 
-	/*animation: simvol 1s linear forwards 2s;*/
 	opacity: 1;
 
+.cls-1 
+	stroke-dasharray: 3800;
+	stroke-dashoffset: 3800;
+	transition: stroke-dashoffset 3s ease
+
+.js__active-slide .cls-1 
+	stroke-dashoffset: 0;
+
+.js__active-slide .cls-4 
+	stroke-dashoffset: 0;
+
+.port-one
+	display: flex
+
+	&:not(.js__animated)
+
+		.port-one
+
+			&__title, &__subtitle
+
+				div
+					transition-delay: 0s !important
+
+	&.js__animated
+
+		.port-one
+
+			&__title, &__subtitle div, &__title div, &__img, &__subtitle
+				transform: translate3d(0, 0, 0) !important
+				opacity: 1
+
+			&__desc
+
+				&:before, &:after
+					transform: scale3d(1, 1, 1) !important
+
+				&:after
+					transition-delay: .3s
+
+				&:before
+					transition-delay: .8s
+
+	&__img
+		flex: none
+		max-width: 100%
+		transition: opacity .5s ease
+		opacity: 0
+
+		img
+			width: 100%
+
+	&__desc
+		position: relative
+
+		&:before, &:after
+			content: ""
+			position: absolute
+			transition: transform .5s $ease-in-out-circ
+
+		&:after
+			background: $border-color
+
+		&:before
+			border-radius: 50%
+			background: $main-color
+			+size(19px)
+			top: 0
+			transform: scale3d(0, 0, 0)
+			z-index: 1
+
+	&__subtitle, &__title
+		transition: opacity .3s ease, transform .5s $ease-in-out-circ
+		opacity: 0
+
+		div
+			transition: transform .3s $ease-in-out-circ,  opacity .5s ease
+			opacity: 0
+
+	&__title
+		font-size: rem(18)
+		line-height: lh(23, 18)
+
+
+	&__subtitle
+		font-size: 14px
+		line-height: lh(20, 14)
+		color: rgba(#000, .5)
+		margin: 5px 0 0
+
+.main-port
+
+	&__one
+		color: #000
+		text-decoration: none
+
+		&:first-child
+
+			.port-one
+				flex-direction: column
+
+				&__desc
+					padding: 0 0 rem(30) rem(50)
+					margin: 0 0 0 rem(30)
+
+					&:before
+						left: 0
+
+					&:after
+						width: 1px
+						height: calc(100% - 9px)
+						bottom: 0
+						left: 9px
+						transform-origin: bottom
+						transform: scale3d(1, 0, 1)
+
+		&:nth-child(2)
+
+			.port-one
+				flex-direction: row-reverse
+				align-items: flex-end
+
+				&__desc
+					flex: 1 1 auto
+					padding: 43px 0 0 
+					margin-left: rem(39)
+
+					&:before
+						left: 0
+
+					&:after
+						width: rem(48)
+						height: 1px
+						right: calc(100% - 9px)
+						top: 9px
+						transform-origin: left
+						transform: scale3d(0, 1, 1)
+
+		&:nth-child(3)
+
+			.port-one
+				position: relative
+
+				&__desc
+					position: absolute
+					right: calc(100% + 36px)
+					top: rem(216)
+					width: persent(330, 441)
+					padding: 0 rem(50) 0 0
+					margin-right: rem(22)
+
+					&:before
+						right: 0
+						top: 0
+
+					&:after
+						left: calc(100% - 9px)
+						width: calc(1.375rem + 48px)
+						height: 1px
+						top: 9px
+						transform-origin: right
+						transform: scale3d(0, 1, 1)
+
+		&:nth-child(4)
+
+			.port-one
+				flex-direction: column-reverse
+
+				&__desc
+					padding: 0 0 0 rem(43)
+					margin: 42px 0 0 rem(18)
+
+					&:before
+						left: 0
+						top: 0
+
+					&:after
+						+size(1px 51px)
+						bottom: calc(100% - 9px)
+						left: 9px
+						transform-origin: top
+						transform: scale3d(1, 0, 1)
+
+.main-port
+
+	&__link
+		margin: rem(68) 0 0
+		text-align: center
+		font-weight: 400
+
+.main-about
+
+	&__cont
+		margin: rem(55) 0 0
+
+	&__text
+		text-align: center
+		max-width: 1080px
+		margin: 0 auto
+		font-size: 14px
+		line-height: lh(22, 14)
+
+		&:not(.js__opened)
+
+			p
+
+				&:not(:first-child)
+					display: none
+
+	&__more
+		text-align: center
+		margin: 25px 0 0
+
+		&-btn
+			display: inline-block
+			border-radius: 50%
+			background: url("../img/ico-big-bot-arrow.png") center no-repeat
+			+size(35px)
+			border: none
+
+.footer
+	font-size: 14px
+	margin: rem(48) 0 0
+
+	&__top
+		background: #fff
+		padding: rem(75) 0 rem(90)
+
+	&__bot
+		padding: 1.9rem 0
+		text-align: center
+
+	&__soc
+		margin: auto 0 0
+		padding: 15px 0 0
+
+.copy
+	font-weight: 400
+	font-size: 14px
+	line-height: lh(24, 14)
+	color: rgba(#000, .5)
+
+.footer-top
+	display: flex
+	// justify-content: space-between
+	margin-left: -5rem
+
+	&__column
+		width: calc((100% - 5rem * 3) / 3)
+		margin-left: 5rem
+		display: flex
+		flex-direction: column
+
+		&:last-child
+			margin-left: 0
+			width: auto
+			flex: 1 1 auto
+
+		&--double
+			width: calc((133.33% - 5rem * 2) / 2)
+
+		&-title
+			margin-bottom: 28px
+			min-height: 21px
+
+			a
+				color: #000
+				text-decoration: none
+				font-weight: 400
+				font-size: rem(18)
+
+.footer-menu
+
+	&--double
+		column-count: 2
+		column-gap: 4rem
+
+	li
+		break-inside: avoid
+
+		&:not(:first-child)
+			margin: 14px 0 0
+
+	&__link
+		color: rgba(#000, .5)
+		text-decoration: none
+		border-bottom: 1px solid transparent
+		// transition: color .3s ease, border-color .3s ease
+
+		&:hover, &:focus
+			color: $main-color
+			// border-color: currentColor
+
+.f-contacts
+
+	&__one
+
+		&:not(:first-child)
+			margin: 30px 0 0
+
+.f
+
+	&-address, &-phones, &-time
+		color: rgba(#000, .5)
+		line-height: lh(30, 14)
+		padding-left: 36px
+
+	&-address
+		background: url("../img/ico-address.png") top 6px left no-repeat
+
+	&-phones
+		background: url("../img/ico-phone.png") top 6px left no-repeat
+
+	&-time
+		background: url("../img/ico-time.png") top 6px left no-repeat
+
+.top-nav
+	padding: rem(87) 0 rem(115)
+	margin: 0 auto
+	max-width: 1230px
+
+	&__menu
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		&-link
+			color: #000
+			text-decoration: none
+			transition: background .3s ease, color .3s ease
+			text-transform: uppercase
+			line-height: 1
+			border-radius: 24px
+			padding: 13px 21px
+			display: block
+
+			&:hover, &:focus, &.active
+				background: $main-color
+				color: #fff
+
+.title-block
+	display: flex
+	background: #fff
+	// border-left: 2px solid $main-color
+	padding: 0 rem(40)
+	align-items: center
+	position: relative
+
+	&__cont
+		margin: 0 0 rem(88)
+
+	&__title, &__crumbs
+		flex: none
+		width: 50%
+
+	&__title
+		padding: 2rem 20px 2rem 0
+
+		&-back
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+			color: #000
+			text-decoration: none
+			font-weight: 400
+			margin-left: 11px
+
+			&:before
+				content: ""
+				border-radius: 50%
+				flex: none
+				background: url("../img/ico-arrow-right.png") center no-repeat, $second-color
+				+size(44px)
+				margin-right: rem(54)
+				transform: rotate(180deg)
+
+		h1
+			font-weight: 400
+			font-size: rem(28)
+
+			&:before
+				content: ""
+				+size(2px 100%)
+				position: absolute
+				top: 0
+				left: 0
+				background: $main-color
+
+	&__crumbs
+		padding: 14px 0
+
+.bread-crumbs
+	font-size: 13px
+	font-weight: 400
+	color: rgba(#000, .3)
+
+	&__link
+		position: relative
+		color: inherit
+		text-decoration: none
+		margin-right: 48px
+
+		&:after
+			content: ""
+			position: absolute
+			right: -34px
+			bottom: 7px
+			background: #b9b9b9
+			+size(14px 1px)
+			pointer-events: none
+
+		&:hover, &:focus
+			color: $main-color
+			text-decoration: underline
+
+		&:first-child
+			padding-left: rem(48)
+
+			&:before
+				content: ""
+				position: absolute
+				background: url("../img/ico-home.png") no-repeat
+				+size(20px 19px)
+				left: 0
+				top: calc(50% - 10px)
+
+.news
+
+	&__one
+		display: flex
+
+		&:not(:last-child)
+			border-bottom: 1px solid $border-color
+			padding-bottom: rem(43)
+
+		&:not(:first-child)
+			padding-top: rem(43)
+
+		&-link
+			display: flex
+			align-items: center
+			justify-content: flex-end
+			margin-left: auto
+			padding: 0 2rem
+
+			&:after
+				content: ""
+				border-radius: 50%
+				border: 1px solid $border-color
+				background: url("../img/ico-arrow-right.png") center no-repeat
+				+size(44px)
+
+		&-img
+			flex: none
+			margin-right: rem(80)
+
+			img
+				display: block
+
+		&-desc
+			max-width: 905px
+			font-weight: 400
+
+		&-title
+			color: #000
+			text-decoration: none
+			font-weight: bold
+			text-transform: uppercase
+			font-size: 14px
+
+			&:hover, &:focus
+				color: $main-color
+
+			&-cont
+				// display: flex
+				margin-bottom: rem(28)
+
+		&-date
+			// flex: none
+			display: inline-block
+			color: $main-color
+			margin-right: 18px
+			font-size: rem(18)
+
+		&-text
+			font-size: 14px
+			line-height: lh(24, 14)
+
+.paginator
+	display: flex
+	justify-content: center
+	background: #fff
+	margin: rem(77) 0 0
+	padding: rem(42) 0
+	position: relative
+
+	&__list
+
+		li
+			display: inline-block
+
+	&__link
+		color: #000
+		text-decoration: none
+
+		&[href]
+
+			&:hover, &:focus, &.active
+				color: $main-color
+
+	&__arrow
+		position: absolute
+		top: 0
+		bottom: 0
+		width: rem(84)
+		z-index: 2
+		display: block
+
+		a
+			background: url("../img/ico-paginator-arrow.png") center no-repeat, #fff
+			display: block
+			height: 100%
+
+		&:first-child
+			// margin-right: auto
+			left: 0
+			transform: rotate(180deg)
+
+		&:last-child
+			right: 0
+			// margin-left: auto
 
 @import "_grid"
 @import "media"

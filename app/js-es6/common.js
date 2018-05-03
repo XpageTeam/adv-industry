@@ -2,13 +2,55 @@ $(window).on("load", e => {
 	$("body").removeClass("loading").addClass("loaded");
 });
 
-let main_slider, bloking = false;
+let main_slider, 
+	bloking = false, 
+	slidesCount = 0, 
+	currentSlide,
+	mainPortImgs,
+	lastSlide = 0;
 
 $(e => {
+
+	$(".img--3")[0].scrollTop = Cookies.get("botBlockScroll") ? Cookies.get("botBlockScroll") : 0;
+
+	$(".img--3").on("scroll", function(){
+		Cookies.set("botBlockScroll", $(this)[0].scrollTop);
+	});
+
 	let play = new playBtn({
 		selector: $(".play-btn__btn"),
 		delay: 1100,
 	});
+
+	$(".text__text p, .text2__text-text p").each((i, el) => {
+		let $this = $(el);
+
+		new stringEffect({
+			selector: $this,
+			afterFinish($el, count, options){
+				$el.closest(".text2__text").find(".text2__text-link").css({
+					"transition-delay": (count * options.timeStep) + "s",
+					transform: "translate3d(0, "+(options.transformStep * count)+"%, 0)"
+				})
+			}
+		});
+	});
+
+	// $(".port-one__title").each((i, el) => {
+	// 	new stringEffect({
+	// 		selector: $(el),
+	// 		afterFinish($el, count, options){
+	// 			// let $parent = $el.closest(".port-one");
+
+	// 			// $parent.find(".port-one__img").css({
+	// 			// 	// "transition-delay": (count * options.timeStep) + "s",
+	// 			// 	transform: "translate3d(0, "+(options.transformStep * count)+"%, 0)"
+	// 			// });
+	// 		}
+	// 	});
+	// });
+
+	slidesCount = $(".main-screen__slider .img").length;
 
 	main_slider = $(".main-screen__slider").slick({
 		slidesToShow: 1,
@@ -16,26 +58,71 @@ $(e => {
 		slide: ".img",
 		arrows: false,
 		fade: true,
+		// swipe: false,
+		dots: true,
+		appendDots: $(".img-slider__dots"),
 		infinite: false,
 	}).on("beforeChange", (e, slick, curSlide, nextSlide) => {
 		bloking = true,
 
+
 		$(".main-screen__slider .img:eq("+curSlide+")").removeClass("js__active-slide");
 
-		if (curSlide == 0){
+		if (curSlide == 0)
 			play.clear();
-		}
+		
+		if (nextSlide == 0)
+			$(".img-slider__dots").removeClass("js__visible")
+
+		lastSlide = curSlide;
+		
 	}).on("afterChange", (e, slick, curSlide) => {
 		$(".main-screen__slider .img:eq("+curSlide+")").addClass("js__active-slide");
+
+		currentSlide = (curSlide + 1 == slidesCount ? "last" : curSlide);
+
 		if (curSlide == 0)
-			play.startAnimate()
+			play.startAnimate();
+		else
+			$(".img-slider__dots").addClass("js__visible")
 
 		setTimeout(e => {
 			bloking = false;
 		}, 1100)
 	});
 
-	$(".main-screen__slider .img:eq("+0+")").addClass("js__active-slide");
+	$(".main-screen__slider .img:eq(0)").addClass("js__active-slide");
+
+	let $slidesTitle = $(".text2__text-title"),
+		dotsCount = $(".img-slider__dots button").length - 1;
+
+	$(".img-slider__dots button").each((i, el) => {
+		if (i == 0)
+			return;
+
+		let $this = $(el);
+
+		$this.css({
+			"transition-delay": ""+(0.12 * i)+"s",
+			transform: "translate3d(0, "+(30*i)+"%, 0)"
+		});
+
+		$this.html("");
+
+		$this.append("<span>"+$($slidesTitle[i-1]).text()+"</span>");
+	});
+
+	$(".all-services").css({
+		"transition-delay": ""+(0.12 * dotsCount)+"s",
+		transform: "translate3d(0, "+(30*dotsCount)+"%, 0)"
+	});
+
+	mainPortImgs = new mainPort(".port-one");
+
+	if ($(window).scrollTop() > 0){
+		mainPortImgs.startAnimate();
+		curScreen = 2;
+	}
 
 	addMouseWheelHandler();
 })
@@ -66,7 +153,6 @@ class playBtn{
 	}
 
 	startAnimate(){
-		console.log(123);
 		this.interval = setInterval(e => {
 			this.animate()
 		}, 5);
@@ -78,22 +164,6 @@ class playBtn{
 	}
 
 	printTriangle(){
-		let ctx = this.context,
-			img = new Image();
-
-		img.src = "img/play-btn.jpg";
-
-		img.onload = e => {
-			// $(".img--1").append(img);
-			// ctx.beginPath()
-			// ctx.fillStyle = ctx.createPattern(img, "no-repeat");
-			// ctx.fillRect(0,0,90,$(this.el).width())
-			// ctx.
-
-			
-		}
-
-		// ctx
 	}
 
 	printBorder(start, end, width){
@@ -124,8 +194,6 @@ function addMouseWheelHandler(){
 	if (document.addEventListener) {
 		document.addEventListener("mousewheel", MouseWheelHandler, false); //IE9, Chrome, Safari, Oper
 		document.addEventListener("wheel", MouseWheelHandler, false); //Firefox
-	} else {
-		document.attachEvent("onmousewheel", MouseWheelHandler); //IE 6/7/8
 	}
 }
 
@@ -133,8 +201,6 @@ function removeMouseWheelHandler(){
 	if (document.addEventListener) {
 		document.removeEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper
 		document.removeEventListener('wheel', MouseWheelHandler, false); //Firefox
-	} else {
-		document.detachEvent("onmousewheel", MouseWheelHandler); //IE 6/7/8
 	}
 }
 
@@ -142,7 +208,6 @@ function MouseWheelHandler(e) {
 	e = window.event || e;
 
 	if (bloking){
-		// e.preventDefault();
 		return
 	}
 
@@ -150,27 +215,257 @@ function MouseWheelHandler(e) {
 			(e.wheelDelta || -e.deltaY || -e.detail)));
 
 	if (delta < 0){
-		if (main_slider.slick("slickCurrentSlide") == 1 && curScreen == 1){
+		if (main_slider.slick("slickCurrentSlide") != 0 &&  curScreen == 1){
 			// removeMouseWheelHandler();
 			curScreen = 2;
 
+			let scrollTime = 300;
+
 			$("html, body").animate({
 				scrollTop: $(".img--3").offset().top
-			}, 300);
-		}else if (curScreen == 1){
+			}, scrollTime);
+
+			mainPortImgs.startAnimate();
+
+			setTimeout(e => {
+				$(".main-port").addClass("js__animated");
+			}, scrollTime);
+
+		}else if(curScreen == 1){
 			e.preventDefault();
-			main_slider.slick("slickNext");
+			if (lastSlide > 1)
+				main_slider.slick("slickGoTo", lastSlide);
+			else
+				main_slider.slick("slickNext");
 		}
 	}
 	else{
-		if ($(window).scrollTop() - $(window).height() <= 0 && curScreen == 2 && $(".img--3")[0].scrollTop == 0){
+		if ($(window).scrollTop() - $(window).height() <= 0 && 
+			curScreen == 2 && $(".img--3")[0].scrollTop == 0){
 			curScreen = 1;
 			$("html, body").animate({
 				scrollTop: 0
-			}, 300)
-		}else if (curScreen == 1){
+			}, 300);
+
+			mainPortImgs.hide();
+
+		}else if (curScreen != 2){
 			e.preventDefault();
-			main_slider.slick("slickPrev")
+
+			main_slider.slick("slickGoTo", 0);
 		}
 	}
 }
+
+class stringEffect{
+	set settings(settings){
+
+		const defaultSettings = {
+			options: {
+				timeStep: .12,
+				timeOffset: 0,
+				transformStep: 20,
+				transformStepOffset: 0,
+			}, 
+			beforeStart(){
+
+			}, 
+			afterFinish(){
+
+			},
+		};
+
+		this._settings = $.extend( true, {}, defaultSettings, settings);
+	}
+	get settings(){
+		return this._settings;
+	}
+	set $el(selector){
+		this._el = selector
+	}
+	get $el(){
+		return $(this._el)
+	}
+
+	afterFinish(){
+		// console.log(this.settings.afterFinish);
+		this.settings.afterFinish(this.$el, this.stringCounter, this.settings.options)
+	}
+
+	beforeStart(){
+		this.settings.beforeStart(this.$el, this.stringCounter, this.settings.options)
+	}
+
+
+	constructor(settings = {}){
+		this.settings = settings;
+
+		this.$el = this.settings.selector;
+
+		this.init()
+	}
+
+	init(){
+		this.wrapWords();
+		this.createStrings();
+		this.afterFinish();
+
+		this.whatch();
+	}
+
+	rebuild(){
+		this.destroyStrings();
+		this.createStrings();
+	}
+
+	wrapWords(){
+		this.beforeStart();
+
+		let textArr = this.$el.html().split(" ");
+
+		this.$el.html("");
+
+		for (let i in textArr)
+			this.$el.append(" <span>"+textArr[i]+"</span>");
+
+	}
+
+	destroyStrings(){
+		this.$el.children("div").children("span").unwrap();
+	}
+
+	createStrings(){
+		let $text = this.$el.children("span"),
+			stringsDesc = [];
+
+		$text.each((i, el) => {
+			let $this = $(el);
+
+			// console.log(parseInt($this.position().top);
+
+			stringsDesc.push({
+				id: i,
+				top: parseInt($this.position().top),
+			});
+		});
+
+		this.wrapStrings(stringsDesc);
+	}
+
+	wrapStrings(stringsDesc = []){
+		this.stringCounter = 0;
+
+		let {
+			timeStep: delay, 
+			timeOffset: tmOffset, 
+			transformStep: transStep,
+			transformStepOffset: transStepOffset,
+		} = this.settings.options;
+
+		for (let i in stringsDesc){
+
+
+			let word = stringsDesc[i],
+				time = tmOffset + this.stringCounter * delay,
+				transform = transStepOffset + this.stringCounter * transStep;
+
+			if (!this.$el.find(".string--"+word.top).length){
+				this.$el.append("<div class=\"string string--"+word.top+"\">\
+					 <span>"
+						+this.$el.children("span:eq("+word.id+")").html()+
+					"</span>\
+				</div>");
+
+				this.stringCounter++;
+
+				this.$el.find(".string--"+word.top).css({
+					"transition-delay": time+"s",
+					transform: "translate3d(0, "+transform+"%, 0)"
+				});
+			}else
+				this.$el.find(".string--"+word.top)
+					.append(" <span>"
+						+this.$el.children("span:eq("+word.id+")").html()+
+					"</span>");
+		}
+
+		this.$el.children("span").remove();
+	}
+
+
+	whatch(){
+		$(window).on("resize", e => {
+			clearTimeout(this.updateTimeout);
+
+			this.updateTimeout = setTimeout(e => {
+				this.rebuild();
+			}, 100)
+		});
+	}
+}
+
+class mainPort{
+	set $elements(selector){
+		this._els = $(selector);
+	}
+	get $elements(){
+		return this._els;
+	}
+
+	constructor(selector){
+		this.$elements = selector;
+
+		if (!this.$elements.length)
+			return
+
+		this.$strings = [];
+
+		this.prepare()
+	}
+	prepare(){
+		let $els = this.$elements;
+
+		$els.each((i, el) => {
+			let $this = $(el);
+
+			this.$strings.push(new stringEffect({
+				selector: $this.find(".port-one__title"),
+				options: {
+					timeOffset: 1.3,
+				},
+				afterFinish($el, count, options){
+					let $subtitle = $el.next(".port-one__subtitle");
+
+					// console.log(options);
+
+					new stringEffect({
+						selector: $subtitle,
+						options: {
+							timeOffset: options.timeOffset + options.timeStep * count,
+							transformStepOffset: options.transformStep * count,
+						}
+					})
+				}
+			}))
+		});
+	}
+	startAnimate(){
+		for (let i = 0; i < this.$elements.length; i++){
+			let $el = $(this.$elements[i]);
+
+			this.show($el, i);
+		}
+	}
+	show($block, step){
+		setTimeout(e => {
+			$block.addClass("js__animated");
+		}, 300 * step)
+	}
+	hide(){
+		this.$elements.removeClass("js__animated")
+	}
+}
+
+$(window).on("scroll toucmove", e => {
+	// mainPortImgs.sshow();
+});

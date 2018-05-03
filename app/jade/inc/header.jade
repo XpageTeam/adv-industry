@@ -1,1 +1,10 @@
 header.head
+	.head__wrap
+		.head__logo
+			a.logo(href="#")
+				img(src="img/logo.png")
+		nav.head__menu
+			ul.head-menu
+				each title in ["О компании", "Цены", "Услуги", "Портфолио", "Контакты", ]
+					li
+						a.head-menu__link(href="#")=title
