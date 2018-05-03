@@ -481,14 +481,39 @@ img
 .port-one
 	display: flex
 
+	&:not(.js__animated)
+
+		.port-one
+
+			&__title, &__subtitle
+
+				div
+					transition-delay: 0s !important
+
+	&.js__animated
+
+		.port-one
+
+			&__title, &__subtitle div, &__title div, &__img, &__subtitle
+				transform: translate3d(0, 0, 0) !important
+				opacity: 1
+
+			&__desc
+
+				&:before, &:after
+					transform: scale3d(1, 1, 1) !important
+
+				&:after
+					transition-delay: .3s
+
+				&:before
+					transition-delay: .8s
+
 	&__img
 		flex: none
 		max-width: 100%
-		transition: opacity .8s ease, transform 1s ease
+		transition: opacity .5s ease
 		opacity: 0
-		// transform: translate3d()
-		transition-delay: .7s
-		transform: translate3d(0, 100px, 0)
 
 		img
 			width: 100%
@@ -499,11 +524,10 @@ img
 		&:before, &:after
 			content: ""
 			position: absolute
-			transition: transform 1s $ease-in-out-circ
+			transition: transform .5s $ease-in-out-circ
 
 		&:after
 			background: $border-color
-			transition-delay: .7s
 
 		&:before
 			border-radius: 50%
@@ -511,18 +535,20 @@ img
 			+size(19px)
 			top: 0
 			transform: scale3d(0, 0, 0)
+			z-index: 1
 
 	&__subtitle, &__title
-		transition: opacity .4s ease, transform .6s $ease-in-out-circ
+		transition: opacity .3s ease, transform .5s $ease-in-out-circ
 		opacity: 0
+
+		div
+			transition: transform .3s $ease-in-out-circ,  opacity .5s ease
+			opacity: 0
 
 	&__title
 		font-size: rem(18)
 		line-height: lh(23, 18)
 
-		div
-			transition: transform 1s $ease-in-out-circ,  opacity 1s ease
-			opacity: 0
 
 	&__subtitle
 		font-size: 14px
@@ -531,19 +557,6 @@ img
 		margin: 5px 0 0
 
 .main-port
-
-	&.js__animated
-
-		.port-one
-
-			&__title, &__subtitle, &__title div, &__img
-				transform: translate3d(0, 0, 0) !important
-				opacity: 1
-
-			&__desc
-
-				&:before, &:after
-					transform: scale3d(1, 1, 1) !important
 
 	&__one
 		color: #000
@@ -563,10 +576,10 @@ img
 
 					&:after
 						width: 1px
-						height: calc(100% - 19px)
+						height: calc(100% - 9px)
 						bottom: 0
 						left: 9px
-						transform-origin: top
+						transform-origin: bottom
 						transform: scale3d(1, 0, 1)
 
 		&:nth-child(2)
@@ -584,11 +597,11 @@ img
 						left: 0
 
 					&:after
-						width: rem(39)
+						width: rem(48)
 						height: 1px
-						right: 100%
+						right: calc(100% - 9px)
 						top: 9px
-						transform-origin: right
+						transform-origin: left
 						transform: scale3d(0, 1, 1)
 
 		&:nth-child(3)
@@ -609,11 +622,11 @@ img
 						top: 0
 
 					&:after
-						left: 100%
-						width: calc(1.375rem + 36px)
+						left: calc(100% - 9px)
+						width: calc(1.375rem + 48px)
 						height: 1px
 						top: 9px
-						transform-origin: left
+						transform-origin: right
 						transform: scale3d(0, 1, 1)
 
 		&:nth-child(4)
@@ -630,10 +643,10 @@ img
 						top: 0
 
 					&:after
-						+size(1px 42px)
-						bottom: 100%
+						+size(1px 51px)
+						bottom: calc(100% - 9px)
 						left: 9px
-						transform-origin: bottom
+						transform-origin: top
 						transform: scale3d(1, 0, 1)
 
 .main-port
@@ -675,6 +688,7 @@ img
 
 .footer
 	font-size: 14px
+	margin: rem(48) 0 0
 
 	&__top
 		background: #fff
@@ -684,6 +698,10 @@ img
 		padding: 1.9rem 0
 		text-align: center
 
+	&__soc
+		margin: auto 0 0
+		padding: 15px 0 0
+
 .copy
 	font-weight: 400
 	font-size: 14px
@@ -692,21 +710,293 @@ img
 
 .footer-top
 	display: flex
-	justify-content: space-between
+	// justify-content: space-between
 	margin-left: -5rem
 
 	&__column
-		width: calc((100% - 5rem * 4) / 4)
+		width: calc((100% - 5rem * 3) / 3)
 		margin-left: 5rem
+		display: flex
+		flex-direction: column
+
+		&:last-child
+			margin-left: 0
+			width: auto
+			flex: 1 1 auto
 
 		&--double
-			width: calc((100% - 5rem * 3) / 3)
+			width: calc((133.33% - 5rem * 2) / 2)
+
+		&-title
+			margin-bottom: 28px
+			min-height: 21px
+
+			a
+				color: #000
+				text-decoration: none
+				font-weight: 400
+				font-size: rem(18)
 
 .footer-menu
 
 	&--double
 		column-count: 2
 		column-gap: 4rem
+
+	li
+		break-inside: avoid
+
+		&:not(:first-child)
+			margin: 14px 0 0
+
+	&__link
+		color: rgba(#000, .5)
+		text-decoration: none
+		border-bottom: 1px solid transparent
+		// transition: color .3s ease, border-color .3s ease
+
+		&:hover, &:focus
+			color: $main-color
+			// border-color: currentColor
+
+.f-contacts
+
+	&__one
+
+		&:not(:first-child)
+			margin: 30px 0 0
+
+.f
+
+	&-address, &-phones, &-time
+		color: rgba(#000, .5)
+		line-height: lh(30, 14)
+		padding-left: 36px
+
+	&-address
+		background: url("../img/ico-address.png") top 6px left no-repeat
+
+	&-phones
+		background: url("../img/ico-phone.png") top 6px left no-repeat
+
+	&-time
+		background: url("../img/ico-time.png") top 6px left no-repeat
+
+.top-nav
+	padding: rem(87) 0 rem(115)
+	margin: 0 auto
+	max-width: 1230px
+
+	&__menu
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		&-link
+			color: #000
+			text-decoration: none
+			transition: background .3s ease, color .3s ease
+			text-transform: uppercase
+			line-height: 1
+			border-radius: 24px
+			padding: 13px 21px
+			display: block
+
+			&:hover, &:focus, &.active
+				background: $main-color
+				color: #fff
+
+.title-block
+	display: flex
+	background: #fff
+	// border-left: 2px solid $main-color
+	padding: 0 rem(40)
+	align-items: center
+	position: relative
+
+	&__cont
+		margin: 0 0 rem(88)
+
+	&__title, &__crumbs
+		flex: none
+		width: 50%
+
+	&__title
+		padding: 2rem 20px 2rem 0
+
+		&-back
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+			color: #000
+			text-decoration: none
+			font-weight: 400
+			margin-left: 11px
+
+			&:before
+				content: ""
+				border-radius: 50%
+				flex: none
+				background: url("../img/ico-arrow-right.png") center no-repeat, $second-color
+				+size(44px)
+				margin-right: rem(54)
+				transform: rotate(180deg)
+
+		h1
+			font-weight: 400
+			font-size: rem(28)
+
+			&:before
+				content: ""
+				+size(2px 100%)
+				position: absolute
+				top: 0
+				left: 0
+				background: $main-color
+
+	&__crumbs
+		padding: 14px 0
+
+.bread-crumbs
+	font-size: 13px
+	font-weight: 400
+	color: rgba(#000, .3)
+
+	&__link
+		position: relative
+		color: inherit
+		text-decoration: none
+		margin-right: 48px
+
+		&:after
+			content: ""
+			position: absolute
+			right: -34px
+			bottom: 7px
+			background: #b9b9b9
+			+size(14px 1px)
+			pointer-events: none
+
+		&:hover, &:focus
+			color: $main-color
+			text-decoration: underline
+
+		&:first-child
+			padding-left: rem(48)
+
+			&:before
+				content: ""
+				position: absolute
+				background: url("../img/ico-home.png") no-repeat
+				+size(20px 19px)
+				left: 0
+				top: calc(50% - 10px)
+
+.news
+
+	&__one
+		display: flex
+
+		&:not(:last-child)
+			border-bottom: 1px solid $border-color
+			padding-bottom: rem(43)
+
+		&:not(:first-child)
+			padding-top: rem(43)
+
+		&-link
+			display: flex
+			align-items: center
+			justify-content: flex-end
+			margin-left: auto
+			padding: 0 2rem
+
+			&:after
+				content: ""
+				border-radius: 50%
+				border: 1px solid $border-color
+				background: url("../img/ico-arrow-right.png") center no-repeat
+				+size(44px)
+
+		&-img
+			flex: none
+			margin-right: rem(80)
+
+			img
+				display: block
+
+		&-desc
+			max-width: 905px
+			font-weight: 400
+
+		&-title
+			color: #000
+			text-decoration: none
+			font-weight: bold
+			text-transform: uppercase
+			font-size: 14px
+
+			&:hover, &:focus
+				color: $main-color
+
+			&-cont
+				// display: flex
+				margin-bottom: rem(28)
+
+		&-date
+			// flex: none
+			display: inline-block
+			color: $main-color
+			margin-right: 18px
+			font-size: rem(18)
+
+		&-text
+			font-size: 14px
+			line-height: lh(24, 14)
+
+.paginator
+	display: flex
+	justify-content: center
+	background: #fff
+	margin: rem(77) 0 0
+	padding: rem(42) 0
+	position: relative
+
+	&__list
+
+		li
+			display: inline-block
+
+	&__link
+		color: #000
+		text-decoration: none
+
+		&[href]
+
+			&:hover, &:focus, &.active
+				color: $main-color
+
+	&__arrow
+		position: absolute
+		top: 0
+		bottom: 0
+		width: rem(84)
+		z-index: 2
+		display: block
+
+		a
+			background: url("../img/ico-paginator-arrow.png") center no-repeat, #fff
+			display: block
+			height: 100%
+
+		&:first-child
+			// margin-right: auto
+			left: 0
+			transform: rotate(180deg)
+
+		&:last-child
+			right: 0
+			// margin-left: auto
 
 @import "_grid"
 @import "media"

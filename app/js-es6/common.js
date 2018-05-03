@@ -2,7 +2,12 @@ $(window).on("load", e => {
 	$("body").removeClass("loading").addClass("loaded");
 });
 
-let main_slider, bloking = false, slidesCount = 0, currentSlide;
+let main_slider, 
+	bloking = false, 
+	slidesCount = 0, 
+	currentSlide,
+	mainPortImgs,
+	lastSlide = 0;
 
 $(e => {
 
@@ -31,19 +36,19 @@ $(e => {
 		});
 	});
 
-	$(".port-one__title").each((i, el) => {
-		new stringEffect({
-			selector: $(el),
-			afterFinish($el, count, options){
-				// let $parent = $el.closest(".port-one");
+	// $(".port-one__title").each((i, el) => {
+	// 	new stringEffect({
+	// 		selector: $(el),
+	// 		afterFinish($el, count, options){
+	// 			// let $parent = $el.closest(".port-one");
 
-				// $parent.find(".port-one__img").css({
-				// 	// "transition-delay": (count * options.timeStep) + "s",
-				// 	transform: "translate3d(0, "+(options.transformStep * count)+"%, 0)"
-				// });
-			}
-		});
-	});
+	// 			// $parent.find(".port-one__img").css({
+	// 			// 	// "transition-delay": (count * options.timeStep) + "s",
+	// 			// 	transform: "translate3d(0, "+(options.transformStep * count)+"%, 0)"
+	// 			// });
+	// 		}
+	// 	});
+	// });
 
 	slidesCount = $(".main-screen__slider .img").length;
 
@@ -68,6 +73,8 @@ $(e => {
 		
 		if (nextSlide == 0)
 			$(".img-slider__dots").removeClass("js__visible")
+
+		lastSlide = curSlide;
 		
 	}).on("afterChange", (e, slick, curSlide) => {
 		$(".main-screen__slider .img:eq("+curSlide+")").addClass("js__active-slide");
@@ -109,6 +116,13 @@ $(e => {
 		"transition-delay": ""+(0.12 * dotsCount)+"s",
 		transform: "translate3d(0, "+(30*dotsCount)+"%, 0)"
 	});
+
+	mainPortImgs = new mainPort(".port-one");
+
+	if ($(window).scrollTop() > 0){
+		mainPortImgs.startAnimate();
+		curScreen = 2;
+	}
 
 	addMouseWheelHandler();
 })
@@ -211,14 +225,18 @@ function MouseWheelHandler(e) {
 				scrollTop: $(".img--3").offset().top
 			}, scrollTime);
 
+			mainPortImgs.startAnimate();
+
 			setTimeout(e => {
 				$(".main-port").addClass("js__animated");
 			}, scrollTime);
 
 		}else if(curScreen == 1){
 			e.preventDefault();
-			console.log(123);
-			main_slider.slick("slickNext");
+			if (lastSlide > 1)
+				main_slider.slick("slickGoTo", lastSlide);
+			else
+				main_slider.slick("slickNext");
 		}
 	}
 	else{
@@ -227,12 +245,13 @@ function MouseWheelHandler(e) {
 			curScreen = 1;
 			$("html, body").animate({
 				scrollTop: 0
-			}, 300)
+			}, 300);
+
+			mainPortImgs.hide();
+
 		}else if (curScreen != 2){
 			e.preventDefault();
-	
-			console.log(125312231);
-			// main_slider.slick("slickPrev")
+
 			main_slider.slick("slickGoTo", 0);
 		}
 	}
@@ -244,7 +263,9 @@ class stringEffect{
 		const defaultSettings = {
 			options: {
 				timeStep: .12,
-				transformStep: 20, 
+				timeOffset: 0,
+				transformStep: 20,
+				transformStepOffset: 0,
 			}, 
 			beforeStart(){
 
@@ -287,6 +308,7 @@ class stringEffect{
 	init(){
 		this.wrapWords();
 		this.createStrings();
+		this.afterFinish();
 
 		this.whatch();
 	}
@@ -304,7 +326,8 @@ class stringEffect{
 		this.$el.html("");
 
 		for (let i in textArr)
-			this.$el.append(" <span>"+textArr[i]+"</span>")
+			this.$el.append(" <span>"+textArr[i]+"</span>");
+
 	}
 
 	destroyStrings(){
@@ -322,28 +345,33 @@ class stringEffect{
 
 			stringsDesc.push({
 				id: i,
-				text: $this.html(),
 				top: parseInt($this.position().top),
 			});
 		});
 
 		this.wrapStrings(stringsDesc);
-
-
-		this.afterFinish();
 	}
 
 	wrapStrings(stringsDesc = []){
 		this.stringCounter = 0;
 
-		let {timeStep: time, transformStep: transStep} = this.settings.options;
+		let {
+			timeStep: delay, 
+			timeOffset: tmOffset, 
+			transformStep: transStep,
+			transformStepOffset: transStepOffset,
+		} = this.settings.options;
 
 		for (let i in stringsDesc){
-			let word = stringsDesc[i];
+
+
+			let word = stringsDesc[i],
+				time = tmOffset + this.stringCounter * delay,
+				transform = transStepOffset + this.stringCounter * transStep;
 
 			if (!this.$el.find(".string--"+word.top).length){
-				this.$el.append("<div class='string string--"+word.top+"'>\
-					  <span>"
+				this.$el.append("<div class=\"string string--"+word.top+"\">\
+					 <span>"
 						+this.$el.children("span:eq("+word.id+")").html()+
 					"</span>\
 				</div>");
@@ -351,8 +379,8 @@ class stringEffect{
 				this.stringCounter++;
 
 				this.$el.find(".string--"+word.top).css({
-					"transition-delay": ""+(this.stringCounter*time)+"s",
-					transform: "translate3d(0, "+(this.stringCounter*transStep)+"%, 0)"
+					"transition-delay": time+"s",
+					transform: "translate3d(0, "+transform+"%, 0)"
 				});
 			}else
 				this.$el.find(".string--"+word.top)
@@ -375,3 +403,69 @@ class stringEffect{
 		});
 	}
 }
+
+class mainPort{
+	set $elements(selector){
+		this._els = $(selector);
+	}
+	get $elements(){
+		return this._els;
+	}
+
+	constructor(selector){
+		this.$elements = selector;
+
+		if (!this.$elements.length)
+			return
+
+		this.$strings = [];
+
+		this.prepare()
+	}
+	prepare(){
+		let $els = this.$elements;
+
+		$els.each((i, el) => {
+			let $this = $(el);
+
+			this.$strings.push(new stringEffect({
+				selector: $this.find(".port-one__title"),
+				options: {
+					timeOffset: 1.3,
+				},
+				afterFinish($el, count, options){
+					let $subtitle = $el.next(".port-one__subtitle");
+
+					// console.log(options);
+
+					new stringEffect({
+						selector: $subtitle,
+						options: {
+							timeOffset: options.timeOffset + options.timeStep * count,
+							transformStepOffset: options.transformStep * count,
+						}
+					})
+				}
+			}))
+		});
+	}
+	startAnimate(){
+		for (let i = 0; i < this.$elements.length; i++){
+			let $el = $(this.$elements[i]);
+
+			this.show($el, i);
+		}
+	}
+	show($block, step){
+		setTimeout(e => {
+			$block.addClass("js__animated");
+		}, 300 * step)
+	}
+	hide(){
+		this.$elements.removeClass("js__animated")
+	}
+}
+
+$(window).on("scroll toucmove", e => {
+	// mainPortImgs.sshow();
+});

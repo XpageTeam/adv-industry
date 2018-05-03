@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Новости
+		include inc/head.jade
+		include inc/css.jade
+	body.inner.loading
+		#page-wr
+			include inc/header.jade
+			#content
+				.inner-content
+					.title-block__cont
+						.wrapper
+							.title-block
+								.title-block__title
+									h1 Новости
+								.title-block__crumbs
+									.bread-crumbs
+										a.bread-crumbs__link(href="#") Главная
+										a.bread-crumbs__link(href="#") О компании
+										span.bread-crumbs__this Новости
+					.inner-content__content
+						.news__cont
+							.wrapper
+								.news
+									each news in [{date: "08.02", title: "Оформление витрин ETRO весна 2018", text: "Правильный выбор вывески – это ключ к успеху вашего бизнеса! Вывеска – уникальное «лицо» вашего магазина, офиса, ресторана, салона красоты или кафе на улицах большого города. Уделяя должное внимание вывеске, вы инвестируете в развитие и процветание вашего бизнеса."}, {date: "11.02", title: "ЛАНЧ БРАНЧ ТЦ ГРИНВИЧ", text: "Правильный выбор вывески – это ключ к успеху вашего бизнеса! Вывеска – уникальное «лицо» вашего магазина, офиса, ресторана, салона красоты или кафе на улицах большого города. Уделяя должное внимание вывеске, вы инвестируете в развитие и процветание вашего бизнеса."}, {date: "15.01", title: "МАМИНА МАМА ТЦ ГРИНВИЧ", text: "Правильный выбор вывески – это ключ к успеху вашего бизнеса! Вывеска – уникальное «лицо» вашего магазина, офиса, ресторана, салона красоты или кафе на улицах большого города. Уделяя должное внимание вывеске, вы инвестируете в развитие и процветание вашего бизнеса."}, {date: "12.01", title: "Wonderland", text: "Правильный выбор вывески – это ключ к успеху вашего бизнеса! Вывеска – уникальное «лицо» вашего магазина, офиса, ресторана, салона красоты или кафе на улицах большого города. Уделяя должное внимание вывеске, вы инвестируете в развитие и процветание вашего бизнеса."}, ]
+										.news__one
+											a.news__one-img(href="#")
+												img(src="img/photos/news-img.jpg")
+											.news__one-desc
+												.news__one-title-cont
+													.news__one-date=news.date
+													a.news__one-title(href="#")=news.title
+												.news__one-text
+													.text-page=news.text
+											a.news__one-link(href="#")
+								.paginator__cont
+									include inc/paginator.jade
+			include inc/footer.jade
+		include inc/scripts.jade
