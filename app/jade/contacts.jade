@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Типовая страница
+		include inc/head.jade
+		include inc/css.jade
+	body.inner.loading
+		#page-wr
+			include inc/header.jade
+			#content
+				.inner-content
+					.title-block__cont
+						.wrapper
+							.title-block
+								.title-block__title
+									h1 Контакты
+								.title-block__crumbs
+									.bread-crumbs
+										a.bread-crumbs__link(href="#") Главная
+										span.bread-crumbs__this Контакты
+					.inner-content__content
+						.wrapper
+							.contacts
+								.contacts__header
+									.contacts__address
+										.address-city.top г. Екатеринбург, БизнесМАНцентр, 
+										.address-street.bot ул. Московская 195, 10 этаж, офис. 1033
+									.contacts__phone
+										.phone-title.top Отдел продаж:
+										.phone-tel.bot +7 (343) 200-90-91, + 7 (343)  200-30-31
+									.contacts__time
+										.time-title.top Мы работаем: 
+										.time-schedule.bot пн-пт - с 9:00 до 18:00, сб,вс - <span>выходной</span>
+
+								.map
+									img(src="img/photos/map.jpg", alt="")
+
+
+						
+			include inc/footer.jade
+		include inc/scripts.jade
