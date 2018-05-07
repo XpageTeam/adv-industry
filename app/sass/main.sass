@@ -10,6 +10,9 @@ $output-bourbon-deprecation-warnings: false;
 
 .loader
 	display: none
+.logo
+	&-white
+		display: none
 
 button, input, select
 	font-family: inherit
@@ -1174,8 +1177,147 @@ img
 			margin-top: 15px
 
 
+body.page-services
+	.head
+		position: absolute
+		top: 0
+		left: 0
+
+	.logo
+		&-base
+			display: none 
+
+		&-white
+			display: block
+
+	.head-menu__link
+    	color: #fff
+
+.video
+	position: relative
+	cursor: pointer
+
+	&:before
+		content: ""
+		position: absolute
+		bottom: 48px
+		left: 44px
+		+size(44px)
+		background: url('../img/ico-play.png') no-repeat center
+
+.singl-worck
+	&__slider
+
+		margin-bottom: 50px
+
+		.slick
+			&-arrow
+				position: absolute
+				display: block
+				+size(44px)
+				border-radius: 50%
+				background: url('../img/ico-arrow-right.png') no-repeat center, #fff
+			&-prev 
+				z-index: 1
+				transform: rotate(180deg)
+				bottom: 48px
+				right: 101px
+			&-next
+				bottom: 48px
+				right: 26px
+
+	&__title
+
+		display: flex 
+		justify-content: space-between
+		align-items: center
+		margin-bottom: 50px
+
+		h1
+			font-size: rem(24)
+			line-height: rem(30)
+			font-weight: bold
+
+		.btn
+			margin-left: 1.4rem
+
+	.text-page 
+		max-width: 970px
+		font-size: rem(14)
+		font-weight: 500
+		line-height: rem(22)
+			
 
 
+.slick-arrow
+	border: 0
+	background: transparent
+
+.btn
+	display: inline-block
+	background: $main-color
+	border-radius: 3px
+	color: #fff
+	text-decoration: none
+	padding: 11px 18px 12px
+	transition: background .3s ease
+
+	&:hover 
+		background: #ff373d
+
+.nav-worck
+	position: relative
+	display: flex
+	justify-content: space-between
+	background: #fff 
+	padding: 45px 43px
+	margin-top: 70px
+
+	a 
+		position: absolute
+		display: flex
+		align-items: center
+	
+		width: 45%
+		height: 100%
+
+		text-decoration: none
+		color: #000
+		font-size: rem(14)
+		font-weight: 500
+		transition: color .3s ease
+
+		&:hover
+			color: $main-color
+
+		&:before
+			content: ''
+			position: absolute
+			display: inline-block
+			width: 10px
+			height: 10px
+			background: url('../img/ico-paginator-arrow.png') no-repeat center left 0
+
+	.prev 
+		padding-left: 95px
+		left: 0
+		top: 0
+		justify-content: flex-start
+
+		&:before
+			transform: rotate(180deg)
+			left: 54px
+
+
+
+	.next
+		padding-right: 95px
+		right: 0
+		top: 0
+		justify-content: flex-end
+
+		&:before
+			right: 54px
 
 @import "_grid"
 @import "media"

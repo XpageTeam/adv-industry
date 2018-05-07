@@ -1,0 +1,29 @@
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="50px" height="39px" viewBox="0 0 414.454 321.716" style="enable-background:new 0 0 414.454 321.716;"
+	 xml:space="preserve">
+<style type="text/css">
+	.st0{
+	fill-rule:evenodd;
+	clip-rule:evenodd;
+	fill:none;
+	stroke:#fff;
+	stroke-width:4.252;
+	stroke-miterlimit:22.9256;
+	}
+	path{
+	fill:#fff;
+	}
+</style>
+<g>
+	<line class="st0" x1="30.571" y1="320.761" x2="30.571" y2="0"/>
+	<line class="st0" x1="328.665" y1="44.677" x2="30.571" y2="44.677"/>
+	<line class="st0" x1="0" y1="319.59" x2="61.77" y2="319.59"/>
+	<line class="st0" x1="107.924" y1="44.677" x2="107.924" y2="86.813"/>
+	<line class="st0" x1="272.065" y1="44.677" x2="272.065" y2="86.813"/>
+	<path class="st0" d="M333.704,176.281h62.075c9.102,0,16.549,7.447,16.549,16.549v108.912c0,9.102-7.447,16.549-16.549,16.549
+		H243.093c-9.102,0-16.549-7.447-16.549-16.549v-36.57"/>
+	<line class="st0" x1="401.911" y1="151.941" x2="334.343" y2="151.941"/>
+	<line class="st0" x1="359.748" y1="151.941" x2="359.748" y2="175.257"/>
+	<rect x="68.565" y="86.61" class="st0" width="244.717" height="159.11"/>
+</g>
+</svg>

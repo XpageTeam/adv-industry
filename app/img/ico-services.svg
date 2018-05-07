@@ -1,0 +1,32 @@
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="55px" height="37px" viewBox="0 0 450.725 301.411" style="enable-background:new 0 0 450.725 301.411;"
+	 xml:space="preserve" class="icon">
+<style type="text/css">
+	.st0 {
+
+	fill-rule:evenodd;
+	clip-rule:evenodd;
+	fill:none;
+	stroke:#fff;
+	stroke-width:4.252;
+	stroke-miterlimit:22.9256;
+	}
+	path {
+		fill:#fff;
+	}
+
+
+			
+</style>
+
+<g class="group">
+	<line class="st0" x1="425.932" y1="13.459" x2="24.793" y2="13.459"/>
+	<line class="st0" x1="113.857" y1="13.459" x2="113.857" y2="73.365"/>
+	<line class="st0" x1="347.219" y1="13.459" x2="347.219" y2="73.365"/>
+	<rect x="51.404" y="73.076" class="st0" width="347.917" height="226.209"/>
+	<circle class="st0" cx="13.459" cy="13.459" r="11.333"/>
+	<circle class="st0" cx="437.266" cy="13.459" r="11.333"/>
+</g>
+
+</svg>
+

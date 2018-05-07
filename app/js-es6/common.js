@@ -10,6 +10,15 @@ let main_slider,
 	lastSlide = 0;
 
 $(e => {
+	$(".singl-worck__slider").slick({
+		slide: ".singl-worck__slide",
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+		dots: false,
+		fade: true,
+		speed: 400,
+	});
 
 	$(".img--3")[0].scrollTop = Cookies.get("botBlockScroll") ? Cookies.get("botBlockScroll") : 0;
 
@@ -35,6 +44,18 @@ $(e => {
 			}
 		});
 	});
+
+	$(".fancybox").fancybox({
+		beforeShow (){
+			$("body").addClass("fancy-active")
+		},
+		afterClose (){
+			$("body").removeClass("fancy-active")	
+		}
+	});
+
+	
+	
 
 	// $(".port-one__title").each((i, el) => {
 	// 	new stringEffect({
