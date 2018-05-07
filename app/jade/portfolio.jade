@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Портфолио
+		include inc/head.jade
+		include inc/css.jade
+	body.inner.loading
+		#page-wr
+			include inc/header.jade
+			#content
+				.inner-content
+					.title-block__cont
+						.wrapper
+							.title-block
+								.title-block__title
+									h1 Портфолио
+								.title-block__crumbs
+									.bread-crumbs
+										a.bread-crumbs__link(href="#") Главная
+										span.bread-crumbs__this Портфолио
+					.inner-content__content
+						.wrapper
+							.portfolio
+								.portfolio__list
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-1.svg
+											.portfolio__item-title Вывески
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-2.svg
+											.portfolio__item-title Крышные установки
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-3.svg
+											.portfolio__item-title Рекламные стеллы
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-4.svg
+											.portfolio__item-title Реклама на автомобилях
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-5.svg
+											.portfolio__item-title Выставочные стенды
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-6.svg
+											.portfolio__item-title Изготовление табличек
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-7.svg
+											.portfolio__item-title Рекламные постеры
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-8.svg
+											.portfolio__item-title Интерьерная печать
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-9.svg
+											.portfolio__item-title Дизайнерские услуги
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-10.svg
+											.portfolio__item-title Согласование вывесок
+									a(href="#").portfolio__item
+										figure.portfolio__item-img
+											img(src="img/portfolio-1.jpg", alt="")
+										.portfolio__item-hover
+											.portfolio__item-logo
+												include ../img/picture-11.svg
+											.portfolio__item-title Изготовление наружной рекламы
+
+
+			include inc/footer.jade
+		include inc/scripts.jade

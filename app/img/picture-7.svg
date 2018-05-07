@@ -1,0 +1,23 @@
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="85px" height="137px" viewBox="0 0 211.252 343.256" style="enable-background:new 0 0 211.252 343.256;"
+	 xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#d81621;stroke-width:4.252;stroke-miterlimit:22.9256;}
+</style>
+<g>
+	<circle class="st0" cx="34.126" cy="60.372" r="11.333"/>
+	<rect x="2.126" y="30" class="st0" width="207" height="311.13"/>
+	<line class="st0" x1="34.126" y1="0" x2="34.126" y2="49.039"/>
+	<circle class="st0" cx="174.626" cy="60.372" r="11.333"/>
+	<line class="st0" x1="174.626" y1="0" x2="174.626" y2="49.039"/>
+	<line class="st0" x1="37.626" y1="270.13" x2="114.126" y2="270.13"/>
+	<line class="st0" x1="127.626" y1="270.13" x2="170.126" y2="270.13"/>
+	<line class="st0" x1="37.626" y1="292.63" x2="70.626" y2="292.63"/>
+	<line class="st0" x1="82.626" y1="292.63" x2="170.126" y2="292.63"/>
+	<line class="st0" x1="17.626" y1="318.63" x2="45.459" y2="318.63"/>
+	<line class="st0" x1="163.293" y1="318.63" x2="191.126" y2="318.63"/>
+	<path class="st0" d="M121.126,180.38c0,24.991-20.259,45.25-45.25,45.25s-45.25-20.259-45.25-45.25s20.259-45.25,45.25-45.25
+		c6.12,0,11.955,1.215,17.28,3.416C109.574,145.336,121.126,161.509,121.126,180.38z"/>
+	<polyline class="st0" points="93.156,138.546 121.126,90.325 174.626,185.565 121.126,185.565 	"/>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="180px" height="125px" viewBox="0 0 448.26 312.916" style="enable-background:new 0 0 448.26 312.916;"
+	 xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#d81621;stroke-width:4.252;stroke-miterlimit:22.9256;}
+</style>
+<g>
+	<g>
+		<g>
+			<line class="st0" x1="88.902" y1="119.223" x2="135.313" y2="119.223"/>
+			<line class="st0" x1="106.287" y1="138.39" x2="131.377" y2="138.39"/>
+			<polygon class="st0" points="85.225,93.369 167.132,93.369 138.715,38.764 117.988,74.87 108.293,57.82 			"/>
+			<line class="st0" x1="106.287" y1="93.369" x2="117.988" y2="74.87"/>
+		</g>
+		<polyline class="st0" points="117.988,180.537 2.126,180.537 2.126,2.126 260.626,2.126 260.626,74.869 		"/>
+	</g>
+	<g>
+		<g>
+			<line class="st0" x1="251.706" y1="241.37" x2="340.279" y2="241.37"/>
+			<line class="st0" x1="271.389" y1="263.072" x2="319.839" y2="263.072"/>
+			<polygon class="st0" points="247.542,212.098 340.279,212.098 308.105,150.273 284.637,191.153 273.66,171.849 			"/>
+			<line class="st0" x1="271.389" y1="212.098" x2="284.637" y2="191.153"/>
+		</g>
+		<rect x="153.457" y="108.791" class="st0" width="292.677" height="201.999"/>
+	</g>
+</g>
+</svg>
