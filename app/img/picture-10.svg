@@ -1,24 +1,27 @@
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="102px" height="137px" viewBox="0 0 252.46 340.641" style="enable-background:new 0 0 252.46 340.641;"
-	 xml:space="preserve">
+	 width="102px" height="137px" viewBox="-706 220.718 252.46 340.641"
+	 style="enable-background:new -706 220.718 252.46 340.641;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#d81621;stroke-width:4.252;stroke-miterlimit:22.9256;}
-	
-		.st1{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#d81621;stroke-width:4.252;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256;}
+	.st0{fill:none;stroke:#d81621;stroke-width:4.252;stroke-miterlimit:22.9256;}
+	.st1{fill:none;stroke:#d81621;stroke-width:4.252;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256;}
 </style>
-<g id="XMLID_483_">
-	<polyline id="XMLID_494_" class="st0" points="250.334,56.414 250.334,338.515 2.126,338.515 2.126,2.126 190.648,2.126 	"/>
-	<polygon id="XMLID_493_" class="st1" points="250.334,56.414 191.522,56.414 191.522,2.126 	"/>
-	<rect id="XMLID_492_" x="40.772" y="112.543" class="st0" width="166.546" height="0"/>
-	<rect id="XMLID_491_" x="40.772" y="154.383" class="st0" width="104.283" height="0"/>
-	<rect id="XMLID_490_" x="170.819" y="154.383" class="st0" width="36.499" height="0"/>
-	<rect id="XMLID_489_" x="40.772" y="197.81" class="st0" width="124.526" height="0"/>
-	<circle id="XMLID_488_" class="st0" cx="181.285" cy="276.29" r="36.154"/>
-	
-		<rect id="XMLID_487_" x="161.328" y="267.81" transform="matrix(0.929 -0.37 0.37 0.929 -86.5237 84.5096)" class="st0" width="31.431" height="0"/>
-	
-		<rect id="XMLID_486_" x="165.051" y="277.16" transform="matrix(0.929 -0.37 0.37 0.929 -89.7186 86.5507)" class="st0" width="31.431" height="0"/>
-	
-		<rect id="XMLID_485_" x="168.775" y="286.509" transform="matrix(0.929 -0.37 0.37 0.929 -92.9135 88.5918)" class="st0" width="31.431" height="0"/>
+<g>
+	<polyline id="XMLID_14_" class="st0" points="-455.666,277.132 -455.666,559.233 -703.874,559.233 -703.874,222.844 
+		-515.352,222.844 	"/>
+	<polygon id="XMLID_13_" class="st1" points="-455.666,277.132 -514.478,277.132 -514.478,222.844 	"/>
+	<g>
+		<polygon id="XMLID_12_" class="st0" points="-665.228,333.261 -498.682,333.261 -498.682,333.261 		"/>
+		<polygon id="XMLID_11_" class="st0" points="-665.228,375.101 -560.945,375.101 -560.945,375.101 		"/>
+		<polygon id="XMLID_10_" class="st0" points="-535.181,375.101 -498.682,375.101 -498.682,375.101 		"/>
+		<polygon id="XMLID_9_" class="st0" points="-665.228,418.528 -540.702,418.528 -540.702,418.528 		"/>
+	</g>
+	<g>
+		<circle id="XMLID_8_" class="st0" cx="-524.715" cy="497.008" r="36.154"/>
+		<g>
+			<polygon id="XMLID_7_" class="st0" points="-543.56,494.332 -514.361,482.702 -514.361,482.702 			"/>
+			<polygon id="XMLID_6_" class="st0" points="-539.837,503.681 -510.638,492.052 -510.638,492.052 			"/>
+			<polygon id="XMLID_5_" class="st0" points="-536.114,513.03 -506.915,501.401 -506.915,501.401 			"/>
+		</g>
+	</g>
 </g>
 </svg>

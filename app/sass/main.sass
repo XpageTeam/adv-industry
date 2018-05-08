@@ -1055,6 +1055,38 @@ img
 				width: 100%
 				height: 100%
 
+			video 
+				display: block
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				pointer-events: none
+
+			iframe
+				position: absolute
+				top: 0
+				left: 0
+
+			&.video-cont
+				padding-top: 77.5%
+				background: #000
+
+				&:before
+					opacity: 0
+					z-index: 0
+					pointer-events: none
+
+
+
+
+
+
+
+
+
+
 		&-title
 			font-size: rem(14)
 			line-height: rem(18)
@@ -1122,6 +1154,14 @@ img
 				&-title 
 					color: #fff
 
+			.video-cont + .portfolio__item-hover
+				opacity: 0
+
+//fix-opera открытия видео в отдельном окне
+body + div
+	display: none !important
+
+
 
 .portfolio-two
 	&__list
@@ -1178,10 +1218,10 @@ img
 
 
 body.page-services
-	.head
-		position: absolute
-		top: 0
-		left: 0
+	// .head
+	// 	position: absolute
+	// 	top: 0
+	// 	left: 0
 
 	.logo
 		&-base
@@ -1191,7 +1231,17 @@ body.page-services
 			display: block
 
 	.head-menu__link
-    	color: #fff
+		color: #fff
+
+	.services-img
+		position: absolute
+		top: 0
+		left: 0
+		z-index: -1
+
+	.title-block
+		background: transparent
+		border: 0
 
 .video
 	position: relative
@@ -1209,17 +1259,11 @@ body.page-services
 	&__slider
 
 		margin-bottom: 50px
-
+		
 		.slick
-			&-arrow
-				position: absolute
-				display: block
-				+size(44px)
-				border-radius: 50%
-				background: url('../img/ico-arrow-right.png') no-repeat center, #fff
+
 			&-prev 
 				z-index: 1
-				transform: rotate(180deg)
 				bottom: 48px
 				right: 101px
 			&-next
@@ -1246,12 +1290,21 @@ body.page-services
 		font-size: rem(14)
 		font-weight: 500
 		line-height: rem(22)
-			
 
+.slick
 
-.slick-arrow
-	border: 0
-	background: transparent
+	&-prev 
+		z-index: 1
+		transform: rotate(180deg)
+
+	&-arrow
+		position: absolute
+		display: block
+		+size(44px)
+		border-radius: 50%
+		background: url('../img/ico-arrow-right.png') no-repeat center, #fff
+		border: 0
+		cursor: pointer
 
 .btn
 	display: inline-block
@@ -1319,5 +1372,155 @@ body.page-services
 		&:before
 			right: 54px
 
+
+.singl-services
+	display: flex
+
+	&__cont
+		width: calc(100% - 485px)
+
+	.aside 
+		width: 430px
+		margin-left: 55px
+
+	&__title
+		h1
+			font-size: rem(24)
+			line-height: rem(30)
+			font-weight: bold
+			text-transform: uppercase
+
+	.text-page
+		font-size: rem(14)
+		font-weight: 500
+		line-height: rem(21)
+
+		> *:not(:first-child)
+			margin-top: 23px
+
+
+		ul 
+			li
+				&:not(:first-child)
+					margin-top: 5px
+				&:before
+					content: ""
+					+size(6px)
+					border-radius: 50%
+					background: $main-color
+					margin: 0 16px 0 0
+
+		h5
+			margin: 26px 0 0
+			text-transform: none
+
+		blockquote
+			margin-bottom: 35px
+			padding: 22px 30px 27px
+
+
+.aside
+	display: flex
+	flex-direction: column
+	align-items: flex-start
+
+	&-wrap
+		background: #fff
+		padding: 55px 75px 65px 70px
+		border-left: 2px solid $main-color
+		
+
+.base-options
+	margin-top: 48px
+
+	&__title
+		font-size: rem(24)
+		line-height: rem(30)
+		font-weight: bold
+		text-transform: uppercase
+		margin-bottom: 30px
+
+	&__linck
+		text-decoration: none
+		text-transform: uppercase
+		font-weight: 500
+		border-bottom: 1px solid #efcdcd
+
+	&__item
+
+		&:not(:first-child)
+			margin-top: 12px
+
+.standard-slider
+	margin-top: 35px
+	margin-bottom: 13px
+
+	&__list
+		padding: 25px 15px
+		background: #fff
+
+	&__item 
+		margin: 0 12px
+
+
+
+	.slick
+
+		&-track
+			// margin: 0 -10px
+
+		&-next
+			right: 0
+			top: -71px
+
+		&-prev
+			right: 60px
+			top: -71px
+
+.advantages-order
+	margin-top: 57px
+	margin-bottom: 40px
+
+	&__title 
+		font-size: rem(24)
+		line-height: rem(30)
+		font-weight: bold
+		text-transform: uppercase
+		margin-bottom: 25px
+
+	&__list
+		display: flex
+		flex-wrap: wrap
+		margin: 47px 0 -35px -45px
+
+	&__item 
+		width: calc((100% - 45px * 2) / 2)
+		margin: 0 0 35px 45px
+		border: 1px solid $border-color
+		font-weight: 500
+		padding: 40px 1.4rem 40px 114px
+		background-repeat: no-repeat
+		background-position: center left 32px
+
+.promo
+	&-title
+		font-size: rem(16)
+		line-height: rem(22)
+		font-weight: bold
+		text-transform: uppercase
+		margin-bottom: 24px
+
+	&-text
+		margin-bottom: 55px
+		font-size: rem(14)
+		line-height: rem(21)
+
+		> *:not(:first-child)
+			margin-top: 24px
+
+
+
+
+	
 @import "_grid"
 @import "media"
