@@ -1,3 +1,125 @@
 @import "bourbon"
 @import "vars"
 $output-bourbon-deprecation-warnings: false;
+
+
+@media screen and (max-width: 1600px)
+	
+	body.inner 
+		.head
+			padding: 50px 5.25rem
+
+	.footer__top
+		padding: 3.6875rem 0 4.625rem
+
+@media screen and (max-width: 1440px)
+
+	body.inner 
+		.head
+			padding: 50px 2rem
+
+	
+	.page-services
+		.title-block__title
+			padding: 1rem 20px 1rem 0
+
+	.services
+
+		&-current
+			margin-right: 105px
+
+		&__item
+			width: calc((100% - 60px * 2) / 2)
+			margin: 0 0 30px 60px
+
+	.footer
+		&__top
+			padding: 2.6875rem 0 3.625rem
+
+		// &-menu--double
+		// 	column-gap: 2rem
+
+		// &-top__column
+		// 	width: calc((100% - 2rem * 3) / 3)
+
+		&-top
+			margin-left: 0
+
+			&__column
+				width: calc((100% - 1rem * 3) / 3)
+				margin-left: 1rem
+
+				&--double
+					width: calc((120% - 1rem * 2) / 2)
+
+@media screen and (max-width: 1400px)
+
+	body.page-services 
+		.title-block__cont
+			margin: 0 0 25px 0
+
+
+	.services__item-link
+		margin-left: 20px
+
+	.footer-top__column-title
+		margin-bottom: 20px
+
+@media screen and (max-width: 1250px)
+
+	.services__item
+		width: calc((100% - 40px * 2) / 2)
+		margin: 0 0 20px 40px
+
+	.page-services 
+		.title-block__title
+			padding: 0rem 0px 1rem 0
+
+
+@media screen and (max-width: 1200px)
+	
+	body.inner 
+		.head
+			padding: 35px 2rem
+
+	.logo
+		img
+			width: 60%
+
+
+
+	body.page-services
+
+		// .inner-content
+		// 	height: calc(100vh -96px)
+
+		.services-img
+			height: 100%
+
+			img
+				height: 100%
+				object-fit: cover
+				object-position: top right
+			// display: none
+
+		// .logo
+		// 	&-base 
+		// 		display: block
+		// 	&-white
+		// 		display: none
+
+		// .head-menu__link
+		// 	color: #000
+
+	// 	.title-block__title 
+	// 		h1
+	// 			color: #000
+
+
+	// .services-current__title 
+	// 	span
+	// 		color: #000
+
+
+
+

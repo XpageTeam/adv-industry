@@ -29,6 +29,21 @@ $(e => {
 		speed: 400,
 	});
 
+	
+		$(window).on('load', e => {
+			var setHeight = $('header').innerHeight();
+			$('.services__content').css('top', setHeight);
+		});
+
+		$(window).on('resize', e => {
+			var setHeight = $('header').innerHeight();
+			$('.services__content').css('top', setHeight);
+		})
+
+	
+
+
+
 
 	if($('body').find('.video-cont').length){
 
