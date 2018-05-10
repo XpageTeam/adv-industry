@@ -12,6 +12,29 @@ $output-bourbon-deprecation-warnings: false;
 	.footer__top
 		padding: 3.6875rem 0 4.625rem
 
+	.title-block__cont
+		margin: 0 0 4.5rem
+
+	.news__one
+		&-img
+			margin-right: 4rem
+
+		&-title-cont
+			margin-bottom: 1.4rem
+
+		&:not(:last-child)
+			padding-bottom: 2.2rem
+
+		&:not(:first-child)
+			padding-top: 2.2rem
+
+	.paginator
+		margin: 3.8125rem 0 0
+
+	body.inner 
+		.footer
+			margin: 4rem 0 0
+
 @media screen and (max-width: 1440px)
 
 	body.inner 
@@ -36,11 +59,6 @@ $output-bourbon-deprecation-warnings: false;
 		&__top
 			padding: 2.6875rem 0 3.625rem
 
-		// &-menu--double
-		// 	column-gap: 2rem
-
-		// &-top__column
-		// 	width: calc((100% - 2rem * 3) / 3)
 
 		&-top
 			margin-left: 0
@@ -64,6 +82,17 @@ $output-bourbon-deprecation-warnings: false;
 
 	.footer-top__column-title
 		margin-bottom: 20px
+
+	.news__one-img
+		margin-right: 2rem
+
+	.portfolio
+		&__list
+			margin: 0 0 -35px -35px
+
+		&__item
+			width: calc((100% - 35px * 3) / 3)
+			margin: 0 0 35px 35px
 
 @media screen and (max-width: 1250px)
 
@@ -90,9 +119,6 @@ $output-bourbon-deprecation-warnings: false;
 
 	body.page-services
 
-		// .inner-content
-		// 	height: calc(100vh -96px)
-
 		.services-img
 			height: 100%
 
@@ -100,25 +126,188 @@ $output-bourbon-deprecation-warnings: false;
 				height: 100%
 				object-fit: cover
 				object-position: top right
-			// display: none
 
-		// .logo
-		// 	&-base 
-		// 		display: block
-		// 	&-white
-		// 		display: none
+	.title-block
+		padding: 0 1.5rem
+		&__cont
+			margin: 0 0 3.5rem
 
-		// .head-menu__link
-		// 	color: #000
+		&__title
+			padding: 1rem 20px 1rem 0
 
-	// 	.title-block__title 
-	// 		h1
-	// 			color: #000
+	.paginator
+		margin: 3.8125rem 0 0
+		padding: 1.625rem 0
+
+	.contacts
+		&__header
+			padding: 30px 1.5rem
+
+		&__address, &__phone, &__time
+			padding-left: 25px
+
+		&__phone
+			margin: 0 18px
+
+	.portfolio
+		&__list
+			margin: 0 0 -1.4rem -1.4rem
+
+		&__item
+			width: calc((100% - 1.4rem * 3) / 3)
+			margin: 0 0 1.4rem 1.4rem
+
+			&-hover
+				padding: 1.4rem
 
 
-	// .services-current__title 
-	// 	span
-	// 		color: #000
+
+
+
+@media screen and (max-width: 820px)
+	.news__one
+		&-img
+			margin-right: 1.4rem
+
+		&-link
+			padding: 0 1rem
+
+		&:not(:last-child)
+			padding-bottom: 1.4rem
+
+		&:not(:first-child)
+			padding-top: 1.4rem
+
+		&-title-cont
+			margin-bottom: 0.8rem
+
+	.paginator
+		margin: 1.8125rem 0 0
+		padding: 1rem 0
+
+	body.inner 
+		.footer
+			margin: 2rem 0 0
+
+	.title-block
+		padding: 0 1.4rem
+		align-items: flex-start
+		flex-direction: column-reverse
+
+		&__title
+			padding: 0rem 20px 1rem 0
+
+	.contacts
+		&__header
+			flex-wrap: wrap
+		&__address, &__phone, &__time
+			width: calc((100% - 30px * 2) / 2)
+			padding-left: 38px
+
+		&__address
+			width: 100%
+			margin-bottom: 20px
+
+		&__phone
+			margin-left: 0
+
+	.contacts 
+		.top
+			margin-bottom: 10px
+
+	.title-block__cont
+		margin: 0 0 2.5rem
+
+	.portfolio
+		&__item
+			width: calc((100% - 1.4rem * 2) / 2)
+
+			&-img
+				display: none
+			&-hover 
+				position: static
+
+			&:hover
+
+				.portfolio__item-title
+					color: #000
+
+				g 
+					rect, circle, line, polyline, path, polygon
+						stroke: $main-color
+
+
+
+@media screen and (max-width: 660px)
+
+	.contacts
+		&__header 
+			margin-bottom: -20px
+
+		&__address, &__phone, &__time
+			width: 100%
+			padding-left: 30px
+			margin-bottom: 20px
+
+	.news__one
+		flex-direction: column
+
+	.wrapper
+		padding: 0 1.4rem
+
+	.title-block
+		&__cont
+			margin: 0 0 2rem
+		&__title 
+			h1 
+				font-size: 1.4rem
+
+	.paginator__arrow
+		width: 3.25rem
+
+	.bread-crumbs
+		&__link
+			margin: 0
+			padding-left: 20px
+			display: none
+
+			&:first-child
+				padding-left: 20px
+
+			&:last-of-type
+				display: block
+
+			&:before
+				display: none
+
+			&:after
+				+size(10px)
+				border-left: 1px solid $main-color
+				border-top: 1px solid $main-color
+				background: transparent
+				transform: rotate(-45deg)
+				right: initial 
+				left: 0
+				bottom: calc(50% - 4px)
+		&__this
+			display: none
+
+	.news__one
+		&-img
+			margin: 0 0 1.4rem 0
+		&-link
+			padding: 20px 0 0 0
+			justify-content: flex-start
+			margin-left: 0
+
+	.footer__top
+		display: none
+	.head__menu
+		display: none
+
+	.map
+		height: 250px
+
 
 
 
