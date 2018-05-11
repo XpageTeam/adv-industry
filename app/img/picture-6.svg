@@ -14,20 +14,6 @@
 	path {
 		fill:#d81621;
 	}
-
-	.icon:hover .st0 {
-		stroke:#fff;
-	}
-	.icon:hover path {
-		fill:#fff;
-	}
-	.portfolio__item:hover #icon-wrap .st0{
-		stroke: #fff;
-	}
-			
-
-
-
 </style>
 
 <g class="group">

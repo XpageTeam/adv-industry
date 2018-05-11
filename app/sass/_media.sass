@@ -35,7 +35,13 @@ $output-bourbon-deprecation-warnings: false;
 		.footer
 			margin: 4rem 0 0
 
+	.services-cont
+		margin-bottom: -4rem
+
 @media screen and (max-width: 1440px)
+
+	html 
+		font-size: 95%
 
 	body.inner 
 		.head
@@ -70,6 +76,23 @@ $output-bourbon-deprecation-warnings: false;
 				&--double
 					width: calc((120% - 1rem * 2) / 2)
 
+	.portfolio-two
+		&__list 
+			margin: 0 0 -20px -30px
+		&__item
+			width: calc((100% - 30px * 3) / 3)
+			margin: 0 0 20px 30px
+
+	.singl-worck
+		&__title
+			margin-bottom: 35px
+
+		&__slider
+			margin-bottom: 40px
+
+	.nav-worck
+		margin-top: 40px
+
 @media screen and (max-width: 1400px)
 
 	body.page-services 
@@ -93,6 +116,32 @@ $output-bourbon-deprecation-warnings: false;
 		&__item
 			width: calc((100% - 35px * 3) / 3)
 			margin: 0 0 35px 35px
+
+	.portfolio-two
+
+		&__info
+			margin: 20px 0 10px
+			padding-left: 40px
+
+			&:before 
+				left: 5px
+			&:after 
+				left: 14px
+
+		&__item
+			&-text
+				margin-top: 10px
+
+	.aside-wrap
+		padding: 50px
+
+	.singl-services 
+		.aside
+			width: 345px
+			margin-left: 30px
+
+		&__cont
+			width: calc(100% - 375px)
 
 @media screen and (max-width: 1250px)
 
@@ -160,11 +209,44 @@ $output-bourbon-deprecation-warnings: false;
 			&-hover
 				padding: 1.4rem
 
+	.standart-page
+		&__title
+			margin-bottom: 1.4rem
+
+		&__text
+			margin: 2rem 0 0
+
+	.singl-worck__title 
+		h1
+			font-size: 1.3rem
+			line-height: 1.5rem
+
+	.nav-worck
+		padding: 35px 25px
+
+	.aside-wrap
+		padding: 30px
+
+	.singl-services 
+		.aside
+			width: 320px
+
+		&__cont
+			width: calc(100% - 320px)
+
+	.services-cont
+		max-height: 615px
+		overflow: hidden
+
 
 
 
 
 @media screen and (max-width: 820px)
+	
+	html 
+		font-size: 90%
+
 	.news__one
 		&-img
 			margin-right: 1.4rem
@@ -196,6 +278,17 @@ $output-bourbon-deprecation-warnings: false;
 
 		&__title
 			padding: 0rem 20px 1rem 0
+			width: 100%
+			&-back
+				margin-left: 0
+
+				&:before 
+					margin-right: 1.375rem
+
+		&__crumbs
+			width: 100%
+
+
 
 	.contacts
 		&__header
@@ -226,6 +319,8 @@ $output-bourbon-deprecation-warnings: false;
 				display: none
 			&-hover 
 				position: static
+			&-title
+				margin-top: 20px
 
 			&:hover
 
@@ -236,9 +331,122 @@ $output-bourbon-deprecation-warnings: false;
 					rect, circle, line, polyline, path, polygon
 						stroke: $main-color
 
+				.portfolio-simvol 
+					path
+						stroke: transparent
+						fill: $main-color
+
+			.portfolio__item-hover
+				opacity: 1 !important
+
+
+
+	.footer__top
+		display: none
+
+	.portfolio-two__item
+		width: calc((100% - 30px * 2) / 2)
+
+	.nav-worck 
+		.prev
+			padding-left: 65px
+
+			&:before 
+				left: 30px
+		.next
+			padding-right: 65px
+
+			&:before
+				right: 30px
+
+	.singl-worck__slider 
+		.slick-next, .slick-prev 
+			bottom: 21px
+
+	.video:before
+		bottom: 21px
+
+	.singl-services
+		flex-direction: column-reverse
+
+		.aside
+			width: 100%
+			margin: 0 0 20px 0
+
+		&__cont
+			width: 100%
+
+	.promo
+		&-title
+			margin-bottom: 15px
+		&-text
+			margin-bottom: 25px
+
+			> *:not(:first-child)
+				margin-top: 10px
+
+	.services
+		flex-direction: column
+		margin-left: 0
+
+		&__list
+			margin-top: 40px
+			margin-left: -40px
+
+		.services-current__item
+
+		&-current
+			margin-right: 0
+			margin-left: 80px
+
+			&__list
+				display: flex
+				flex-wrap: wrap
+
+			&__title-icon 
+				margin-left: -80px
+				margin-right: 20px
+
+
+			&__item
+				width: calc((100% - 30px * 3) / 3)
+				margin: 0 0 20px 0 !important
+
+				// &:not(:first-child)
+				// 	margin-top: initial
+
+		&-cont
+			max-height: calc(100vh - 78px)
+			overflow: hidden
+
+	.services-current__item-link
+		opacity: 1 !important
+
+
 
 
 @media screen and (max-width: 660px)
+
+	.title-block__crumbs
+		display: none
+
+	.title-block__title
+		padding: 1rem 20px 1rem 0
+
+	.standart-page__title 
+		h1
+			font-size: 1.1rem
+			line-height: 1.1
+
+	.text-page 
+		h2, h3, h4
+			font-size: 1.1rem
+			line-height: 1.3rem
+
+		h5, h6
+			font-size: 1rem
+			line-height: 1.2rem
+
 
 	.contacts
 		&__header 
@@ -262,8 +470,13 @@ $output-bourbon-deprecation-warnings: false;
 			h1 
 				font-size: 1.4rem
 
-	.paginator__arrow
-		width: 3.25rem
+	.paginator
+		&__arrow
+			width: 3.25rem
+		&__list 
+			li
+				a
+					padding: 0 0.4rem
 
 	.bread-crumbs
 		&__link
@@ -307,6 +520,133 @@ $output-bourbon-deprecation-warnings: false;
 
 	.map
 		height: 250px
+
+	.portfolio
+		&__list
+			margin: 0
+
+		&__item
+			width: 100%
+			margin: 0 0 20px 0
+
+	.portfolio-two
+		&__item
+			width: 100%
+
+		&__info
+			padding-left: 0
+
+			&:before, &:after 
+				display: none
+
+	.slick-arrow
+		height: 30px
+		width: 30px
+
+	.singl-worck
+		&__slider 
+			.slick-prev
+
+				right: 80px
+				bottom: 10px
+			.slick-next
+				bottom: 10px
+				right: 10px
+
+
+
+
+	.video:before
+		left: 15px
+		height: 30px
+		width: 30px
+		bottom: 10px
+		border-radius: 50%
+
+	.nav-worck 
+		.prev
+			padding-left: 30px
+
+			&:before
+				left: 8px
+		.next
+			padding-right: 30px
+			text-align: right
+
+			&:before
+				right: 8px
+
+	.singl-worck__title
+		flex-direction: column-reverse
+		align-items: flex-end
+
+		h1
+			margin-top: 20px
+
+
+	.base-options
+		&__title
+			font-size: 1.2rem
+			line-height: 1.3rem
+			margin-bottom: 20px
+
+	.standard-slider
+		margin-top: 50px
+
+		&__list
+			padding: 10px 0px
+
+		.slick-next, .slick-prev
+			top: -35px
+
+	.advantages-order
+		margin-top: 25px
+
+		&__title
+			font-size: 1.2rem
+			line-height: 1.4rem
+			margin-bottom: 15px
+
+		&__list 
+			margin: 47px 0 -35px 0
+
+		&__item
+			width: 100%
+			margin: 0 0 35px 0
+			padding: 25px 1.4rem 25px 90px
+			background-position: center left 20px
+
+	.singl-services 
+		.text-page 
+			ul li:before
+				margin: 0 5px 0 0
+
+		&__title 
+			h1
+				font-size: 1.3rem
+				line-height: 1.5rem
+
+	.services
+		&-current__item
+			width: 100%
+		&__item
+			width: 100%
+
+		&-cont
+			max-height: 100%
+			overflow: initial
+			margin-bottom: 0
+
+		&__content
+			position: static
+
+	body.page-services 
+		.services-img 
+			img
+				height: auto
+
+
+
 
 
 

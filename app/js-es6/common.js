@@ -27,18 +27,34 @@ $(e => {
 		arrows: true,
 		dots: false,
 		speed: 400,
+		responsive: [
+			{
+				breakpoint: 820,
+				settings: {
+					slidesToShow: 2,
+				},
+				breakpoint: 660,
+				settings: {
+					slidesToShow: 1,
+				},
+			}
+		]
 	});
 
 	
-		$(window).on('load', e => {
-			var setHeight = $('header').innerHeight();
-			$('.services__content').css('top', setHeight);
-		});
+	$(window).on('load', e => {
+		var setHeight = $('header').innerHeight();
+		$('.services__content').css('top', setHeight);
+	});
 
-		$(window).on('resize', e => {
-			var setHeight = $('header').innerHeight();
-			$('.services__content').css('top', setHeight);
-		})
+	$(window).on('resize', e => {
+		var setHeight = $('header').innerHeight();
+		$('.services__content').css('top', setHeight);
+		
+		$('.text-page table').wrap('<div class="table-wrap"></div>');
+	})
+
+	$('.text-page table').wrap('<div class="table-wrap"></div>');
 
 	
 
