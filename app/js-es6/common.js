@@ -41,6 +41,12 @@ $(e => {
 		]
 	});
 
+	$('body').on('click', '.burger', function(){
+		var $this = $(this);
+
+		$('body').toggleClass('mobile-menu--open');
+	});
+
 	
 	$(window).on('load', e => {
 		var setHeight = $('header').innerHeight();
