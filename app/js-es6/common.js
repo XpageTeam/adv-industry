@@ -47,6 +47,33 @@ $(e => {
 		$('body').toggleClass('mobile-menu--open');
 	});
 
+	if($(window).width() < 820){
+		$('.footer__menu').prepend('\
+			<div class="js__menu-close default-btn default-btn--arrow">\
+				<span>Назад</span>\
+			</div>');
+
+		$('.js__menu-close').click(function(){
+			var $this = $(this);
+
+			$this.closest('.footer__menu').removeClass('js__sub');
+		});
+
+		$('.js__menu-close').click(function(){
+			var $this = $(this);
+			$this.closest('.footer__top').removeClass('js__submenu-open');
+		});
+
+		$('body').on('click', '.footer-top__column-title', function(){
+			var $this = $(this);
+
+			$this.next().addClass('js__sub');
+			$this.closest('.footer__top').addClass('js__submenu-open');
+
+		});
+	}
+
+
 	
 	$(window).on('load', e => {
 		var setHeight = $('header').innerHeight();
