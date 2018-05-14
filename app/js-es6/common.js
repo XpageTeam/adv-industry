@@ -14,8 +14,6 @@ $(e => {
 		slide: ".singl-worck__slide",
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		arrows: true,
-		dots: false,
 		fade: true,
 		speed: 400,
 	});
@@ -24,8 +22,6 @@ $(e => {
 		slide: ".standard-slider__item",
 		slidesToShow: 3,
 		slidesToScroll: 1,
-		arrows: true,
-		dots: false,
 		speed: 400,
 		responsive: [
 			{

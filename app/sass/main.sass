@@ -122,10 +122,12 @@ img
 
 .img
 	position: relative
-	max-height: 100vh
+	// max-height: 100vh
 
 	&--3
 		overflow-y: auto
+		// min-height: 100vh
+		max-height: 100vh
 
 		> img
 			width: 100%
@@ -142,6 +144,7 @@ img
 	> img
 		+size(100vw 100vh)
 		object-fit: cover
+		min-height: 460px
 		object-position: top center
 
 	&__text, &__text2
@@ -327,6 +330,7 @@ img
 .main-screen
 	position: relative
 	height: 100vh
+	min-height: 460px
 
 	&__header, &__footer
 		position: absolute
@@ -371,6 +375,8 @@ img
 	max-width: 100%
 	width: 1395px
 	margin: 0 auto
+	box-sizing: content-box
+	padding: 0 2rem
 
 .js__active-slide
 
@@ -698,6 +704,9 @@ img
 	&__top
 		background: #fff
 		padding: rem(75) 0 rem(90)
+
+		.main-wrapper
+			padding: 0
 
 	&__bot
 		padding: 1.9rem 0
