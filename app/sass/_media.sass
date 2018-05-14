@@ -290,7 +290,7 @@ $output-bourbon-deprecation-warnings: false;
 		box-sizing: content-box
 		width: 30px
 		height: 30px
-		padding: 15px
+		padding: 10px 15px
 		background: 0 0
 		border: 0
 		user-select: none
@@ -713,8 +713,23 @@ $output-bourbon-deprecation-warnings: false;
 
 
 @media screen and (max-width: 660px)
+
+	.table-block
+		position: relative
+		margin: rem(22) 0 0
+		&:after
+			content: ""
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 100%;
+			width: 100px;
+			pointer-events: none;
+			background: url('../img/ico-fade.png')
+
 	body.inner .head
-		padding: 1.4rem
+		padding: 10px 1.4rem
+
 	.burger
 		margin-right: -15px
 
@@ -750,6 +765,10 @@ $output-bourbon-deprecation-warnings: false;
 
 	.title-block__title
 		padding: 1rem 20px 1rem 0
+
+		&-back:before
+			height: 33px
+			width: 33px
 
 	.standart-page__title 
 		h1

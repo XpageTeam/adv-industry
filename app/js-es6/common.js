@@ -84,12 +84,11 @@ $(e => {
 		var setHeight = $('header').innerHeight();
 		$('.services__content').css('top', setHeight);
 		
-		$('.text-page table').wrap('<div class="table-wrap"></div>');
+		$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
 	})
 
-	$('.text-page table').wrap('<div class="table-wrap"></div>');
+	$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
 
-	
 
 
 
