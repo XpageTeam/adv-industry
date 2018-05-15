@@ -70,6 +70,12 @@ $(e => {
 		$this.closest('.footer__top').removeClass('js__submenu-open');
 	});
 
+	$('.js__menu-close').click(function(){
+		var $this = $(this);
+
+		$this.closest('.footer__menu').removeClass('js__sub');
+	});
+
 
 	if($(window).width() < 820){
 
@@ -78,11 +84,7 @@ $(e => {
 				<span>Назад</span>\
 			</div>');
 
-		$('body').on('click', '.js__menu-close', function(){
-			var $this = $(this);
-
-			$this.closest('.footer__menu').removeClass('js__sub');
-		});
+		
 
 		
 		$('body').on('click', '.footer-top__column-title', function(){
