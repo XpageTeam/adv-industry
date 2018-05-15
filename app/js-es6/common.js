@@ -1,5 +1,23 @@
 $(window).on("load", e => {
 	$("body").removeClass("loading").addClass("loaded");
+
+	var wow = new WOW(
+	  {
+	    boxClass:     'wow',      // animated element css class (default is wow)
+	    animateClass: 'animated', // animation css class (default is animated)
+	    offset:       0,          // distance to the element when triggering the animation (default is 0)
+	    mobile:       true,       // trigger animations on mobile devices (default is true)
+	    live:         true,       // act on asynchronously loaded content (default is true)
+	    callback:     function(box) {
+	      // the callback is fired every time an animation is started
+	      // the argument that is passed in is the DOM node being animated
+	    },
+	    scrollContainer: null,    // optional scroll container selector, otherwise use window,
+	    resetAnimation: true,     // reset animation on end (default is true)
+	  }
+	);
+
+	wow.init();
 });
 
 let main_slider, 
@@ -47,23 +65,26 @@ $(e => {
 		$('body').toggleClass('mobile-menu--open');
 	});
 
+	$('.js__menu-close').click(function(){
+		var $this = $(this);
+		$this.closest('.footer__top').removeClass('js__submenu-open');
+	});
+
+
 	if($(window).width() < 820){
-		$('.footer__menu').prepend('\
-			<div class="js__menu-close default-btn default-btn--arrow">\
+
+		$('.footer-top__column--double .footer__menu').prepend('\
+			<div class="js__menu-close">\
 				<span>Назад</span>\
 			</div>');
 
-		$('.js__menu-close').click(function(){
+		$('body').on('click', '.js__menu-close', function(){
 			var $this = $(this);
 
 			$this.closest('.footer__menu').removeClass('js__sub');
 		});
 
-		$('.js__menu-close').click(function(){
-			var $this = $(this);
-			$this.closest('.footer__top').removeClass('js__submenu-open');
-		});
-
+		
 		$('body').on('click', '.footer-top__column-title', function(){
 			var $this = $(this);
 
@@ -73,17 +94,24 @@ $(e => {
 		});
 	}
 
+	var menu = $('.footer__top').clone();
+	$('.mobile-menu').prepend(menu);
+
+	$('.portfolio__list .portfolio__item').each(function(i, el){
+		var $this = $(el);
+	});
 
 	
-	$(window).on('load', e => {
+	$(window).on('load resize', e => {
 		var setHeight = $('header').innerHeight();
 		$('.services__content').css('top', setHeight);
 	});
 
+	
+	$('.portfolio__list').addClass('animation');
+
 	$(window).on('resize', e => {
-		var setHeight = $('header').innerHeight();
-		$('.services__content').css('top', setHeight);
-		
+
 		$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
 	})
 
@@ -98,26 +126,40 @@ $(e => {
 		$("body").on("mouseover", ".portfolio__item", function(){
 			var $video = $(this).find('video');
 
+			if(!$video.length){
+				return
+			}
+
 			if($video.attr('src')){
 				$video[0].play();
-			} else {
-				var dataSrc = $video.attr('data-src');
-				$video.attr('src', dataSrc);
+				} else {
+					var dataSrc = $video.attr('data-src');
+					$video.attr('src', dataSrc);
 
-				$video[0].addEventListener('loadedmetadata', () => {
-					$video[0].play();
-				})
-			}
+					$video[0].addEventListener('loadedmetadata', () => {
+						$video[0].play();
+					})
+				}
+			
 
 		});
 
 		$("body").on("mouseleave", ".portfolio__item", function(){
 			var $video = $(this).find('video');
+
+			if(!$video.length){
+				return
+			}
 			$video[0].pause();
 
 			$video[0].currentTime = 0;
 		})
 	}
+
+
+
+
+	
 
 
 	

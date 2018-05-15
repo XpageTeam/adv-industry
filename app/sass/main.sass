@@ -8,9 +8,14 @@ $output-bourbon-deprecation-warnings: false;
 *[v-cloak]
 	display: none
 
+.wow
+	visibility: hidden
+
 .loader, .burger
 	display: none
 
+.mobile-menu
+	display: none
 .logo
 	&-white
 		display: none
@@ -1035,6 +1040,15 @@ img
 		flex-wrap: wrap
 		margin: 0 0 -52px -55px
 
+	.animation
+		.st0, .st1, .st2
+			stroke-dashoffset: 0  //отрисовка svg после анимации wow работает с тормозами
+		.portfolio-simvol
+			opacity: 1
+
+		.portfolio__item-title
+			opacity: 1 
+			transform: translate3d(0, 0, 0)
 
 	&__item
 		display: block
@@ -1044,6 +1058,21 @@ img
 		border: 1px solid $border-color
 		text-decoration: none
 		color: #000
+
+
+		.st0, .st1, .st2
+			stroke-dasharray: 4800
+			stroke-dashoffset: 4800
+			transition: stroke-dashoffset 3s ease
+			transition-delay: .7s
+		.portfolio-simvol
+			opacity: 0
+			transition: opacity .3s ease
+			transition-delay: .7s
+
+
+	
+			
 
 		&-img
 			position: relative
@@ -1085,14 +1114,6 @@ img
 					pointer-events: none
 
 
-
-
-
-
-
-
-
-
 		&-title
 			font-size: rem(14)
 			line-height: rem(18)
@@ -1100,6 +1121,10 @@ img
 			font-weight: 500
 			margin-top: auto
 			text-align: center
+			transform: translate3d(0, 100%, 0)
+			opacity: 0
+			transition: transform 1s ease, opacity .3s ease
+			transition-delay: 1.4s ease
 
 		&-logo 
 			display: flex
@@ -1133,7 +1158,7 @@ img
 
 
 
-		&:hover 
+		&:hover
 			g 
 				stroke: #fff
 

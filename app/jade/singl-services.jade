@@ -6,6 +6,7 @@ html(lang="ru")
 		include inc/head.jade
 		include inc/css.jade
 	body.inner.loading
+		.mobile-menu
 		#page-wr
 			include inc/header.jade
 			#content
@@ -17,7 +18,7 @@ html(lang="ru")
 									a.title-block__title-back Вернуться к услугам
 								.title-block__crumbs
 									.bread-crumbs
-										a.bread-crumbs__link(href="#") Главная
+										a.bread-crumbs__link(href="#")
 										span.bread-crumbs__this Портфолио
 					.inner-content__content
 						.wrapper
@@ -64,7 +65,7 @@ html(lang="ru")
 											.promo-title Закажите изготовление вывески в Екатеринбурге по приемлемой цене!
 											.promo-text
 												p Для консультации и заказа звоните нам по телефонам:<br> +7 (343) 200-90-91, 200-30-31
-												p или воспользуйтесь возможностью заказать <a href="#">обратный звонок</a>
+												p или воспользуйтесь возможностью заказать <a href="#" class="">обратный звонок</a>
 											a(href="").default-btn.default-btn--arrow.fancybox Заказать услугу
 
 							.standard-slider
