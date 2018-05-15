@@ -1,7 +1,6 @@
+$output-bourbon-deprecation-warnings: false
 @import "bourbon"
 @import "vars"
-$output-bourbon-deprecation-warnings: false;
-
 
 @media screen and (max-width: 1600px)
 	
@@ -30,22 +29,34 @@ $output-bourbon-deprecation-warnings: false;
 
 	.paginator
 		margin: 3.8125rem 0 0
-
-	body.inner 
-		.footer
-			margin: 4rem 0 0
+	.footer
+		margin: 4rem 0 0
 
 	.services-cont
 		margin-bottom: -4rem
+
+@media screen and (max-width: 1480px)
+	.main-wrapper
+		box-sizing: border-box
 
 @media screen and (max-width: 1440px)
 
 	html 
 		font-size: 95%
 
-	body.inner 
-		.head
-			padding: 50px 2rem
+	.head, .main-screen__footer
+		padding: 50px 2rem
+
+	.img-slider
+
+		&__dots
+			padding-right: 2rem
+
+	.text2
+		// padding: 0 2rem
+
+		&__svg
+			margin-right: 2rem
 
 	
 	.page-services
@@ -143,6 +154,48 @@ $output-bourbon-deprecation-warnings: false;
 		&__cont
 			width: calc(100% - 375px)
 
+	.top-nav
+		padding: 3rem 2rem 4rem
+
+@media screen and (max-width: 1300px)
+	html
+		font-size: 94%
+
+	.img-slider
+
+		&__dots
+
+			.slick-dots
+
+				button
+
+					&:before
+						width: auto
+						margin-right: 0
+
+	.main-port
+		grid-gap: 22px
+
+	.all-services
+
+		&:before
+			width: auto
+			margin-right: 0
+
+	.img__text2 
+
+		.main-wrapper
+			box-sizing: border-box
+			padding-right: 275px
+
+	.text2
+
+		&__svg
+			width: 200px
+
+			svg
+				max-width: 100%
+
 @media screen and (max-width: 1250px)
 
 	.services__item
@@ -153,18 +206,27 @@ $output-bourbon-deprecation-warnings: false;
 		.title-block__title
 			padding: 0rem 0px 1rem 0
 
+	.top-nav
 
-@media screen and (max-width: 1200px)
+		&__menu
+
+			&-link
+				padding: 9px 14px
+				font-size: 15px
 	
-	body.inner 
-		.head
-			padding: 35px 2rem
+@media screen and (max-width: 1200px) 
+	.head, .main-screen__footer
+		padding: 35px 2rem
 
 	.logo
 		img
 			width: 60%
 
+	.text
 
+		&__text
+			font-size: rem(32)
+			margin-right: 1.2rem
 
 	body.page-services
 
@@ -237,10 +299,283 @@ $output-bourbon-deprecation-warnings: false;
 	.services-cont
 		max-height: 615px
 		overflow: hidden
+	
+@media screen and (max-width: 1100px)
+	html
+		font-size: 96%
 
+	.top-nav
 
+		&__menu
 
+			&-link
+				text-align: center
 
+			li
+				margin-right: 10px
+
+	.main-port__one
+
+		&:first-child 
+
+			.port-one
+
+				&__desc
+					padding: 0 0 0.875rem 2.125rem
+					margin: 0 0 0 0.875rem
+
+		&:nth-child(2)
+
+			.port-one
+
+				&__desc
+					margin-left: 1.4375rem
+					padding: 2rem 0 0
+
+		&:nth-child(3)
+			.port-one
+
+				&__desc
+					right: calc(100% + 20px)
+					width: 61.82993%
+					padding: 0 2.125rem 0 0
+
+		&:nth-child(4)
+
+			.port-one
+
+				&__desc
+					padding: 0px 0 0 2rem
+					margin: 22px 0 0 0.125rem
+
+	.main-port
+
+		&__link
+			margin: 1.25rem 0 0
+
+	.main-about
+
+		&__cont
+			margin: 1.4375rem 0 0
+	
+	.main-screen
+
+		&__footer
+			position: fixed
+
+@media screen and (max-width: 990px)
+	.main-screen
+		height: auto
+		min-height: 0
+
+	body
+		overflow: auto
+
+		&.main
+
+			.head
+				position: static
+
+	.img
+
+		&--2
+			margin: 2.4rem 0 0
+
+		&--3
+			max-height: none
+			overflow: visible
+
+		> img
+			height: 100%
+			width: 100%
+			display: none
+
+		&__text, &__text2
+			position: static
+
+			.wrapper
+				width: auto
+				margin: 0
+				flex-direction: column
+				align-items: flex-start
+				box-sizing: border-box
+
+		&__text2
+
+			.main-wrapper
+				padding-right: 2rem
+
+	.text
+		text-align: center
+		flex-direction: column
+		align-items: center
+
+		&__btn
+			margin: 2rem 0 0
+
+	.fil0, .cls-1, .cls-4 
+		stroke-dashoffset: 0;
+
+	.simvol 
+		opacity: 1
+
+	.text2
+
+		&__svg
+			width: 135px
+
+		&__text
+			max-width: 100%
+			margin-right: 21px
+
+			&-title, &-text, &-link, &-text div
+				opacity: 1 !important
+				transform: translate3d(0, 0, 0) !important
+
+			&-title
+				margin-bottom: 1rem
+
+			&-link
+				margin: 14px 0 0
+
+	.play-btn
+		margin: 0
+		opacity: 1
+
+		&__text
+			width: 165px
+			padding: 0 37px 0 60px
+
+	.text__text, .text__text div
+		transition-delay: 0s !important
+		transform: translate3d(0, 0, 0) !important
+		opacity: 1 !important
+
+	.img-slider__dots
+		display: none !important
+
+	.main-screen
+
+		&__footer
+			position: static
+
+		&__slider
+
+			.slick
+
+				&-list
+					overflow: hidden
+
+				&-slide
+					float: none
+					width: auto !important
+					opacity: 1 !important
+					position: static !important
+
+				&-track
+					width: 100% !important
+
+					&:before, &:after
+						display: none
+
+	.main-port
+		display: flex
+		flex-wrap: wrap
+		margin: 0 0 -1rem -1rem
+
+		&__one
+			width: calc((100% - 1rem * 2) / 2)
+			margin: 0 0 1rem 1rem
+
+	.port-one
+		flex-direction: column-reverse !important
+
+		&__title, &__subtitle
+			opacity: 1
+
+			div
+				opacity: 1 
+				transform: none !important
+
+		&__desc
+			width: calc(100% - 0.125rem) !important
+			padding: 0px 0 0 2rem !important
+			margin: 22px 0 0 0.125rem !important
+			position: relative !important
+			left: auto !important
+			bottom: auto !important
+			top: auto !important
+			right: auto !important
+
+			&:before, &:after
+				transform: none !important
+				opacity: 1 !important
+				right: auto !important
+
+			&:before
+				left: 0 !important
+				top: 0 !important
+
+			&:after
+				top: auto !important
+				bottom: 100% !important
+				left: 9px !important
+				width: 1px !important
+				height: 21px !important
+
+		&__img
+			filter: none
+
+	.top-nav
+		justify-content: center
+		display: flex
+		padding: 0 2rem 2rem
+		position: relative
+		z-index: 5
+
+		&.js__opened
+			padding-top: 33px
+
+			.top-nav
+
+				&__menu
+					position: absolute
+					top: 0
+					left: 50%
+					transform: translate3d(-50%, 0, 0)
+					height: auto
+
+		&__menu
+			flex-direction: column
+			align-items: stretch
+			height: 33px
+			overflow: hidden
+			background: #fff
+
+			&-link
+				text-align: left
+				padding-right: 2rem
+
+			li
+				margin-right: 0
+
+				&:not(.active)
+					// display: none
+
+				&.active
+					order: -1
+
+					a
+						position: relative
+
+						&:after
+							content: ""
+							background: url("../img/ico-select-white-arrow.png") no-repeat
+							position: absolute
+							+size(6px 11px)
+							right: 16px
+							top: calc(50% - 5px)
+							transform: rotate(90deg)
 
 @media screen and (max-width: 820px)
 	
@@ -308,28 +643,23 @@ $output-bourbon-deprecation-warnings: false;
 			vertical-align: bottom
 			background: $main-color
 			transition: background .2s .4s
+
+			&:before, &:after
+				content: ""
+				position: absolute
+				left: 0
+				width: 100%
+				height: 2px
+				background: $main-color
+				transform-origin: 50% 50%
+				transition: top .3s .3s,transform .3s
+
 			&:before
 				border-radius: 0
 				transform: none
-				content: ""
-				position: absolute
-				left: 0
 				top: 8px
-				width: 100%
-				height: 2px
-				background: $main-color
-				transform-origin: 50% 50%
-				transition: top .3s .3s,transform .3s
 			&:after
-				content: ""
-				position: absolute
-				left: 0
 				top: -8px
-				width: 100%
-				height: 2px
-				background: $main-color
-				transform-origin: 50% 50%
-				transition: top .3s .3s,transform .3s
 
 	.mobile-menu--open
 		.head 
@@ -512,9 +842,8 @@ $output-bourbon-deprecation-warnings: false;
 		margin: 1.8125rem 0 0
 		padding: 1rem 0
 
-	body.inner 
-		.footer
-			margin: 2rem 0 0
+	.footer
+		margin: 2rem 0 0
 
 	.title-block
 		padding: 0 1.4rem
@@ -661,12 +990,11 @@ $output-bourbon-deprecation-warnings: false;
 	.services-current__item-link
 		opacity: 1 !important
 
-	body.inner 
-		.footer
-			background: #fff
+	.footer
+		background: #fff
 
-		.head
-			padding: 10px 2rem 1.4rem
+	.head
+		padding: 10px 2rem 1.4rem
 
 
 
@@ -744,6 +1072,34 @@ $output-bourbon-deprecation-warnings: false;
 			padding: 7px 20px 7px 51px
 			font-size: 15px
 
+
+	.main-wrapper
+		padding: 0 21px !important
+
+	.main-screen
+
+		&__footer
+			padding: 1rem 21px
+			flex-direction: column
+
+			&-contacts
+				margin: 13px 0 0
+
+	.img
+
+		&--3
+			margin: 15px 0 0
+
+		&__text2
+
+			.main-wrapper
+				flex-direction: column
+
+	.main-port
+		flex-direction: column
+
+		&__one
+			width: 100%
 
 	.title-block__crumbs
 		display: none
@@ -998,13 +1354,3 @@ $output-bourbon-deprecation-warnings: false;
 
 		&__item
 			font-weight: 500
-
-	
-
-
-
-
-
-
-
-

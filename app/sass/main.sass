@@ -106,13 +106,14 @@ img
 			+size(100% 1px)
 			transition: opacity .3s ease, transform .3s ease
 			opacity: 0
-			transform: translate3d(0, 5px, 0)
+			transform: scale3d(0, 1, 1)
+			transform-origin: left
 
 		&:hover, &:focus, &.active
 
 			&:after
 				opacity: 1
-				transform: translate3d(0, 0, 0)
+				transform: scale3d(1, 1, 1)
 
 
 	li
@@ -122,10 +123,12 @@ img
 
 .img
 	position: relative
-	max-height: 100vh
+	// max-height: 100vh
 
 	&--3
 		overflow-y: auto
+		// min-height: 100vh
+		max-height: 100vh
 
 		> img
 			width: 100%
@@ -142,6 +145,7 @@ img
 	> img
 		+size(100vw 100vh)
 		object-fit: cover
+		min-height: 460px
 		object-position: top center
 
 	&__text, &__text2
@@ -206,8 +210,9 @@ img
 
 .link-more
 	display: inline-flex
-	flex-wrap: wrap
+	// flex-wrap: wrap
 	align-items: center
+	text-align: left
 	color: #000
 	text-decoration: none
 
@@ -327,6 +332,7 @@ img
 .main-screen
 	position: relative
 	height: 100vh
+	min-height: 460px
 
 	&__header, &__footer
 		position: absolute
@@ -358,8 +364,9 @@ img
 
 		span
 
-			span
-				color: $main-color
+		a
+			// color: $main-color
+			text-decoration: none
 
 		div
 			transition: transform .7s ease, opacity .7s ease
@@ -371,6 +378,8 @@ img
 	max-width: 100%
 	width: 1395px
 	margin: 0 auto
+	box-sizing: content-box
+	padding: 0 2rem
 
 .js__active-slide
 
@@ -499,6 +508,9 @@ img
 
 		.port-one
 
+			&__img
+				filter: blur(0)
+
 			&__title, &__subtitle div, &__title div, &__img, &__subtitle
 				transform: translate3d(0, 0, 0) !important
 				opacity: 1
@@ -517,8 +529,8 @@ img
 	&__img
 		flex: none
 		max-width: 100%
-		transition: opacity .5s ease
-		opacity: 0
+		filter: blur(5px)
+		transition: filter 3s ease
 
 		img
 			width: 100%
@@ -593,10 +605,15 @@ img
 				flex-direction: row-reverse
 				align-items: flex-end
 
+				&__img
+					flex: 1 1 auto
+
 				&__desc
 					flex: 1 1 auto
 					padding: 43px 0 0 
 					margin-left: rem(39)
+					width: 227px
+					flex: none
 
 					&:before
 						left: 0
@@ -690,6 +707,10 @@ img
 			background: url("../img/ico-big-bot-arrow.png") center no-repeat
 			+size(35px)
 			border: none
+			transition: transform .3s ease
+
+			&.js__active
+				transform: rotate(180deg)
 
 .footer
 	font-size: 14px
@@ -698,6 +719,9 @@ img
 	&__top
 		background: #fff
 		padding: rem(75) 0 rem(90)
+
+		.main-wrapper
+			padding: 0
 
 	&__bot
 		padding: 1.9rem 0
@@ -788,14 +812,23 @@ img
 		background: url("../img/ico-time.png") top 6px left no-repeat
 
 .top-nav
-	padding: rem(87) 0 rem(115)
+	padding: rem(87) 2rem rem(115)
 	margin: 0 auto
 	max-width: 1230px
+	box-sizing: content-box
 
 	&__menu
 		display: flex
 		align-items: center
 		justify-content: space-between
+
+		li
+
+			&.active
+
+				a
+					background: $main-color
+					color: #fff
 
 		&-link
 			color: #000
@@ -807,7 +840,7 @@ img
 			padding: 13px 21px
 			display: block
 
-			&:hover, &:focus, &.active
+			&:hover, &:focus, 
 				background: $main-color
 				color: #fff
 
