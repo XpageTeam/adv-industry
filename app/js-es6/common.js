@@ -10,6 +10,28 @@ let main_slider,
 	lastSlide = 0;
 
 $(e => {
+	/** Адаптив **/
+
+		$("body").on("click", ".top-nav__menu .active a", e =>{
+			$(".top-nav").toggleClass("js__opened");
+
+			return false;
+		});
+
+		$("body").on("click", ".top-nav__menu li:not(.active) a", function(){
+			let $this = $(this);
+
+			$this.closest(".top-nav__menu").find(".active").removeClass("active");
+
+			$this.closest("li").addClass("active");
+
+			$(".top-nav").removeClass("js__opened");
+
+			return false;
+		});
+
+	/** Адаптив **/
+
 	$(".singl-worck__slider").slick({
 		slide: ".singl-worck__slide",
 		slidesToShow: 1,
@@ -35,6 +57,14 @@ $(e => {
 				},
 			}
 		]
+	});
+
+	$(".main-about__more-btn").click(function(){
+		let $this = $(this);
+
+		$this.toggleClass("js__active");
+
+		$(".main-about__text").toggleClass("js__opened");
 	});
 
 	$('body').on('click', '.burger', function(){
@@ -103,6 +133,11 @@ $(e => {
 		selector: $(".play-btn__btn"),
 		delay: 1100,
 	});
+
+	if ($(window).width() <= 990)
+		setTimeout(e => {
+			play.block();
+		}, 2200)
 
 	$(".text__text p, .text2__text-text p").each((i, el) => {
 		let $this = $(el);
@@ -232,6 +267,7 @@ class playBtn{
 		this.radius = $(this.el).width() / 2;
 		this.offset = 0;
 		this.interval;
+		this.blocking = false;
 		// this.printTriangle();
 
 		setTimeout(e => {
@@ -240,6 +276,8 @@ class playBtn{
 	}
 
 	clear(){
+		if (this.blocking)
+			return
 		this.stopAnimate();
 		this.offset = 0;
 		this.context.clearRect(0, 0, $(this.el).width(), $(this.el).width());
@@ -261,6 +299,9 @@ class playBtn{
 	}
 
 	printBorder(start, end, width){
+		if (this.blocking)
+			return
+
 		let ctx = this.context;
 
 		ctx.beginPath();
@@ -271,6 +312,8 @@ class playBtn{
 		ctx.fill();
 		ctx.stroke();
 		ctx.closePath();
+
+		return this
 	}
 	animate(){
 		this.printBorder(this.offset, this.offset + 0.045);
@@ -279,6 +322,10 @@ class playBtn{
 
 		if (this.offset > Math.PI * 2)
 			this.stopAnimate();
+	}
+
+	block(){
+		this.blocking = true;
 	}
 }
 
@@ -301,55 +348,59 @@ function removeMouseWheelHandler(){
 function MouseWheelHandler(e) {
 	e = window.event || e;
 
-	if (bloking){
+	if (bloking || $(window).width() <= 990)
 		return
-	}
 
 	var delta = Math.max(-1, Math.min(1,
 			(e.wheelDelta || -e.deltaY || -e.detail)));
 
-	if (delta < 0){
-		if (main_slider.slick("slickCurrentSlide") != 0 &&  curScreen == 1){
-			// removeMouseWheelHandler();
-			curScreen = 2;
-
-			let scrollTime = 300;
-
-			$("html, body").animate({
-				scrollTop: $(".img--3").offset().top
-			}, scrollTime);
-
-			mainPortImgs.startAnimate();
-
-			setTimeout(e => {
-				$(".main-port").addClass("js__animated");
-			}, scrollTime);
-
-		}else if(curScreen == 1){
-			e.preventDefault();
-			if (lastSlide > 1)
-				main_slider.slick("slickGoTo", lastSlide);
-			else
-				main_slider.slick("slickNext");
-		}
-	}
-	else{
-		if ($(window).scrollTop() - $(window).height() <= 0 && 
-			curScreen == 2 && $(".img--3")[0].scrollTop == 0){
-			curScreen = 1;
-			$("html, body").animate({
-				scrollTop: 0
-			}, 300);
-
-			mainPortImgs.hide();
-
-		}else if (curScreen != 2){
-			e.preventDefault();
-
-			main_slider.slick("slickGoTo", 0);
-		}
-	}
+	if (delta < 0)
+		scrollToBot(e)
+	else
+		scrollToTop(e)
 }
+
+const scrollToBot = e => {
+	if (main_slider.slick("slickCurrentSlide") != 0 &&  curScreen == 1){
+		// removeMouseWheelHandler();
+		curScreen = 2;
+
+		let scrollTime = 300;
+
+		$("html, body").animate({
+			scrollTop: $(".img--3").offset().top
+		}, scrollTime);
+
+		mainPortImgs.startAnimate();
+
+		setTimeout(e => {
+			$(".main-port").addClass("js__animated");
+		}, scrollTime);
+
+	}else if(curScreen == 1){
+		e.preventDefault();
+		if (lastSlide > 1)
+			main_slider.slick("slickGoTo", lastSlide);
+		else
+			main_slider.slick("slickNext");
+	}
+},
+scrollToTop = e => {
+	if ($(window).scrollTop() - $(window).height() <= 0 && 
+		curScreen == 2 && $(".img--3")[0].scrollTop == 0){
+		curScreen = 1;
+		$("html, body").animate({
+			scrollTop: 0
+		}, 300);
+
+		mainPortImgs.hide();
+
+	}else if (curScreen != 2){
+		e.preventDefault();
+
+		main_slider.slick("slickGoTo", 0);
+	}
+};
 
 class stringEffect{
 	set settings(settings){
@@ -415,7 +466,7 @@ class stringEffect{
 	wrapWords(){
 		this.beforeStart();
 
-		let textArr = this.$el.html().split(" ");
+		let textArr = this.$el.html().split(/\s+(?![^<>]*>)/g);
 
 		this.$el.html("");
 
@@ -560,6 +611,39 @@ class mainPort{
 	}
 }
 
-$(window).on("scroll toucmove", e => {
-	// mainPortImgs.sshow();
+let touchstartY = 0;
+
+document.addEventListener("touchstart", e => {
+	touchstartY = e.touches[0].screenY;
+});
+
+document.addEventListener("touchmove", e => {
+
+	if (bloking || $(window).width() <= 990)
+		return
+
+	if ($("body").hasClass("main")){
+		let amountMovedY = e.touches[0].screenY - touchstartY;
+
+		if (curScreen != 2)
+			e.preventDefault();
+
+		if (Math.abs(amountMovedY) < 150)
+			return
+
+
+		if (amountMovedY < 0){
+			scrollToBot(e);
+		}
+		else{
+			scrollToTop(e);
+		}
+	}
+});
+
+$(window).on("resize", e => {
+	if (curScreen == 2)
+		setTimeout(e => {
+			window.scrollTo(0, $(".img--3").offset().top)
+		}, 100)
 });
