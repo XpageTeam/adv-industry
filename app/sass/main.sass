@@ -8,9 +8,14 @@ $output-bourbon-deprecation-warnings: false;
 *[v-cloak]
 	display: none
 
+.wow
+	visibility: hidden
+
 .loader, .burger
 	display: none
 
+.mobile-menu
+	display: none
 .logo
 	&-white
 		display: none
@@ -921,6 +926,10 @@ img
 
 		&:first-child
 			padding-left: rem(48)
+			margin-right: 0
+
+			&:after 
+				display: none
 
 			&:before
 				content: ""
@@ -1064,6 +1073,15 @@ img
 		flex-wrap: wrap
 		margin: 0 0 -52px -55px
 
+	.animation
+		.st0, .st1, .st2
+			stroke-dashoffset: 0  //отрисовка svg после анимации wow работает с тормозами
+		.portfolio-simvol
+			opacity: 1
+
+		.portfolio__item-title
+			opacity: 1 
+			transform: translate3d(0, 0, 0)
 
 	&__item
 		display: block
@@ -1073,6 +1091,21 @@ img
 		border: 1px solid $border-color
 		text-decoration: none
 		color: #000
+
+
+		.st0, .st1, .st2
+			stroke-dasharray: 4800
+			stroke-dashoffset: 4800
+			transition: stroke-dashoffset 3s ease
+			transition-delay: .7s
+		.portfolio-simvol
+			opacity: 0
+			transition: opacity .3s ease
+			transition-delay: .7s
+
+
+	
+			
 
 		&-img
 			position: relative
@@ -1114,14 +1147,6 @@ img
 					pointer-events: none
 
 
-
-
-
-
-
-
-
-
 		&-title
 			font-size: rem(14)
 			line-height: rem(18)
@@ -1129,6 +1154,10 @@ img
 			font-weight: 500
 			margin-top: auto
 			text-align: center
+			transform: translate3d(0, 100%, 0)
+			opacity: 0
+			transition: transform 1s ease, opacity .3s ease
+			transition-delay: 1.4s ease
 
 		&-logo 
 			display: flex
@@ -1162,7 +1191,7 @@ img
 
 
 
-		&:hover 
+		&:hover
 			g 
 				stroke: #fff
 
@@ -1259,6 +1288,11 @@ body.page-services
 		position: absolute
 		top: 0
 		left: 0
+		background: transparent
+
+	#logo 
+		.st1
+			fill: #fff
 
 	.logo
 		&-base
@@ -1293,6 +1327,37 @@ body.page-services
 		position: relative
 		margin-bottom: -5rem
 
+		.video-cont
+			// position: relative
+			// padding-top: 56%
+			position: relative
+			padding-bottom: 54.25%
+			height: 0
+			overflow: hidden
+
+			&:before 
+				content: ""
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background: rgba(#000, .7)
+				z-index: 1
+
+		video 
+			// position: absolute 
+			// top: 0
+			// left: 0
+			// width: 100%
+			// height: 100%
+			position: absolute
+			top: 50%
+			left: 50%
+			min-width: 100%
+			min-height: 100%
+			transform: translate(-50%, -50%)
+
 	&__content
 		position: absolute
 		top: 0
@@ -1300,6 +1365,7 @@ body.page-services
 		bottom: 0
 		width: 100%
 		color: #fff
+		z-index: 2
 
 	&-current
 		margin-right: 135px
@@ -1362,15 +1428,16 @@ body.page-services
 			margin-left: 30px
 			font-size: rem(14)
 			text-transform: uppercase
+			padding: 5px 0
 
 			&:before
 				content: ""
 				position: absolute
-				bottom: -3px
+				bottom: 0
 				width: 100%
 				height: 1px
 				background: currentColor
-				transform: translateY(5px)
+				transform: translateY(3px)
 				opacity: 0
 				transition-delay: .3s
 				transition: .3s ease

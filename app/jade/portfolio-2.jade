@@ -6,6 +6,7 @@ html(lang="ru")
 		include inc/head.jade
 		include inc/css.jade
 	body.inner.loading
+		.mobile-menu
 		#page-wr
 			include inc/header.jade
 			#content
@@ -17,7 +18,7 @@ html(lang="ru")
 									h1 Крышные установки
 								.title-block__crumbs
 									.bread-crumbs
-										a.bread-crumbs__link(href="#") Главная
+										a.bread-crumbs__link(href="#")
 										a.bread-crumbs__link(href="#") Портфолио
 										span.bread-crumbs__this Крышные установки
 					.inner-content__content
@@ -25,10 +26,10 @@ html(lang="ru")
 							.portfolio-two
 								.portfolio-two__list
 									each portfolio, i in [{title: 'Объемные буквы из нержавеющей стали (золото), контражурная подсветка', text:"Объемные буквы LIU JO"}, {title:"Оформление входной группы", text:"Ресторан 10 dieci"}, {title:"Объемные буквы из нержавеющей стали (золото), контражурная подсветка", text:"Объемные буквы LIU JO"}, {title:"Оформление входной группы", text:"Ресторан 10 dieci"}, {title:"Объемные буквы из нержавеющей стали (золото), контражурная подсветка", text:"Объемные буквы LIU JO"}, {title:"Оформление входной группы", text:"Ресторан 10 dieci"}, {title:"Объемные буквы из нержавеющей стали (золото), контражурная подсветка", text:"Объемные буквы LIU JO"}, {title:"Оформление входной группы", text:"Ресторан 10 dieci"}, {title:"Объемные буквы из нержавеющей стали (золото), контражурная подсветка", text:"Объемные буквы LIU JO"}]
-										a(href="#").portfolio-two__item
+										a(href="#" data-wow-duration="2s" data-wow-offset="20").portfolio-two__item.wow.fadeInUp.animated
 											figure.portfolio-two__item-img
 												img(src="img/photos/portfolio-two-"+(i+1)+".jpg", alt="")
-											.portfolio-two__info
+											.portfolio-two__info.wow.fadeInDown.animated(data-wow-duration=".5s" data-wow-offset="20")
 												.portfolio-two__item-title=portfolio.title
 												.portfolio-two__item-text=portfolio.text
 

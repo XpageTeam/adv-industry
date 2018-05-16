@@ -217,6 +217,10 @@ $output-bourbon-deprecation-warnings: false
 @media screen and (max-width: 1200px) 
 	.head, .main-screen__footer
 		padding: 35px 2rem
+	.services-cont 
+		.video-cont
+			position: relative
+			padding-bottom: 61.25%
 
 	.logo
 		img
@@ -581,39 +585,157 @@ $output-bourbon-deprecation-warnings: false
 	
 	html 
 		font-size: 90%
+	#logo 
+		width: 60%
+		
+	.services-cont 
+		.video-cont
+			padding-top: 100%
+
+	.title-block__title-back:before
+		height: 40px
+		width: 40px
 
 	.head__menu
 		display: none
 
-	.footer__top
-		display: flex
-		pointer-events: none
+	.mobile-menu
+		display: block
 
-		position: absolute
-		top: 0
-		left: 0
-		bottom: 0
-		right: 0
-		width: 0
+	.footer
 		z-index: 10
-		background: #fff
-		opacity: 0
-		transition: opacity 1s ease
+
+		.footer__top
+			display: none
+		&__top
+			display: flex
+			position: absolute
+			top: 0
+			right: 0
+			width: 320px
+			z-index: 10
+			background: #fff
+			z-index: -1
+			padding: 0
+			height: 100%
+			overflow-x: hidden
+
+		&-menu
+			z-index: 11
+			&__link
+				font-size: rem(16)
+				padding: 10px
+				font-weight: 500
+				text-transform: uppercase
+
+				color: currentColor
+				padding: 10px
+				display: block
+				cursor: pointer
+				text-align: left
+				border-top: 1px solid #b7b7b7
+
+		&-top
+			padding: 0
+
+			&__column-title 
+				a
+					display: block
+					color: #000 !important
+					text-decoration: none
+					font-weight: 500
+					font-size: rem(16)
+					text-decoration: none
+					border: none
+					padding: 10px
+					text-transform: uppercase
+					text-align: left
+
 
 
 	.footer-top
-		height: 100%
-		align-items: center
-		justify-content: center
+		flex-direction: column
 
-		font-size: rem(25)
-		font-weight: 500
-		text-transform: uppercase
-		color: #000
+		&__column
+			width: 100%
+			text-align: center
+			margin: 0
 
-		opacity: 0
-		transition: opacity 1s ease
-		transition-delay: 2s
+
+			&-title
+				margin-bottom: 0
+
+				&.empty
+					display: none
+
+
+
+			&:last-child
+				
+				.footer
+					&-top__column-title
+						display: none
+
+				.f-address
+					display: none
+				.f-address, .f-phones, .f-time
+					background: none
+					padding: 10px
+					font-size: rem(16)
+					line-height: rem(20)
+					text-align: left
+					color: #000
+					display: none
+
+				.f-contacts__one
+					margin: 0 !important
+
+	.soc
+		text-align: left
+		padding: 0 10px
+		&__link
+			height: 35px
+			width: 35px
+
+	.footer-top
+		&__column:nth-child(2)
+
+			.footer__menu
+				transform: translate3d(0, 0, 0)
+	
+	.footer-top__column--double
+		position: relative
+
+		&:after
+			content: ""
+			position: absolute
+			right: 10px
+			top: 14px
+			+size(10px)
+			border: 
+				top: 1px solid $main-color
+				right: 1px solid $main-color
+			transform: rotate(45deg)
+
+		.footer__menu
+			transform: translate3d(100%, 0, 0)
+			transition: transform .3s ease
+
+	.js__submenu-open
+		.footer__menu.js__sub
+			transform: translate3d(0, 0, 0)
+
+
+	.footer-menu 
+
+		li
+			&:not(:first-child)
+				margin: 0
+
+
+	#page-wr
+		transition: transform .3s ease
+		z-index: 11
 
 
 	.burger
@@ -625,7 +747,7 @@ $output-bourbon-deprecation-warnings: false
 		box-sizing: content-box
 		width: 30px
 		height: 30px
-		padding: 15px
+		padding: 10px 15px
 		background: 0 0
 		border: 0
 		user-select: none
@@ -662,75 +784,16 @@ $output-bourbon-deprecation-warnings: false
 				top: -8px
 
 	.mobile-menu--open
+		overflow: hidden
 		.head 
 			z-index: 11
-		#content
-			display: none
-		.footer-top
-			flex-direction: column
-			padding: 125px 0 10px
-
-			&__column
-				width: 100%
-				text-align: center
-				margin: 0
-
-
-				&-title
-					margin-bottom: 0
-
-					&.empty
-						display: none
-
-
-
-				&:last-child
-					display: none 
-
-				&--double
-					// .footer__menu
-					// 	display: none
-		.footer-menu 
-			li
-				&:not(:first-child)
-					margin: 0
-
-		.main-wrapper
-			display: flex
-			align-items: center
-			justify-content: center
-			flex: 1 1 auto
+		#page-wr
+			transform: translate3d(-320px, 0, 0)
 
 		.footer__top
-			opacity: 1
-			pointer-events: all
-			width: 100%
+			z-index: 1
+			transform: translate3d(0,0,0)
 		
-		.footer-top
-			opacity: 1
-			transition-delay: 2s
-
-			
-
-			&__column-title 
-				a
-					display: block
-					color: currentColor
-					text-decoration: none
-					font-weight: 500
-					font-size: 25px
-					text-decoration: none
-					border: none
-					padding: 10px 0
-
-		.footer-menu__link
-			color: currentColor
-			padding: 10px 0
-			display: block
-			cursor: pointer
-
-		.footer__soc
-			display: none
 
 		.menu-mobile
 			overflow-y: scroll
@@ -772,53 +835,41 @@ $output-bourbon-deprecation-warnings: false
 		.footer-top__column--double
 			z-index: 11
 
-		
 
-	.footer-menu--double
-		display: flex
-		flex-direction: column
-		align-items: center
-		justify-content: center
-		flex: 1 1 auto
+
 	.footer-top__column--double
 		.footer__menu
-			display: flex !important
-			opacity: 0
-			pointer-events: none
-			transition: opacity .3s ease
-
 			position: absolute
-			top: 0;
+			top: 0
 			left: 0
-			bottom: 0
-			right: 0
+			display: flex !important
+			transition: transform .3s ease
 			background: #fff
-			z-index: 10
-
-	.js__sub
-		.js__menu-close
 			display: flex
-			align-self: flex-start
-			transform: translate3d(0, 0, 0)
+			flex-direction: column
 
-		&.footer__menu
-			opacity: 1
-			pointer-events: all
-			// display: flex !important
+
+
 			
-
 	.js__menu-close
-		// display: none
-		transform: translate3d(0, -200%, 0)
+		position: relative
 		transition: transform .3s ease
 		transition-delay: .3s
-		font-size: rem(18)
-		position: absolute
-		top: 1.4rem
-		left: 1.4rem
-		padding-left: 57px
-		padding-right: 29px
-		background: url('../img/ico-white-arrow-back.png') no-repeat center left 27px, $main-color !important
+		font-size: rem(16)
+		font-weight: 500
+		padding: 10px
+		background: none !important
+
+		&:after
+			content: ""
+			position: absolute
+			right: 10px
+			top: 14px
+			+size(10px)
+			border: 
+				top: 1px solid #fff
+				right: 1px solid #fff
+			transform: rotate(45deg)
 
 
 
@@ -1041,36 +1092,31 @@ $output-bourbon-deprecation-warnings: false
 
 
 @media screen and (max-width: 660px)
+
+	#logo 
+		width: 60%
+	.portfolio__item-logo
+		max-height: 100px
+		max-width: 120px
+
+	.table-block
+		position: relative
+		margin: rem(22) 0 0
+		&:after
+			content: ""
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 100%;
+			width: 100px;
+			pointer-events: none;
+			background: url('../img/ico-fade.png')
+
 	body.inner .head
-		padding: 1.4rem
+		padding: 10px 1.4rem
+
 	.burger
 		margin-right: -15px
-
-	.footer-menu--double
-		padding: 1.4rem
-		
-	.mobile-menu--open 
-		.footer-top__column-title 
-			a
-				font-size: 21px
-
-		.footer-top 
-			padding: 90px 0 10px
-
-	.footer__top
-		overflow: hidden
-
-	.footer-menu__link
-		font-size: 21px
-
-	.footer-menu--double
-		.footer-menu__link
-			font-size: 14px
-
-	.js__sub 
-		.js__menu-close
-			padding: 7px 20px 7px 51px
-			font-size: 15px
 
 
 	.main-wrapper
@@ -1106,6 +1152,10 @@ $output-bourbon-deprecation-warnings: false
 
 	.title-block__title
 		padding: 1rem 20px 1rem 0
+
+		&-back:before
+			height: 33px
+			width: 33px
 
 	.standart-page__title 
 		h1

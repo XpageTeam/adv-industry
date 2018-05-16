@@ -6,6 +6,7 @@ html(lang="ru")
 		include inc/head.jade
 		include inc/css.jade
 	body.inner.loading
+		.mobile-menu
 		#page-wr
 			include inc/header.jade
 			#content
@@ -17,7 +18,7 @@ html(lang="ru")
 									a.title-block__title-back Вернуться к портфолио
 								.title-block__crumbs
 									.bread-crumbs
-										a.bread-crumbs__link(href="#") Главная
+										a.bread-crumbs__link(href="#")
 										span.bread-crumbs__this Портфолио
 					.inner-content__content
 						.wrapper

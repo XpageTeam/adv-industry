@@ -6,14 +6,16 @@ html(lang="ru")
 		include inc/head.jade
 		include inc/css.jade
 	body.inner.loading.page-services
+		.mobile-menu
 		#page-wr
 			include inc/header.jade
 			#content
 				.inner-content
 					.inner-content__content
 						.services-cont
-							.services-img
-								img(src="img/photos/services-bg.jpg", alt="")
+							.services-img.video-cont
+								video(src="img/video-services.mp4" muted loop)
+								//- img(src="img/photos/services-bg.jpg", alt="")
 							.services__content
 								.wrapper
 									.services__title

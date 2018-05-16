@@ -77,9 +77,11 @@ body
 	flex: 1 0 auto
 	display: flex
 	flex-direction: column
+	background: #f7f7f7
 
 .head
 	flex: none
+	background: #f7f7f7
 
 #page-wr
 	margin: 0 auto
@@ -87,6 +89,10 @@ body
 	display: flex
 	flex-direction: column
 	justify-content: space-between
+
+	z-index: 15
+	position: relative
+	background: #f7f7f7
 
 	select
 		-webkit-appearance: none;
@@ -128,7 +134,7 @@ a
 input[type="submit"], button
 	cursor: pointer
 
-img
+img, svg
 	max-width: 100%
 
 li
@@ -193,7 +199,7 @@ li
 	> *:not(:first-child)
 		// margin-top: 20px
 
-	p, table, img, blockquote, ul, ol
+	p, img, blockquote, ul, ol
 		margin: rem(22) 0 0
 
 	strong
