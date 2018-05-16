@@ -91,10 +91,7 @@ $(e => {
 		$('body').toggleClass('mobile-menu--open');
 	});
 
-	$('.js__menu-close').click(function(){
-		var $this = $(this);
-		$this.closest('.footer__top').removeClass('js__submenu-open');
-	});
+
 
 	$('.js__menu-close').click(function(){
 		var $this = $(this);
@@ -121,6 +118,12 @@ $(e => {
 
 		});
 	}
+
+	$('body').on('click', '.js__menu-close', function(){
+		var $this = $(this);
+		console.log($this);
+		$this.closest('.footer__top').removeClass('js__submenu-open');
+	});
 
 	var menu = $('.footer__top').clone();
 	$('.mobile-menu').prepend(menu);
