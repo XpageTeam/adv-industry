@@ -143,7 +143,6 @@ $(e => {
 					})
 				}
 			
-
 		});
 
 		$("body").on("mouseleave", ".portfolio__item", function(){
@@ -156,7 +155,18 @@ $(e => {
 
 			$video[0].currentTime = 0;
 		})
+
 	}
+
+	if($('body .services-cont').find('video').length){
+		var videoEl = document.getElementsByTagName('video')[0];
+
+		setTimeout(function(){
+			videoEl.play();
+		}, 3000);
+	}
+
+
 
 
 

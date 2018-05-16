@@ -1294,6 +1294,37 @@ body.page-services
 		position: relative
 		margin-bottom: -5rem
 
+		.video-cont
+			// position: relative
+			// padding-top: 56%
+			position: relative
+			padding-bottom: 54.25%
+			height: 0
+			overflow: hidden
+
+			&:before 
+				content: ""
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background: rgba(#000, .7)
+				z-index: 1
+
+		video 
+			// position: absolute 
+			// top: 0
+			// left: 0
+			// width: 100%
+			// height: 100%
+			position: absolute
+			top: 50%
+			left: 50%
+			min-width: 100%
+			min-height: 100%
+			transform: translate(-50%, -50%)
+
 	&__content
 		position: absolute
 		top: 0
@@ -1301,6 +1332,7 @@ body.page-services
 		bottom: 0
 		width: 100%
 		color: #fff
+		z-index: 2
 
 	&-current
 		margin-right: 135px
@@ -1363,15 +1395,16 @@ body.page-services
 			margin-left: 30px
 			font-size: rem(14)
 			text-transform: uppercase
+			padding: 5px 0
 
 			&:before
 				content: ""
 				position: absolute
-				bottom: -3px
+				bottom: 0
 				width: 100%
 				height: 1px
 				background: currentColor
-				transform: translateY(5px)
+				transform: translateY(3px)
 				opacity: 0
 				transition-delay: .3s
 				transition: .3s ease
