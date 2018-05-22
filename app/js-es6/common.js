@@ -469,6 +469,9 @@ const scrollToBot = e => {
 	}
 },
 scrollToTop = e => {
+
+	console.log($(".img--3")[0].scrollTop);
+
 	if ($(window).scrollTop() - $(window).height() <= 0 && 
 		curScreen == 2 && $(".img--3")[0].scrollTop == 0){
 		curScreen = 1;

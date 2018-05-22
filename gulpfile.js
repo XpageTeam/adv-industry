@@ -23,15 +23,15 @@ xpager_conn = ftp.create({
 	log: gutil.log
 });
 
-const templatePath = "/";
+const templatePath = "/htdocs/local/templates/industry/";
 const remotePathCss = templatePath+"css",
 	remotePathJs = templatePath+"js",
 	remotePathImg = templatePath+"img";
 
 const server_conn = ftp.create({
-	host:      '',
-	user:      '',
-	password:  '',
+	host:      'industry.xpager.ru',
+	user:      'industry.xpager.ru',
+	password:  'koQpoohK',
 	parallel: 4,
 	log: gutil.log
 });
