@@ -100,7 +100,7 @@ $(e => {
 	});
 
 
-	if($(window).width() < 820){
+	// if($(window).width() < 820){
 
 		$('.footer-top__column--double .footer__menu').prepend('\
 			<div class="js__menu-close">\
@@ -117,7 +117,7 @@ $(e => {
 			$this.closest('.footer__top').addClass('js__submenu-open');
 
 		});
-	}
+	// }
 
 	$('body').on('click', '.js__menu-close', function(){
 		var $this = $(this);
@@ -141,10 +141,10 @@ $(e => {
 	
 	$('.portfolio__list').addClass('animation');
 
-	$(window).on('resize', e => {
+	// $(window).on('resize', e => {
 
-		$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
-	})
+	// 	$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
+	// })
 
 	$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
 

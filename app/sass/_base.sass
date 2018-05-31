@@ -72,7 +72,10 @@ body
 
 		.head
 			position: static
-			padding: 76px 7.25rem
+
+		@media screen and (min-width: 820px)
+			.head
+				padding: 76px 7.25rem
 
 		.wrapper
 			max-width: 1400px
@@ -158,6 +161,10 @@ li
 			position: center
 			repeat: no-repeat
 			color: #fff
+		transition: border-color .3s ease
+
+		&:hover, &:focus
+			border-color: $main-color
 
 		&:not(:last-child)
 			margin-right: 9px

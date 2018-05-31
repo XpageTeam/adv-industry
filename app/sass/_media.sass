@@ -2,6 +2,10 @@ $output-bourbon-deprecation-warnings: false
 @import "bourbon"
 @import "vars"
 
+@media screen and (min-width: 820px)
+	.js__menu-close
+		display: none
+
 @media screen and (max-width: 1600px)
 	
 	.head
@@ -364,7 +368,7 @@ $output-bourbon-deprecation-warnings: false
 	.main-screen
 
 		&__footer
-			position: fixed
+			// position: fixed
 
 @media screen and (max-width: 990px)
 	.main-screen
@@ -536,6 +540,8 @@ $output-bourbon-deprecation-warnings: false
 		position: relative
 		z-index: 5
 
+		display: none
+
 		&.js__opened
 			padding-top: 33px
 
@@ -581,6 +587,28 @@ $output-bourbon-deprecation-warnings: false
 							transform: rotate(90deg)
 
 @media screen and (max-width: 820px)
+
+	#page-wr
+		position: relative
+
+		&:after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			+size(100%)
+			background: rgba(#000, .3)
+			pointer-events: none
+			transition: opacity .3s ease
+			opacity: 0
+			z-index: 99
+
+	.mobile-menu--open
+
+		#page-wr
+
+			&:after
+				opacity: 1
 	
 	html 
 		font-size: 90%
@@ -625,14 +653,14 @@ $output-bourbon-deprecation-warnings: false
 				font-size: rem(16)
 				padding: 10px
 				font-weight: 500
-				text-transform: uppercase
+				// text-transform: uppercase
 
 				color: currentColor
-				padding: 10px
+				padding: 20px
 				display: block
 				cursor: pointer
 				text-align: left
-				border-top: 1px solid #b7b7b7
+				border-top: 1px solid #e0e0e0
 
 		&-top
 			padding: 0
@@ -646,11 +674,17 @@ $output-bourbon-deprecation-warnings: false
 					font-size: rem(16)
 					text-decoration: none
 					border: none
-					padding: 10px
-					text-transform: uppercase
+					padding: 20px
+					// text-transform: uppercase
 					text-align: left
 
+	.footer
 
+		&__soc
+			padding: 15px 0 25px
+
+	.soc
+		padding: 0 20px
 
 	.footer-top
 		flex-direction: column
@@ -676,15 +710,15 @@ $output-bourbon-deprecation-warnings: false
 						display: none
 
 				.f-address
-					display: none
+					// display: none
 				.f-address, .f-phones, .f-time
 					background: none
-					padding: 10px
+					padding: 10px 20px
 					font-size: rem(16)
 					line-height: rem(20)
 					text-align: left
 					color: #000
-					display: none
+					// display: none
 
 				.f-contacts__one
 					margin: 0 !important
@@ -708,8 +742,8 @@ $output-bourbon-deprecation-warnings: false
 		&:after
 			content: ""
 			position: absolute
-			right: 10px
-			top: 14px
+			right: 20px
+			top: 24px
 			+size(10px)
 			border: 
 				top: 1px solid $main-color
@@ -736,6 +770,9 @@ $output-bourbon-deprecation-warnings: false
 		transition: transform .3s ease
 		z-index: 11
 
+	.head
+		margin-bottom: 20px
+
 
 	.burger
 		position: relative
@@ -759,7 +796,7 @@ $output-bourbon-deprecation-warnings: false
 		span
 			position: relative
 			display: inline-block
-			width: 30px
+			width: 18px
 			height: 2px
 			vertical-align: bottom
 			background: $main-color
@@ -857,7 +894,7 @@ $output-bourbon-deprecation-warnings: false
 		transition-delay: .3s
 		font-size: rem(16)
 		font-weight: 500
-		padding: 10px
+		padding: 20px
 		background: none !important
 		text-align: left
 		color: $main-color
@@ -865,13 +902,13 @@ $output-bourbon-deprecation-warnings: false
 		&:after
 			content: ""
 			position: absolute
-			right: 10px
-			top: 14px
+			right: 20px
+			top: 23px
 			+size(10px)
 			border: 
 				top: 1px solid $main-color
 				right: 1px solid $main-color
-			transform: rotate(45deg)
+			transform: rotate(-135deg)
 
 
 
@@ -1095,6 +1132,52 @@ $output-bourbon-deprecation-warnings: false
 
 @media screen and (max-width: 660px)
 
+	.main-port
+		margin: 0 0 -1rem
+
+		&__one
+			margin-left: 0
+
+	.text
+		text-align: left
+		align-items: flex-start
+
+		&__text
+			font-size: rem(20)
+
+		&2
+
+			&__svg
+
+				svg
+					height: auto !important
+
+	body.page-services 
+
+		#logo .st1
+			fill: #000
+
+	.services
+
+		&-current
+			margin-left: 0
+
+			&__title
+
+				&-icon
+					margin-left: 0
+
+		&__list
+			margin-left: 0
+
+		&__item
+			margin-left: 0
+
+			&-link
+
+				&:first-child
+					margin-left: 0
+
 	.play-btn
 		width: auto
 		&__btn
@@ -1114,7 +1197,13 @@ $output-bourbon-deprecation-warnings: false
 
 
 	#logo 
-		width: 60%
+		// width: 60%
+		width: auto
+		// margin-right: 20px
+
+	.head__logo
+		margin-right: 50px
+
 	.portfolio__item-logo
 		max-height: 100px
 		max-width: 120px
@@ -1125,12 +1214,14 @@ $output-bourbon-deprecation-warnings: false
 		&:after
 			content: ""
 			position: absolute;
-			right: 0;
+			right: 0px;
 			top: 0;
 			height: 100%;
 			width: 100px;
 			pointer-events: none;
-			background: url('../img/ico-fade.png')
+			// background: url('../img/ico-fade.png') тщ-кузуфе
+			background: linear-gradient(to right, transparent, $second-color)
+			// filter: blur(2px)
 
 	.head
 		padding: 10px 1.4rem
