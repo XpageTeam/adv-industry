@@ -196,6 +196,14 @@ $(e => {
 	}
 
 
+	$(".fancybox").fancybox({
+		beforeShow (){
+			$("body").addClass("fancy-active")
+		},
+		afterClose (){
+			$("body").removeClass("fancy-active")	
+		}
+	});
 
 
 
@@ -211,6 +219,7 @@ $(e => {
 	$(".img--3").on("scroll", function(){
 		Cookies.set("botBlockScroll", $(this)[0].scrollTop);
 	});
+	
 
 	let play = new playBtn({
 		selector: $(".play-btn__btn"),
@@ -236,15 +245,7 @@ $(e => {
 		});
 	});
 
-	$(".fancybox").fancybox({
-		beforeShow (){
-			$("body").addClass("fancy-active")
-		},
-		afterClose (){
-			$("body").removeClass("fancy-active")	
-		}
-	});
-
+	
 	
 	
 
