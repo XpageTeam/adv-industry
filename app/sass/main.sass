@@ -8,6 +8,48 @@ $output-bourbon-deprecation-warnings: false;
 *[v-cloak]
 	display: none
 
+.contacts-form
+	&__submit
+		display: flex 
+		justify-content: center
+		margin-top: 30px
+
+		input
+			display: inline-block;
+			border: none;
+			background: #ff181f;
+			border-radius: 27px;
+			color: #fff;
+			text-decoration: none;
+			font-weight: 400;
+			font-size: 14px;
+			text-align: center;
+			transition: background-color .3s ease, transform .2s ease;
+			padding: 12px 29px 13px;
+
+	&__input
+		display: flex 
+		flex-direction: column-reverse
+		width: 47%
+
+	&__inputs
+		display: flex
+		justify-content: space-between
+
+	&__text
+		a 
+			border: 0
+			text-decoration: none 
+
+			&:hover 
+				text-decoration: underline
+.forms-input-cont--textarea
+	margin-top: 20px;
+	
+.forms-input-cont.forms-input-cont--textarea
+	margin-bottom: 0; 
+
+
 .wow
 	visibility: hidden
 
@@ -1388,6 +1430,15 @@ body.page-services
 			display: flex
 			align-items: center
 			margin-bottom: 20px
+
+			a
+				text-decoration: none 
+				color: #fff
+				transition: color .3s ease
+
+				&:hover 
+					text-decoration: none !important
+					border: 0
 
 			span 
 				color: currentColor
