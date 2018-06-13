@@ -205,7 +205,7 @@ gulp.task("deploy:css", () =>
 
 gulp.task("deploy:js", () => 
 	gulp.src("app/js/*.js", {since: gulp.lastRun("deploy:js")})
-		.pipe($.uglify())
+		// .pipe($.uglify())
 		.pipe(server_conn.dest(remotePathJs))
 );
 

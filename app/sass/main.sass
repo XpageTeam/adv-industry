@@ -156,7 +156,7 @@ img
 			transform: scale3d(0, 1, 1)
 			transform-origin: left
 
-		&:hover, &:focus, &.active
+		&:hover, &:focus, &.selected
 
 			&:after
 				opacity: 1
@@ -621,7 +621,22 @@ img
 		color: rgba(#000, .5)
 		margin: 5px 0 0
 
+.loading
+	position: relative
+	min-height: 150px
+
+	&:after
+		content: ""
+		position: absolute
+		background: url("../img/loading.svg") center no-repeat
+		top: 0
+		left: 0
+		+size(100%)
+
 .main-port
+
+	.block:not(.active)
+		display: none
 
 	&__one
 		color: #000

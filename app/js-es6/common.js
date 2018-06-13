@@ -28,6 +28,8 @@ let main_slider,
 	lastSlide = 0;
 
 $(e => {
+	mainPortLoading($(".main-port .block:eq(0)"));
+
 	/** Адаптив **/
 
 		$("body").on("click", ".top-nav__menu .active a", e =>{
@@ -37,13 +39,16 @@ $(e => {
 		});
 
 		$("body").on("click", ".top-nav__menu li:not(.active) a", function(){
-			let $this = $(this);
+			let $this = $(this),
+				anchor = $this.data("name-section");
 
 			$this.closest(".top-nav__menu").find(".active").removeClass("active");
 
 			$this.closest("li").addClass("active");
 
 			$(".top-nav").removeClass("js__opened");
+
+			mainPortLoading($(".main-port .block[data-name-section='"+anchor+"']"));
 
 			return false;
 		});
@@ -99,6 +104,7 @@ $(e => {
 		$this.closest('.footer__menu').removeClass('js__sub');
 	});
 
+	// $(".")
 
 	// if($(window).width() < 820){
 
@@ -121,7 +127,6 @@ $(e => {
 
 	$('body').on('click', '.js__menu-close', function(){
 		var $this = $(this);
-		console.log($this);
 		$this.closest('.footer__top').removeClass('js__submenu-open');
 	});
 
@@ -471,7 +476,7 @@ const scrollToBot = e => {
 },
 scrollToTop = e => {
 
-	console.log($(".img--3")[0].scrollTop);
+	// console.log($(".img--3")[0].scrollTop);
 
 	if ($(window).scrollTop() - $(window).height() <= 0 && 
 		curScreen == 2 && $(".img--3")[0].scrollTop == 0){
@@ -734,3 +739,31 @@ $(window).on("resize", e => {
 			window.scrollTo(0, $(".img--3").offset().top)
 		}, 100)
 });
+
+const mainPortLoading = ($obj) => {
+	$(".main-port .block.active").removeClass('active');
+	$obj.addClass("active");
+
+
+	if (!$obj.find("img[data-src]").length)
+		return
+
+	$(".main-port").addClass("loading");
+
+	let $imgs = $obj.find("img[data-src]"),
+		imgsCount = $imgs.length,
+		imgsLoaded = 0;
+
+	for (let i = 0; i < imgsCount; i++){
+		$imgs[i].src = $($imgs[i]).data("src");
+
+		$imgs[i].onload = e => {
+			imgsLoaded++;
+			$($imgs[i]).removeAttr("data-src");
+
+			if (imgsCount == imgsLoaded)
+				$(".main-port").removeClass("loading")
+		}
+	}
+
+}
