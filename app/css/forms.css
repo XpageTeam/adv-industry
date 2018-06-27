@@ -374,7 +374,7 @@
   position: absolute;
   width: 1px;
   background: #ff0024;
-  left: calc(50% - 1px);
+  left: 50%;
 }
 
 .forms__error-message-icon:before {
