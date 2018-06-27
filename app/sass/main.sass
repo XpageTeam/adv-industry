@@ -112,7 +112,7 @@ img
 .default-btn
 	display: inline-block
 	border: none
-	background: $main-color
+	background-color: $main-color
 	border-radius: 27px
 	color: #fff
 	text-decoration: none
@@ -694,31 +694,8 @@ img
 						transform-origin: left
 						transform: scale3d(0, 1, 1)
 
-		&:nth-child(3)
-
-			.port-one
-				position: relative
-
-				&__desc
-					position: absolute
-					right: calc(100% + 36px)
-					top: rem(216)
-					width: persent(330, 441)
-					padding: 0 rem(50) 0 0
-					margin-right: rem(22)
-
-					&:before
-						right: 0
-						top: 0
-
-					&:after
-						left: calc(100% - 9px)
-						width: calc(1.375rem + 48px)
-						height: 1px
-						top: 9px
-						transform-origin: right
-						transform: scale3d(0, 1, 1)
-
+		
+	
 		&:nth-child(4)
 
 			.port-one
@@ -738,6 +715,63 @@ img
 						left: 9px
 						transform-origin: top
 						transform: scale3d(1, 0, 1)
+
+@media screen and (max-width: 1200px)
+	.main-port
+
+		&__one
+		
+			&:nth-child(3)
+
+				.port-one
+					flex-direction: column-reverse
+
+					&__desc
+						padding: 0 0 0 rem(43)
+						margin: 42px 0 0 rem(18)
+						position: relative
+						width: auto
+
+						&:before
+							left: 0
+							top: 0
+
+						&:after
+							+size(1px 51px)
+							bottom: calc(100% - 9px)
+							left: 9px
+							transform-origin: top
+							transform: scale3d(1, 0, 1)
+
+@media screen and (min-width: 1200px)
+	.main-port
+
+		&__one
+
+			&:nth-child(3)
+
+				.port-one
+					position: relative
+
+					&__desc
+						position: absolute
+						right: calc(100% + 36px)
+						top: 16.5rem
+						width: persent(330, 441)
+						padding: 0 rem(50) 0 0
+						margin-right: rem(22)
+
+						&:before
+							right: 0
+							top: 0
+
+						&:after
+							left: calc(100% - 9px)
+							width: calc(1.375rem + 48px)
+							height: 1px
+							top: 9px
+							transform-origin: right
+							transform: scale3d(0, 1, 1)
 
 .main-port
 

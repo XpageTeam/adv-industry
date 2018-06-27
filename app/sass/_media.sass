@@ -6,6 +6,10 @@ $output-bourbon-deprecation-warnings: false
 	.js__menu-close
 		display: none
 
+@media screen and (min-width: 1000px)
+	body.main.compensate-for-scrollbar
+		margin-right: 0
+
 @media screen and (max-width: 1600px)
 	
 	.head
@@ -76,19 +80,20 @@ $output-bourbon-deprecation-warnings: false
 			margin: 0 0 30px 60px
 
 	.footer
+
 		&__top
 			padding: 2.6875rem 0 3.625rem
 
 
 		&-top
-			margin-left: 0
+			margin-left: -2rem
 
 			&__column
-				width: calc((100% - 1rem * 3) / 3)
-				margin-left: 1rem
+				width: calc((100% - 3rem * 3) / 3)
+				margin-left: 3rem
 
 				&--double
-					width: calc((120% - 1rem * 2) / 2)
+					width: calc((120% - 3rem * 2) / 2)
 
 	.portfolio-two
 		&__list 
@@ -340,13 +345,13 @@ $output-bourbon-deprecation-warnings: false
 					margin-left: 1.4375rem
 					padding: 2rem 0 0
 
-		&:nth-child(3)
-			.port-one
+		// &:nth-child(3)
+		// 	.port-one
 
-				&__desc
-					right: calc(100% + 20px)
-					width: 61.82993%
-					padding: 0 2.125rem 0 0
+		// 		&__desc
+		// 			right: calc(100% + 20px)
+		// 			width: 61.82993%
+		// 			padding: 0 2.125rem 0 0
 
 		&:nth-child(4)
 
@@ -364,7 +369,7 @@ $output-bourbon-deprecation-warnings: false
 	.main-about
 
 		&__cont
-			margin: 1.4375rem 0 0
+			// margin: 1.4375rem 0 0
 	
 	.main-screen
 
@@ -380,6 +385,7 @@ $output-bourbon-deprecation-warnings: false
 		overflow: auto
 
 		&.main
+			overflow: visible !important
 
 			.head
 				position: static
@@ -536,6 +542,7 @@ $output-bourbon-deprecation-warnings: false
 
 		&__img
 			filter: none
+			opacity: 1
 
 	.top-nav
 		justify-content: center
@@ -1208,12 +1215,15 @@ $output-bourbon-deprecation-warnings: false
 			position: static
 			border-radius: 48px
 			transition: none
+			padding: 10px 20px !important
+			
 		&.js__animated 
+
 			.play-btn__text
 				width: auto
-				padding: 10px 20px
 
 	.mobile-menu
+
 		.main-wrapper
 			padding: 0 !important
 

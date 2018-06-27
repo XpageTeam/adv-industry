@@ -388,10 +388,16 @@ $error-color: #ff0024
 	.fancy-active
 		overflow: hidden !important
 
-		#page-wr
+		#page-wr, .mobile-menu
 			display: none
 
+		.fancybox-slide
+
+			&:before
+				display: none !important
+
 	.forms
+		max-width: 100%
 
 		&-wrap
 
