@@ -6,8 +6,9 @@ $(window).on("load", e => {
 	    boxClass:     'wow',      // animated element css class (default is wow)
 	    animateClass: 'animated', // animation css class (default is animated)
 	    offset:       0,          // distance to the element when triggering the animation (default is 0)
-	    mobile:       true,       // trigger animations on mobile devices (default is true)
+	    mobile:       false,       // trigger animations on mobile devices (default is true)
 	    live:         true,       // act on asynchronously loaded content (default is true)
+	    delay: 1,
 	    callback:     function(box) {
 	      // the callback is fired every time an animation is started
 	      // the argument that is passed in is the DOM node being animated
@@ -100,18 +101,20 @@ $(e => {
 
 	$('body').on('click touchstart', '.js__menu-close', function(){
 		var $this = $(this);
-
 		$this.closest('.footer__menu').removeClass('js__sub');
 	});
 
-	// $(".")
 
-	// if($(window).width() < 820){
 
-		$('.footer-top__column--double .footer__menu').prepend('\
+	$('.footer-top__column--double .footer-menu').prepend('\
 			<div class="js__menu-close">\
 				<span>Назад</span>\
-			</div>');
+			</div>\
+			<li>\
+				<a href="/services/" class="footer-menu__link">Все услуги</a>\
+			</li>\
+		');
+
 
 		
 
