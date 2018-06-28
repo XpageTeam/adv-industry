@@ -98,7 +98,7 @@ $(e => {
 
 
 
-	$('.js__menu-close').click(function(){
+	$('body').on('click touchstart', '.js__menu-close', function(){
 		var $this = $(this);
 
 		$this.closest('.footer__menu').removeClass('js__sub');
@@ -153,7 +153,20 @@ $(e => {
 
 	$('.text-page table').wrap('<div class="table-block"><div class="table-wrap"></div></div>');
 
+	if($(window).width() < 820){
 
+		$("body").click(function(e){
+			if (!$(e.target).is($(".mobile-menu"))
+				&& !$(".mobile-menu").has(e.target).length
+				&& $("body").hasClass("mobile-menu--open")
+				&& !$(e.target).is($(".burger"))
+				&& !$(".burger").has(e.target).length){
+				//console.log(123)
+				$("body").removeClass("mobile-menu--open")
+			}
+		});
+		
+	}
 
 
 
