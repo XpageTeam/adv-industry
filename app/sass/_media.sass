@@ -229,7 +229,7 @@ $output-bourbon-deprecation-warnings: false
 			padding: 33px 0 35px
 
 	.block-services__list
-		margin: 30px 0 -40px 40px
+		margin: 30px 0 -40px 50px
 
 	footer
 		.footer-top
@@ -1248,17 +1248,7 @@ $output-bourbon-deprecation-warnings: false
 				display: flex
 				flex: 1 1 auto
 
-	.services__content
-		opacity: 1 !important
-		animation: opacity 2s ease 3s forwards
 
-	@keyframes opacity
-
-		0% 
-			opacity: 1
-
-		100%
-			opacity: 1
 
 
 
@@ -1304,6 +1294,17 @@ $output-bourbon-deprecation-warnings: false
 
 
 @media screen and (max-width: 660px)
+	.services__content
+		opacity: 1 !important
+		animation: opacity 2s ease 3s forwards
+
+	@keyframes opacity
+
+		0% 
+			opacity: 1
+
+		100%
+			opacity: 1
 
 	.text-page
 		table 
